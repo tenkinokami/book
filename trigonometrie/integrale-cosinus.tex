@@ -1,0 +1,26 @@
+\begin{lemma}
+\[
+\forall n \in \setIntegers, \:\displaystyle\int\limits_{0}^{\pi} \cos(nu) \:du = \pi\: \kronecker{n}{0}
+\]
+\end{lemma}
+\begin{proof}
+Soit $n \in \setIntegers$, 
+\begin{itemize}
+\item Si \fbox{$n \ne 0$}, alors
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu)  \: du = \left[\dfrac{\sin(nu)}{n}\right]_{0}^{\pi}= \dfrac{1}{n}\Bigl(\sin(n\pi) - \sin(0)\Bigr)
+\]
+Or $\sin(0) = 0$ et $\sin(n\pi) = 0$, alors 
+\[
+\lboxed{\displaystyle\int\limits_{0}^{\pi} \cos(nu) \: du} = \dfrac{1}{n}\Bigl(0 - 0\Bigr) \rboxed{= 0}
+\]
+\item Si \fbox{$n = 0$}, alors 
+\[
+\lboxed{\displaystyle\int\limits_{0}^{\pi} \cos(0u) \: du} 
+= \displaystyle\int\limits_{0}^{\pi} \cos(0) \: du 
+= \displaystyle\int\limits_{0}^{\pi} 1 \: du
+= \pi - 0 
+\rboxed{= \pi}
+\]
+\end{itemize}
+\end{proof}

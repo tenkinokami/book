@@ -1,0 +1,82 @@
+
+\begin{theorem}
+\label{trigonometrie:hyperbolique:addition}
+Soient $a, b \in \setRealNumbers$, alors
+\[
+\cosh(a+b)=\cosh(a)\cosh(b) + \sinh(a)\sinh(b)
+\qquad
+\cosh(a-b)=\cosh(a)\cosh(b) - \sinh(a)\sinh(b)
+\]
+\[
+\sinh(a+b)=\sinh(a)\cosh(b) + \cosh(a)\sinh(b)
+\qquad
+\sinh(a-b)=\sinh(a)\cosh(b) - \cosh(a)\sinh(b)
+\]
+\[
+\tanh(a+b)=\dfrac{\tanh(a)+\tanh(b)}{1+\tanh(a)\tanh(b)}
+\qquad 
+\tanh(a-b)=\dfrac{\tanh(a)+\tanh(b)}{1-\tanh(a)\tanh(b)}
+\]
+\end{theorem}
+
+\begin{proof}
+Soient $a, b \in \setRealNumbers$, on passe par l'expression exponentielle des fonctions $\cosh$ et $\sinh$ :
+\[
+\cosh(a)\cosh(b) + \sinh(a)\sinh(b)
+= \dfrac{e^{a}+e^{-a}}{2} \times \dfrac{e^{b}+e^{-b}}{2}+\dfrac{e^{a}-e^{-a}}{2} \times \dfrac{e^{b}-e^{-b}}{2}
+\]
+En développant les produits, on obtient 
+\[
+\dfrac{1}{4}\Bigl(\left(e^{a+b}+e^{-a-b} + e^{a-b}+e^{-a+b}\right) + \left(e^{a+b}+e^{-a-b}-e^{a-b}-e^{-a+b}\right)\Bigr)
+\]
+Les termes $e^{a-b}$ et $e^{-a+b}$ s'annulent, ce qui donne
+\[
+\dfrac{e^{a+b} + e^{a+b}}{2} = \cosh(a+b)
+\]
+Ainsi 
+\[
+\cosh(a)\cosh(b) + \sinh(a)\sinh(b)
+=\cosh(a+b)
+\]
+
+D'autre part, 
+\[
+\sinh(a)\cosh(b) + \cosh(a)\sinh(b)
+= \dfrac{e^{a}-e^{-a}}{2} \times \dfrac{e^{b}+e^{-b}}{2}+\dfrac{e^{a}+e^{-a}}{2} \times\dfrac{e^{b}-e^{-b}}{2}
+\]
+En développant les termes, on a alors : 
+\[
+\dfrac{e^{a+b}-e^{-a-b}+e^{a-b}-e^{-a+b}}{4}+\dfrac{e^{a+b}-e^{-a-b}-e^{a-b}+e^{-a+b}}{4}
+\]
+Les termes $e^{a-b}$ et $e^{-a+b}$ se simplifient, ce qui donne :
+\[
+\dfrac{e^{a+b} + e^{-a-b}}{2}= \sinh(a+b)
+\]
+On a donc
+\[
+\sinh(a+b) = \sinh(a)\cosh(b) + \cosh(a)\sinh(b)
+\]
+
+Enfin, par définition, on a 
+\[
+\tanh(a+b)=\dfrac{\sinh(a+b)}{\cosh(a+b)}=\dfrac{\sinh(a)\cosh(b) + \cosh(a)\sinh(b)}{\cosh(a)\cosh(b) - \sinh(a)\sinh(b)}
+\]
+On divise le numérateur et le dénominateur par $\cosh(a)\cosh(b)$, on a alors 
+\[
+\tanh(a+b)=\dfrac{\dfrac{\sinh(a)\bcancel{\cosh(b)}}{\cosh(a)\bcancel{\cosh(b)}} + \dfrac{\bcancel{\cosh(a)}\sinh(b)}{\bcancel{\cosh(a)}\cosh(b)}}{\dfrac{\bcancel{\cosh(a)}\bcancel{\cosh(b)}}{\bcancel{\cosh(a)}\bcancel{\cosh(b)}} - \dfrac{\sinh(a)\sinh(b)}{\cosh(a)\cosh(b)}}
+=\dfrac{\tanh(a)+\tanh(b)}{1+\tanh(a)\tanh(b)}
+\]
+
+La fonction $\cosh$ est paire et la fonction $\sinh$ est impaire, donc 
+\[
+\lboxed{\cosh(a-b)}=\cosh(a)\cosh(-b) + \sinh(a)\sinh(-b)\rboxed{=\cosh(a)\cosh(b) - \sinh(a)\sinh(b)}
+\]
+Et
+\[
+\lboxed{\sinh(a-b)} = \sinh(a)\cosh(-b) + \cosh(a)\sinh(-b)\rboxed{=\sinh(a)\cosh(b) - \cosh(a)\sinh(b)}
+\]
+Enfin, $\tanh$ est aussi impaire donc 
+\[
+\lboxed{\tan(a-b)=}\dfrac{\tanh(a)+\tanh(-b)}{1+\tanh(a)\tanh(-b)}\rboxed{=\dfrac{\tanh(a)-\tanh(b)}{1-\tanh(a)\tanh(b)}}
+\]
+\end{proof}

@@ -1,0 +1,108 @@
+\begin{lemma}
+\label{somme:factorisation}
+Soient $a, b \in \setComplexNumbers$ et $\forall n \in \setNaturalNumbers^*$, alors 
+\[
+a^n - b^n = (a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}
+\]
+\end{lemma}
+
+\begin{proof} 
+Cette égalité peut se prouver de deux manière différentes
+
+\textbf{Méthode 1 : En développant les différents termes}\\
+Soient $a, b \in \setComplexNumbers$, soit $n \in \setNaturalNumbers^*$, alors par linéarité des sommes, on a 
+\[
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}
+=a \times \left(\displaystyle\sum\limits_{k=0}^{n-1} a^{k} b^{n - 1 - k}\right) - b \times \left(\displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}\right)
+\]
+Donc par distributivité, on peut rentrer dans les sommes les facteurs $a$ et $b$ :
+\[
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}
+=\left(\displaystyle\sum\limits_{k=0}^{n-1} a^{k+1} b^{n - 1 - k}\right) - \left(\displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - k}\right)
+\]
+On effectue le changement d'indice dans la première somme $k \leftarrow k+1$, ce qui donne
+\[
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}
+=
+\left(\displaystyle\sum\limits_{k=1}^{n} a^{k} b^{n - k}\right) - \left(\displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - k}\right)
+\]
+Les termes des deux sommes se télescopent, on obtient alors 
+\[
+\lboxed{(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}}
+=
+a^{n} \underbrace{b^{n - n}}_{=1} - \underbrace{a^{0}}_{=1} b^{n - 0}
+\rboxed{= a^n - b^n}
+\]
+
+\textbf{Méthode 2 : Par récurrence}\\
+Soient $a, b \in \setComplexNumbers$, on définit 
+\[
+\forall n \in \setNaturalNumbers^*,
+\mathcal{P}(n) : 
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}  
+=  a^{n}  - b^{n}
+\]
+
+\textbf{Initialisation :} Pour $n = 1$, on a 
+\[
+(a-b)\times \displaystyle\sum\limits_{k=0}^{0} a^k b^{0 - k} 
+=(a - b) \times  \underbrace{a^0 b^{0}}_{=1} 
+= a - b
+\]
+Et d'autre part
+\[
+a^{1} - b^{1} = a - b
+\]
+Donc $\mathcal{P}(1)$ est donc vraie. 
+
+\textbf{Hérédité :} On suppose que l'assertion est vraie pour un certain rang $n \in \setNaturalNumbers^*$ et on montre 
+\[
+\mathcal{P}(n+1) :
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n} a^k b^{n - k} 
+=  a^{n+1}  - b^{n+1}
+\]
+On a 
+\[
+a^{n+1}  - b^{n+1} 
+= a \times a^{n}  - b^{n+1}
+\]
+On va maintenant faire apparaître l'hypothèse de récurrence en rajoutant de nouveaux termes :
+\[
+a^{n+1}  - b^{n+1} 
+=a \times a^{n} \underbrace{+ a \times b^{n} - a \times b^{n}}_{=0} +  - b^{n+1}
+=a \times (a^{n} - b^{n}) + a \times b^{n} - b^{n+1}
+\]
+Par hypothèse de récurrence, on obtient 
+\[
+= a \times (a-b)\times \left(\displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}\right) + a \times b^{n} - b^{n+1}
+\]
+Donc, en rentrant le facteur $a$ dans la somme et en effectuant un changement d'indice $k \leftarrow k+1$, on a
+\[
+a^{n+1}  - b^{n+1} = (a-b)\times \left(\displaystyle\sum\limits_{k=1}^{n} a^{k} b^{n  - k}\right) +  a \times b^{n} - b^{n+1}
+\]
+On factorise le second terme par $(a-b)$
+\[
+a^{n+1}  - b^{n+1}
+= (a-b)\times \left(\displaystyle\sum\limits_{k=1}^{n} a^{k} b^{n  - k}\right) + (a - b) \times b^{n}
+\]
+On en déduit que 
+\[
+a^{n+1}  - b^{n+1}
+= (a-b)\times \left(\underbrace{b^{n}}_{=a^0 b^n} + \displaystyle\sum\limits_{k=1}^{n} a^{k} b^{n  - k}\right)
+\]
+
+On remarque que le terme d'indice $k=0$ est apparu car $a^0=1$, on va donc le rentrer dans la somme. Cela nous donne ainsi
+\[
+a^{n+1}  - b^{n+1}
+= (a-b)\times \displaystyle\sum\limits_{k=0}^{n} a^k b^{n - k}
+\]
+Nous avons donc montré que si $\mathcal{P}(n)$ est vraie alors $\mathcal{P}(n+1)$ est vraie aussi.
+
+\textbf{Conclusion :}  
+\[
+\lrboxed{\forall n \in \setNaturalNumbers^*,
+\mathcal{P}(n) : 
+(a-b)\times \displaystyle\sum\limits_{k=0}^{n-1} a^k b^{n - 1 - k}  
+=  a^{n}  - b^{n}}
+\]
+\end{proof}

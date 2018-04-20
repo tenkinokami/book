@@ -1,0 +1,118 @@
+\newcounter{nbtheorem}[chapter]
+\setcounter{nbtheorem}{0}
+\definecolor{or}{RGB}{255,215,0}
+
+\let\theorem\temp
+\NewDocumentEnvironment{theorem}{o}
+{\refstepcounter{nbtheorem}%
+	\begin{bclogo}[%
+		nobreak,%
+		ombre = false,%
+		arrondi = 0.2,%
+		logo = \hspace{17pt},%
+		barre = none,%
+        couleurBarre = red!5,%
+		couleur = red!5,%
+        couleurBord = black!40!colsection,%
+        epBord = 0.7]%
+{\color{black!30!colsection}\hspace{-15pt}Théorème \thenbtheorem \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\NewDocumentEnvironment{lemma}{o}
+{\refstepcounter{nbtheorem}%
+	\begin{bclogo}[%
+		nobreak,%
+		ombre = false,%
+		arrondi = 0.2,%
+		logo = \hspace{17pt},%
+		barre = none,%
+        couleurBarre = yellow!5,%
+		couleur = yellow!5,%
+        couleurBord = black!40!colsoussoussection,%
+        epBord = 0.7]%
+{\color{black!30!colsoussoussection}\hspace{-15pt}Lemme \thenbtheorem \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\NewDocumentEnvironment{corollary}{o}
+{\refstepcounter{nbtheorem}%
+	\begin{bclogo}[%
+		nobreak,%
+		ombre = false,%
+		arrondi = 0.2,%
+		logo = \hspace{17pt},%
+		barre = none,%
+        couleurBarre = yellow!5,%
+		couleur = yellow!5,%
+        couleurBord = black!40!colsoussoussection,%
+        epBord = 0.7]%
+{\color{black!40!colsoussoussection}\hspace{-15pt}Corollaire \thenbtheorem \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\NewDocumentEnvironment{proposition}{o}
+{\refstepcounter{nbtheorem}%
+	\begin{bclogo}[%
+		nobreak,%
+		ombre = false,%
+		arrondi = 0.2,%
+		logo = \hspace{17pt},%
+		barre = none,%
+        couleurBarre = blue!5,%
+		couleur = blue!5,%
+        couleurBord = black!40!colsoussection,%
+        epBord = 0.7]%
+{\color{black!30!colsoussection}\hspace{-15pt}Proposition \thenbtheorem \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\NewDocumentEnvironment{property}{o}
+{\refstepcounter{nbtheorem}%
+	\begin{bclogo}[%
+		nobreak,%
+		ombre = false,%
+		arrondi = 0.2,%
+		logo = \hspace{17pt},%
+		barre = none,%
+        couleurBarre = blue!5,%
+		couleur = blue!5,%
+        couleurBord = black!40!colsoussection,%
+        epBord = 0.7]%
+{\color{black!30!colsoussection}\hspace{-15pt}Propriété \thenbtheorem \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\definecolor{darkgreen}{RGB}{0,100,0}
+\NewDocumentEnvironment{definition}{o}
+{\begin{bclogo}[nobreak,%
+					ombre = false,%
+					arrondi = 0.2,%
+					logo = \hspace{17pt},%
+					barre = none,%
+                    couleurBarre = green!5,%
+					couleur = green!5,%
+                    couleurBord = black!30!darkgreen,%
+                    epBord = 0.7]%
+{\color{black!30!darkgreen}\hfil\:\:#1\:\:}%
+}%
+{\end{bclogo}}%
+
+\newcounter{nbexercice}[chapter]
+\setcounter{nbexercice}{0}
+
+\definecolor{palecyan}{RGB}{175, 238, 238}
+\NewDocumentEnvironment{exercice}{o}
+{\refstepcounter{nbexercice}%
+\begin{bclogo}[nobreak,%
+			   	ombre = false,%
+			   	arrondi = 0.2,%
+				logo = \hspace{17pt},%
+				barre = none,%
+                couleurBarre = cyan!5,%
+				couleur = cyan!5,%
+                couleurBord = black!30!palecyan,%
+                epBord = 0.7]%
+{\color{black!60!palecyan}\hspace{-15pt}Exercice \thenbexercice \IfValueT{#1}{: #1}}}%
+{\end{bclogo}}%
+
+\theoremstyle{definition}
+\newcounter{nbexample}[chapter]
+\setcounter{nbexample}{0}
+
+\newtheorem{example}[nbexample]{Exemple}

@@ -1,0 +1,115 @@
+\begin{exercice}
+Trouver toutes les fonctions $f \in \setFunctions{\setRealNumbers}{\setRealNumbers}$ qui vérifient la propriété fonctionnelle $P$
+\[
+\forall x, y \in \setRealNumbers, P(x, y): f(f(x)f(y))+f(x+y)=f(xy)
+\]
+\end{exercice}
+
+\begin{proof}
+On raisonne par analyse synthèse.
+
+\textbf{Analyse :} Supposons que $f$ vérifie la propriété fonctionnelle $P$, alors :\\
+\[
+P(0, 0) : f(f(0)f(0)) + f(0 + 0) = f(0 \times 0)
+\]
+Donc en posant $a = f(0)$, on obtient :
+\[
+f(a^2) + a = a \quad\text{c'est à dire}\quad f(a^2)=0
+\]
+Ainsi, $a^2$ est un des zéros de la fonction. La propriété fonctionnelle nous donne aussi que :
+\[
+\forall x \in \setRealNumbers, P(x, a^2) : f(f(x)f(a^2)) + f(x + a^2)= f(x a^2)
+\]
+Cela revient a dire que :
+\[
+\forall x \in \setRealNumbers, f(a^2 x) - f(x + a^2) = f( x \times 0) = f(0) = a
+\]
+On va alors distinguer plusieurs cas : 
+\begin{itemize}
+\item Si $a = 0$, alors on a $\forall x \in \setRealNumbers, f(0 x) - f(x + 0) = 0$, autrement dit, $f$ est la fonction nulle $\function{x}{0}$.
+\item Si $a = 1$ ou $-1$, alors on a $\forall x \in \setRealNumbers, f(1 x) - f(x + 1) = a$, donc $f(x + 1) = f(x) - a$. On retombe sur une équation fonctionnelle classique, les solutions de cette dernières sont des fonctions affines de la forme $\function{x}{A x + B}$ où $A$ et $B$ est des constantes à déterminer.
+
+Ici, on a $A = -a$ et B tel que $a = f(0) = \pm 1$, donc $B$ vérifie :
+\[
+f(0) = -a \times 0 + B = a \quad\text{ ce qui revient à dire que }\quad B = a \quad\text{convient.}
+\]
+Ainsi, seuls les fonctions $\function{x}{-x + 1}$ et $\function{x}{x - 1}$ peuvent convenir dans ce cas. 
+
+\item Enfin, le dernier comprends tous les autres ($a \in \setRealNumbers \setminus \set{-1, 0, 1}$). \\
+Cherchons une valeur de $x$ pour laquelle $a^2 x = x + a^2$. Cette égalité donne $(a^2 - 1)x = a^2$ donc $x = \dfrac{a^2}{a^2 - 1}$. \\
+On note alors $A = f\left(\dfrac{a^2}{a^2 - 1} + a^2\right) = f\left(\dfrac{a^2}{a^2 - 1} \times a^2\right)$.En réinjectant directement dans la dernière équation obtenue on obtient :
+\[
+\forall x \in \setRealNumbers, A - A = a \quad\text{ donc }\quad a = 0
+\]
+Ce qui est absurde comme on se plaçait dans le cas $a \not\in \set{-1, 0, 1}$
+\end{itemize}
+Ainsi, si $f$ est vérifie $P$, alors $f\in \set{x \longmapsto 0, x \longmapsto - x + 1, x \longmapsto x - 1}$.
+
+\textbf{Synthèse :} Soit $\function[f]{x}{0}$, alors :
+\[
+\forall x, y \in \setRealNumbers, f(f(x)f(y))+f(x+y) = 0 + 0 = 0 \quad\text{ et }\quad f(xy) = 0
+\]
+Donc $P$ est vérifiée et $x \longmapsto 0$ est bien solution du problème.\\
+Soit $f = x \longmapsto - x + 1$, alors, on a 
+\[
+\begin{aligned}
+\forall x, y \in \setRealNumbers, 
+f(f(x)f(y))+f(x+y) 
+&= (-((- x + 1)(- y + 1)) + 1) + (-(x+y) + 1)\\
+&= -(xy - x - y + 1) + 1 -(x+y) + 1\\
+&= -xy  + 1
+\end{aligned}
+\]
+D'autre part, on a $\forall x, y \in \setRealNumbers, f(xy) = - xy + 1$, donc $P$ est vérifiée et $x \longmapsto - x + 1$ est bien solution du problème.\\ 
+Enfin, si $f = x - 1$, alors
+\[
+\begin{aligned}
+\forall x, y \in \setRealNumbers, 
+f(f(x)f(y))+f(x+y) 
+&= (((x - 1)(y - 1)) - 1) + ((x+y) - 1)\\
+&= (xy - x - y + 1) - 1 +(x+y) - 1\\
+&= xy  - 1 \\
+&= f(xy)
+\end{aligned}
+\]
+$P$ est vérifiée et $x \longmapsto x - 1$ est bien solution du problème.
+
+\textbf{Conclusion :} Ainsi, l'ensemble des solutions vérifiant $P$ est \[
+\set{x \longmapsto 0, x \longmapsto - x + 1, x \longmapsto x - 1}
+\]
+\end{proof}
+
+\begin{exercice}
+Pour tout entier $a_0 > 1$, on définit la suite $(a_n)_{n \in \setNaturalNumbers}$ par :
+\[
+\forall n \in \setNaturalNumbers, a_{n+1} = 
+\left\{
+\begin{array}{l l}
+\sqrt{a_n} &\text{ si }  \sqrt{a_{n}} \in \setNaturalNumbers\\
+a_{n} + 3  &\text{ sinon}\\
+\end{array} 
+\right.
+\]
+Déterminer toutes les valeurs de $a_0$ pour lesquelles il existe un nombre $A$ tel que $a_n = A$ pour une infinité de valeurs de $n$.
+\end{exercice}
+
+\begin{proof}
+Pour déterminer les valeurs pour lesquelles il existe un nombre $A$ tel que $a_n = A$ pour une infinité de valeurs de $n$, on va distinguer $3$ cas : $a_0 \equiv 0 [3]$, $a_0 \equiv 1 [3]$ et $a_0 \equiv 2 [3]$. En réalité, le fait qu'il s'agisse du terme d'indice $0$ n'est pas important dans ce problème car la suite est récurrente d'ordre $1$. On va donc noter $N$ la valeur que prend la suite à l'étape $N$.
+
+\textbf{Premier cas :} Si $a_{N} \equiv 2 [3]$, alors, par théorème, $a_N$ n'est pas un carré parfait, donc le terme suivant est $a_{N+1} = a_{N} + 3 \equiv 2 [3]$. Par récurrence, on obtient que $\forall n \in \setNaturalNumbers, a_{N+n} = a_{N} + 3 (n - N)$. La suite diverge vers l'infini et ne se répète plus à partir du rang $N$. 
+
+\textbf{Deuxième cas :} Si $a_{N} \equiv 0 [3]$
+\begin{itemize}
+\item Si $a_{N}$ est un carré parfait alors $a_{N+1} \equiv 0 [3]$.
+\item Si $a_{N}$ n'est pas un carré parfait, alors $a_{N+1} = a_{N} + 3$. 
+\end{itemize}
+Ainsi, si $a_{N}$ est dans ce cas, les termes suivants aussi. Par théorème, si $a_{N} > 3$ il existe $T$ tel que $a_{N+T}$ soit un carré parfait strictement plus petit que $a_{N}^2$ et multiple de $3$ donc $a_{N+T+1} < a_{N}$. Il existe donc une suite d'indice pour lesquelles $f$ est décroissante. Donc il existe un rang à partir duquel la suite vaut $3$.
+
+Si $a_{N} = 3$ alors $a_{n+1} = 6$ et $a_{N+2} = 9$ et $a_{N+3} = 3$, la suite est donc périodique et prend une infinité de fois les valeurs $3$, $6$ et $9$.
+
+\textbf{Troisième cas :} Si $a_{N} \equiv 1 [3]$, alors le carré immédiatement au dessus vaut soit $1$ soit $2$ modulo $3$. 
+\begin{itemize}
+\item S'il vaut $2$ modulo $3$, on retombe dans le premier cas et on diverge vers l'infini
+\item Si a chaque fois, le carré qu'on atteint vaut $1$ modulo $3$, alors la suite est décroissante et le dernier atteint est $4$. Or $4$ donne $7, 10, 13, 16, 4$ donc les valeurs $4$, $7$, $10$, $13$ et $16$ se répètent une infinité de fois.  
+\end{itemize}
+\end{proof}

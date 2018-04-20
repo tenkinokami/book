@@ -1,0 +1,133 @@
+\begin{lemma}[Formules de linéarisation]
+\label{trigonometrie:linearisation:sinus_et_cosinus}
+Soient $a, b \in \setRealNumbers$, alors
+\[
+\cos(a)\cos(b) = \dfrac{1}{2}\Bigl(\cos(a+b)+\cos(a-b)\Bigr)
+\]
+\[
+\sin(a)\sin(b) = \dfrac{1}{2}\Bigl(\cos(a-b)-\cos(a+b)\Bigr)
+\]
+\[
+\sin(a)\cos(b) = \dfrac{1}{2}\Bigl(\sin(a+b)+\sin(a-b)\Bigr)
+\]
+\end{lemma}
+
+\begin{proof}
+\textbf{Méthode 1 : via les formules d'Euler} \\
+Soient $a, b \in \setRealNumbers$, alors d'après les formules d'Euler, $\cos(a) = \dfrac{e^{i \: a}+ e^{-i \: a}}{2}$ et $\cos(b) = \dfrac{e^{i\:b}+ e^{-i\:b}}{2}$ on en déduit que
+\[
+\cos(a)\cos(b) 
+= \left(\dfrac{e^{i \:a}+ e^{-i\: a}}{2}\right) \times  \left(\dfrac{e^{i \:b}+ e^{-i\: b}}{2}\right)
+\]
+Donc par double distributivité 
+\[
+\cos(a)\cos(b) 
+= \dfrac{1}{4}\left(e^{i \:a}e^{i \:b}+e^{i \:a}e^{-i \:b}+ e^{-i \:a}e^{i \:b}+ e^{-i \:a}e^{-i \:b}\right) 
+\]
+Ce qui, en refactorisant les exposants, donne
+\[
+\cos(a)\cos(b) = \dfrac{1}{4}\left(e^{i \:(a+b)}+e^{i \:(a-b)}+ e^{-i \:(a - b)}+ e^{-i \:(a +b)}\right)
+\]
+On peut alors replacer les termes ayant pour exposant $\pm i(a+b)$ ensemble et ceux $\pm i (a-b)$ aussi, alors
+\[
+\dfrac{1}{4}\left(e^{i \:(a+b)}+e^{i \:(a-b)}+ e^{-i \:(a - b)}+ e^{-i \:(a +b)}\right)
+= \dfrac{1}{4}\left(e^{i \:(a+b)}+ e^{-i \:(a + b)}\right) + \dfrac{1}{4}\left(e^{i \:(a-b)}+ e^{-i \:(a - b)}\right)
+\]
+On peut alors faire réapparaître les formules d'Euler pour les angles $a+b$ et $a-b$ 
+\[
+\lboxed{\cos(a)\cos(b)} 
+=\dfrac{1}{2}\left(\dfrac{e^{i \:(a+b)}+ e^{-i \:(a + b)}}{2}\right) + \dfrac{1}{2}\left(\dfrac{e^{i \:(a-b)}+ e^{-i \:(a - b)}}{2}\right) 
+\rboxed{=  \dfrac{1}{2}\Bigl(\cos(a+b)+\cos(a-b)\Bigr)}
+\]
+
+De la même manière, en utilisant le fait que $\sin(a) = \dfrac{e^{i \: a} - e^{-i \: a}}{2\:i}$ et $\sin(b) = \dfrac{e^{i\:b} - e^{-i\:b}}{2\:i}$, alors
+\[
+\sin(a)\sin(b) 
+= \left(\dfrac{e^{i \: a} - e^{-i \: a}}{2\:i}\right) \times  \left(\dfrac{e^{i \: b} - e^{-i \: b}}{2\:i}\right)
+\]
+Donc en développant
+\[
+\cos(a)\cos(b) 
+= \dfrac{1}{4\:i^2}\left(e^{i \:a}e^{i \:b}-e^{i \:a}e^{-i \:b}-e^{-i \:a}e^{i \:b}+ e^{-i \:a}e^{-i \:b}\right) 
+\]
+D'où
+\[
+\cos(a)\cos(b)  = \dfrac{1}{4\:i^2}\left(e^{i \:(a+b)} - e^{i \:(a-b)} - e^{-i \:(a - b)} + e^{-i \:(a + b)}\right)
+\]
+En replaçant les termes ayant pour exposant $\pm i(a+b)$ ensemble et ceux $\pm i (a-b)$ aussi et en utilisant $i^2=1$, on obtient
+\[
+\dfrac{1}{4\:i^2}\left(e^{i \:(a+b)}-e^{i \:(a-b)}- e^{-i \:(a - b)}+ e^{-i \:(a +b)}\right)
+= - \dfrac{1}{4}\left(e^{i \:(a+b)}+ e^{-i \:(a + b)}\right) + \dfrac{1}{4}\left(e^{i \:(a-b)}+ e^{-i \:(a - b)}\right)
+\]
+On peut alors faire réapparaître les formules d'Euler pour les angles $a+b$ et $a-b$ 
+\[
+\lboxed{\sin(a)\sin(b)} 
+= \dfrac{1}{4}\left(e^{i \:(a-b)} e^{-i \:(a - b)}\right) - \dfrac{1}{4}\left(e^{i \:(a+b)} + e^{-i \:(a + b)}\right)
+\rboxed{=  \dfrac{1}{2}\Bigl(\cos(a-b)-\cos(a+b)\Bigr)}
+\]
+Enfin, comme $\sin(a)=\dfrac{e^{i \: a} - e^{-i \: a}}{2\:i}$ et $\cos(b)=\dfrac{e^{i \: b} + e^{-i \: b}}{2}$, on a 
+\[
+\sin(a)\cos(b)= \left(\dfrac{e^{i \: a} - e^{-i \: a}}{2\:i}\right)\times\left(\dfrac{e^{i \: b} + e^{-i \: b}}{2}\right)
+\]
+Ce qui en développant donne
+\[
+\sin(a)\cos(b)= \dfrac{1}{4\: i}\left(e^{i \: a}e^{i \: b} + e^{i \: a}e^{-i \: b}-e^{-i \: a}e^{i \: b}-e^{-i \: a}e^{-i \: b}\right)
+\]
+On obtient alors
+\[
+\sin(a)\cos(b) =\dfrac{1}{4\: i}\left(e^{i \: (a + b)} + e^{i \: (a-b)} - e^{-i(a-b)} - e^{-i \: (a+b)}\right)
+\]
+On replace alors les termes, ce qui donne
+\[
+\sin(a)\cos(b)=\dfrac{1}{4\: i}\left(e^{i \: (a + b)} - e^{-i \: (a+b)} \right) + \dfrac{1}{4\: i}\left(e^{i \: (a-b)} - e^{-i(a-b)} \right)
+\]
+On peut alors faire réapparaître les formules d'Euler pour les angles $a+b$ et $a-b$ 
+\[
+\lboxed{\sin(a)\cos(b)} = \dfrac{1}{2}\left(\dfrac{e^{i \: (a + b)} - e^{-i \: (a+b)}}{2\: i} \right) + \dfrac{1}{2}\left(\dfrac{e^{i \: (a-b)} - e^{-i(a-b)}}{2\: i}\right) 
+\rboxed{= \dfrac{1}{2}\Bigl(\sin(a+b)+\sin(a-b)\Bigr)}
+\]
+\textbf{Méthode 2 : via les formules d'addition (plus astucieuse mais plus rapide)}\\
+D'après le théorème \ref{trigonotrie:addition:sinus_et_cosinus}, on sait que :
+\[
+\cos(a+b) = \cos(a)\cos(b)-\sin(a)\sin(b) \quad\text{ et }\quad \cos(a-b)=\cos(a)\cos(b)+\sin(a)\sin(b)
+\]
+On en déduit en sommant les deux que
+\[
+\cos(a+b) + \cos(a-b) = \Bigl(\cos(a)\cos(b)-\sin(a)\sin(b)\Bigr) + \Bigl(\cos(a)\cos(b)+\sin(a)\sin(b)\Bigr)
+\]
+En remettant dans l'ordre les termes, on a donc
+\[
+\cos(a+b) + \cos(a-b) = \underbrace{\cos(a)\cos(b)+ \cos(a)\cos(b)}_{\text{$2$ fois}}+\underbrace{\sin(a)\sin(b)-\sin(a)\sin(b)}_{=0}
+\]
+On en déduit ainsi que 
+\[
+\cos(a+b) + \cos(a-b) = 2 \cos(a)\cos(b)
+\]
+D'où $\lrboxed{\cos(a)\cos(b) = \dfrac{1}{2}\Bigl(\cos(a+b)+\cos(a-b)\Bigr)}$.
+
+De la même manière, 
+\[
+\cos(a-b) - \cos(a+b) = \Bigl(\cos(a)\cos(b)+\sin(a)\sin(b)\Bigr) - \Bigl(\cos(a)\cos(b)-\sin(a)\sin(b)\Bigr)
+\]
+Donc 
+\[
+\cos(a-b) - \cos(a+b) = \underbrace{\cos(a)\cos(b) - \cos(a)\cos(b)}_{=0} + \underbrace{\sin(a)\sin(b) + \sin(a)\sin(b)}_{\text{$2$ fois}}
+\]
+En fin de compte 
+\[
+\lrboxed{\sin(a)\sin(b) = \dfrac{1}{2}\Bigl(\cos(a-b)-\cos(a+b)\Bigr)}
+\]
+
+Enfin, 
+\[
+\sin(a+b)+\sin(a-b)=\Bigl(\sin(a)\cos(b)+\cos(a)\sin(b)\Bigr) + \Bigl(\sin(a)\cos(b)-\sin(a)\cos(b)\Bigr)
+\]
+D'où 
+\[
+\sin(a+b)+\sin(a-b)= \underbrace{\sin(a)\cos(b) + \sin(a)\cos(b)}_{\text{$2$ fois}} + \underbrace{\cos(a)\sin(b) - \cos(a)\sin(b)}_{=0}
+\]
+Ainsi, 
+\[
+\lrboxed{\sin(a)\cos(b) = \dfrac{1}{2}\Bigl(\sin(a+b)+\sin(a-b)\Bigr)}
+\]
+\end{proof}

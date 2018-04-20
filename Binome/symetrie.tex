@@ -1,0 +1,18 @@
+\begin{property}[Symétrie des coefficients binomiaux]
+\label{binome:symetrie}
+Soient $n \in \setNaturalNumbers$ et $k \in \integerIntervalCC{0}{n}$, alors 
+\[
+\binom{n}{k} = \binom{n}{n-k}
+\]
+\end{property}
+
+\begin{proof}
+Soient $n \in \setNaturalNumbers$ et $k \in \integerIntervalCC{0}{n}$, par définition
+\[
+\binom{n}{n-k} = \dfrac{n!}{(n-k)!(n-(n-k))!}= \dfrac{n!}{(n-k)!k!}
+\]
+car $(n-(n-k))= n-n+ k = k$. On a alors
+\[
+\lboxed{\displaystyle\binom{n}{n-k}} =\dfrac{n!}{k!(n-k)!} \rboxed{=\displaystyle\binom{n}{k}}
+\]
+\end{proof}

@@ -1,0 +1,49 @@
+\begin{property}
+La famille des polynômes de Tchebychev de première espèce est orthogonale par rapport au produit scalaire
+\[
+(f, g) \longmapsto \pscal{f}{g} = \displaystyle\int\limits_{0}^{1} \omega(x) f(x) g(x) dx
+\]
+avec $\omega(x)=\dfrac{1}{\sqrt{1-x^2}}$ une fonction de poids. 
+\end{property}
+
+\begin{proof}
+Soient $i, j \in \setNaturalNumbers$, alors
+\[
+\pscal{\polChebCos{i}}{\polChebCos{j}} = \displaystyle\int\limits_{0}^{1} \omega(x) \polChebCos{i}(x)\polChebCos{j}(x) dx
+\]
+Posons $x = \cos(u)$, alors $dx = \sin(u) du$. Le changement de variable est $C^1$ et bijectif, donc 
+\[
+\pscal{\polChebCos{i}}{\polChebCos{j}} = \displaystyle\int\limits_{0}^{\pi} \omega(\cos(u))\polChebCos{i}(\cos(u))\polChebCos{j}(x) \sin(u) du
+\]
+Or on remarque en utilisant l'identité trigonométrique que
+\[
+\forall u \in \realIntervalCC{0}{\pi}, \:\omega(\cos(u))=\dfrac{1}{\sqrt{1-\cos(u)^2}} = \dfrac{1}{\sqrt{\sin^2(u)}} = \dfrac{1}{\sin(u)}
+\]
+Car la fonction sinus est positive sur l'intervalle considérée. En réinjectant dans l'expression précédente, on obtient 
+\[
+\pscal{\polChebCos{i}}{\polChebCos{j}} = \displaystyle\int\limits_{0}^{\pi} \dfrac{1}{\sin(u)}\sin(u)\polChebCos{i}(\cos(u))\polChebCos{j}(x)  du = \displaystyle\int\limits_{0}^{\pi} \polChebCos{i}(\cos(u))\polChebCos{j}(x)  du
+\]
+Or on sait que 
+\[
+\polChebCos{i}(\cos(u)) = \cos(iu)
+\]
+Et que 
+\[
+\polChebCos{j}(\cos(u)) = \cos(ju)
+\]
+Donc 
+\[
+\pscal{\polChebCos{i}}{\polChebCos{j}} 
+= \displaystyle\int\limits_{0}^{\pi} \cos(iu) \cos(ju) du
+\]
+On a donc par théorème
+\[
+\lboxed{\pscal{\polChebCos{i}}{\polChebCos{j}} }
+=  \displaystyle\int\limits_{0}^{\pi} \cos(iu) \cos(ju) du 
+\rboxed{= \left\{\begin{array}{l}
+0 \quad\text{ si } n \ne m\\
+\pi \quad\text{ si } n = m = 0\\
+\dfrac{\pi}{2} \quad\text{ sinon}
+\end{array}\right.}
+\]
+\end{proof}

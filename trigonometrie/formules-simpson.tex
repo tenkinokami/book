@@ -1,0 +1,89 @@
+\begin{theorem}[Formules de Simpson]
+\label{trigonometrie:simpson}
+Soient $p, q \in \setRealNumbers$, alors
+
+\begin{minipage}{0.5\linewidth}
+\[
+\cos(p) + \cos(q) 
+= 2 \cos\left(\dfrac{p+q}{2}\right) \cos\left(\dfrac{p-q}{2}\right)
+\]
+\[
+\cos(p) - \cos(q) 
+= -2 \sin\left(\dfrac{p+q}{2}\right) \sin\left(\dfrac{p-q}{2}\right)
+\]
+\end{minipage}
+\begin{minipage}{0.48\linewidth}
+\[
+\sin(p) + \sin(q) 
+= 2 \sin\left(\dfrac{p+q}{2}\right) \cos\left(\dfrac{p-q}{2}\right)
+\]
+\[
+\sin(p) - \sin(q) 
+= 2 \sin\left(\dfrac{p+q}{2}\right) \cos\left(\dfrac{p-q}{2}\right)
+\]
+\end{minipage}
+\end{theorem}
+
+\begin{proof} Soient $p, q \in \setRealNumbers$, appliquons le lemme de linéarisation du lemme \ref{trigonometrie:linearisation} aux angles $a = \dfrac{p+q}{2}$ et $b = \dfrac{p-q}{2}$. Alors la première formule nous donne
+\[
+\cos(a)\cos(b)=\dfrac{1}{2}\Bigl(\cos(a-b)+\cos(a+b)\Bigr)
+\]
+Donc 
+\[
+\cos\left(\dfrac{p+q}{2}\right)\cos\left(\dfrac{p-q}{2}\right)=\dfrac{1}{2}\left(\cos\left(\dfrac{p+q}{2} - \dfrac{p-q}{2}\right)+\cos\left(\dfrac{p+q}{2} + \dfrac{p-q}{2}\right)\right)
+\]
+Remarquons alors que $a-b=\dfrac{p+q}{2} - \dfrac{p-q}{2} = \dfrac{0p + 2q}{2} = q$ et $a+b=\dfrac{p+q}{2} + \dfrac{p-q}{2} = \dfrac{2p+0q}{2}=p$.\\
+Les expressions précédentes se simplifient en 
+\[
+\cos\left(\dfrac{p+q}{2}\right)\cos\left(\dfrac{p-q}{2}\right)=\dfrac{1}{2}\Bigl(\cos(q)+\cos(p)\Bigr)
+\]
+On obtient en multipliant par $2$ la première égalité : \fbox{$\cos(q)+\cos(p) = 2\cos\left(\dfrac{p+q}{2}\right)\cos\left(\dfrac{p-q}{2}\right)$}.\\
+De la même manière, on a
+\[
+\sin(a)\cos(b)=\dfrac{1}{2}\Bigl(\sin(a+b)+\sin(a-b)\Bigr)
+\]
+On en déduit que 
+\[
+\sin\left(\dfrac{p+q}{2}\right)\cos\left(\dfrac{p-q}{2}\right)=\dfrac{1}{2}\Bigl(\sin(p)+\sin(q)\Bigr)
+\]
+Ce qui nous donne notre deuxième inégalité : \fbox{$\sin(q)+\sin(p) = 2\sin\left(\dfrac{p+q}{2}\right)\cos\left(\dfrac{p-q}{2}\right)$}
+
+Les deux suivantes s'obtiennent à partir des deux précédentes. La fonction cosinus étant $\pi$-antipériodique, on a $\cos(q+\pi)=-\cos(q)$. On en déduit que 
+\[
+\cos(p)-\cos(q)=\cos(p)+\cos(q+\pi)
+\]
+En appliquant la première égalité avec $p$ et $q + \pi$, cela revient à dire que 
+\[
+\cos(p)-\cos(q)=2\cos\left(\dfrac{p+(q+\pi)}{2}\right)\cos\left(\dfrac{p-(q+\pi)}{2}\right)=2\cos\left(\dfrac{p+q}{2}+\dfrac{\pi}{2}\right)\cos\left(\dfrac{p-q}{2}-\dfrac{\pi}{2}\right)
+\]
+D'après les propriétés sur les angles, on a
+\[
+\cos\left(\dfrac{p+q}{2}+\dfrac{\pi}{2}\right) = -\sin\left(\dfrac{p+q}{2}\right)
+\]
+Et 
+\[
+\cos\left(\dfrac{p-q}{2}-\dfrac{\pi}{2}\right) = \sin\left(\dfrac{p-q}{2}\right)
+\]
+Ce qui nous donne en réinjectant 
+\[
+\fbox{$\cos(p)-\cos(q)=-\sin\left(\dfrac{p+q}{2}\right)\sin\left(\dfrac{p-q}{2}\right)$}
+\]
+
+De la même manière, comme la fonction sinus est aussi $\pi$-antipériodique, on a 
+\[
+\sin(p)-\sin(q)=\sin(p)+\sin(q+\pi)=2\sin\left(\dfrac{p+(q+\pi)}{2}\right)\cos\left(\dfrac{p-(q+\pi)}{2}\right)
+\]
+Donc 
+\[
+\sin(p)-\sin(q) = 2\sin\left(\dfrac{p+q}{2} + \dfrac{\pi}{2}\right)\cos\left(\dfrac{p-q}{2} - \dfrac{\pi}{2}\right)
+\]
+Or d'après les propriétés trigonométriques, 
+\[
+\sin\left(\dfrac{p+q}{2} + \dfrac{\pi}{2}\right) = \cos\left(\dfrac{p+q}{2}\right)
+\]
+et 
+\[
+\cos\left(\dfrac{p-q}{2} - \dfrac{\pi}{2}\right) = \sin\left(\dfrac{p-q}{2}\right)
+\]
+Ce qui nous donne bien la quatrième égalité : \fbox{$\sin(p)-\sin(q) = 2 \sin\left(\dfrac{p-q}{2}\right) \cos\left(\dfrac{p+q}{2}\right)$}
+\end{proof}

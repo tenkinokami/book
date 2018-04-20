@@ -1,0 +1,28 @@
+\begin{property}[Formule de Pascal]
+\label{binome:pascal}
+Soient $n \in \setNaturalNumbers,$ et $k \in \integerIntervalCC{0}{n-1}$, alors 
+\[
+\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}
+\]
+\end{property}
+\begin{proof}
+Soient $n \in \setNaturalNumbers,$ et $k \in \integerIntervalCC{0}{n-1}$, par définition\\
+\[
+\binom{n}{k} + \binom{n}{k+1} 
+=\dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k+1)!(n - 1 -k)!}
+\]
+On remet les deux termes sur le même dénominateur, cela donne
+\[
+\binom{n}{k} + \binom{n}{k+1} 
+=n!\times \dfrac{(k+1)+(n-k)}{(k+1)!(n-k)!}
+=n!\times \dfrac{(n+1)}{(k+1)!(n-k)!}
+\]
+On remarque ensuite que $n-k$ se réécrit $(n+1)-(k+1)$, donc
+\[
+\binom{n}{k} + \binom{n}{k+1} =\dfrac{(n+1)!}{(k+1)!\bigl((n+1)-(k+1)\bigr)!}
+\]
+Or par définition $\displaystyle\binom{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!\bigl((n+1)-(k+1)\bigr)!}$, on en déduit donc que 
+\[
+\lrboxed{\displaystyle\binom{n}{k} + \displaystyle\binom{n}{k+1} = \displaystyle\binom{n+1}{k+1}}
+\]
+\end{proof}

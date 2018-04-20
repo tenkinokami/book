@@ -1,0 +1,1350 @@
+\documentclass{classe}
+\allowdisplaybreaks
+\raggedbottom
+
+\hypersetup%
+{%
+pdftitle = {Mathématiques},%
+pdfauthor = {Adrien MEILAC},%
+pdfsubject = {Mathématiques},%
+pdflang={fr}%
+}
+\usepackage{cancel}
+
+\newfontfamily\greek{Times New Roman}
+
+\newcommand{\test}[2]{\begin{minipage}{0.10\textwidth}
+#1
+\end{minipage}\begin{minipage}{0.80\textwidth}\centering
+#2
+\end{minipage}\hfill}
+
+\newcommand{\lboxed}[1]{{\color{blue}\begin{array}{|l}\hline\\[-2.4ex]{\color{black}#1}\\[1.2ex]\hline\end{array}}}
+\newcommand{\rboxed}[1]{{\color{blue}\begin{array}{r|}\hline\\[-2.4ex]{\color{black}#1}\\[1.2ex]\hline\end{array}}}
+\newcommand{\kronecker}[2]{\delta_{(#1, #2)}}
+\newcommand{\polChebCos}[1]{\mathcal{T}_{#1}}
+\newcommand{\polChebSin}[1]{\mathcal{U}_{#1}}
+
+\newcommand{\lrboxed}[1]{{\color{blue}\boxed{\color{black}#1}}}
+\newcommand{\pscal}[2]{\left\langle#1, #2\right\rangle}
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
+
+\begin{document}
+%\input{page-de-garde.tex}
+%
+%\setlength{\parskip}{0.2\baselineskip}
+%
+%\tableofcontents
+%\newpage
+%
+%\setlength{\parskip}{0.5\baselineskip}
+
+\pagestyle{PageNormale}
+
+\chapter{Trigonométrie}
+
+
+\begin{lemma}
+Soit $f$ une fonction dérivable au voisinage de $0$ telle que $f'(x)= o_{0}(x^n)$ alors $f(x)=o_o(x^{n+1})$
+\end{lemma}
+
+\begin{proof}
+Soit $\epsilon > 0$, alors 
+\[
+\exists \alpha > 0 \left/ \forall x \in \realIntervalOO{-\alpha}{\alpha}, |f'(x)|\le \varepsilon |x^n|\right.
+\]
+Soit $x \in \realIntervalCC{0}{\alpha}$, on sait que 
+\[
+f(x)-f(0) = \displaystyle\int\limits_{0}^{x} f'(t) dt
+\]
+Donc par inégalité triangulaire :
+\[
+|f(x)-f(0)| \le \displaystyle\int\limits_{0}^{x} |f'(t)| dt
+\]
+Comme $x \in \realIntervalOO{0}{\alpha}$, on a $x < \alpha$ et $\realIntervalCC{0}{x} \subset \realIntervalOO{0}{\alpha}$, on peut donc appliquer l'hypothèse de domination en tout point de l'intégrale :
+\[
+\displaystyle\int\limits_{0}^{x} |f'(t)| dt \le \displaystyle\int\limits_{0}^{x} \varepsilon |t^n| dt = \epsilon \displaystyle\int\limits_{0}^{x} |t^n| dt
+\]
+Comme $\function{t}{t^n}$ est positive sur $\realIntervalCC{0}{t}$, on peut enlever les valeurs absolues. on a alors 
+\[
+\varepsilon \displaystyle\int\limits_{0}^{x} t^n dt 
+=
+\varepsilon \left[\dfrac{t^{n+1}}{n+1}\right]_{0}^{x} 
+= 
+\varepsilon \Bigl(\dfrac{x^{n+1}}{n+1} - \underbrace{\dfrac{0^{n+1}}{n+1}}_{=0}\Bigr)
+=
+\dfrac{\varepsilon}{n+1} x^{n+1}
+\]
+Comme $n > 1$, on a ainsi $n+1 > 2$ d'où $\dfrac{1}{n+1} \le 1$ donc finalement 
+\[
+\forall x \in \realIntervalCO{0}{\alpha}, 
+|f(x)-f(0)| \le \dfrac{\varepsilon}{n+1} x^{n+1} 
+\le 
+\varepsilon x^{n+1}
+\]
+
+Si $x \in \realIntervalOC{-\alpha}{0}$, alors on peut appliquer l'inégalité triangulaire en inversant les bornes
+\[
+|f(x)-f(0)| 
+\le 
+\int\limits_{x}^{0} |f'(t)| dt
+\le 
+\varepsilon \int\limits_{x}^{0} |t^n| dt
+\]
+Comme $t \mapsto t^n$ est une fonction négative sur $\realIntervalCC{-\alpha}{0}$, on a peut alors changer les bornes de l'intégrale et on retombe alors sur la forme précédente.
+\[
+|f(x)-f(0)| 
+\le 
+\varepsilon \int\limits_{x}^{0} -t^n dt
+\le 
+\varepsilon \int\limits_{0}^{x} t^n dt
+\le \epsilon x^{n+1}
+\]
+Ainsi, on a 
+\[
+\forall x \in \realIntervalCO{-\alpha}{\alpha}, 
+|f(x)-f(0)| \le \dfrac{\varepsilon}{n+1} x^{n+1} 
+\le 
+\varepsilon x^{n+1}
+\]
+\end{proof}
+
+
+
+\section{Trigonométrie du cercle}
+
+\subsection{Addition et multiple d'angle}
+
+\begin{definition}[Sous espace propre]
+Soient $E$ un $\mathbb{K}$ espace vectoriel de dimension quelconque, $u \in \mathscr{L}(E)$ et $\lambda \in \mathbb{K}$, alors on appelle \textbf{sous espace propre} associé à $\lambda$ l'ensemble 
+\[
+E_\lambda=\ker(u-\lambda Id_E)=\set{x \in E / u(x)= \lambda x }
+\]
+\end{definition}
+
+
+\begin{exercice}
+Soient $a, b, c \in \setRealNumbers$ tels que $\min\set{ab, bc, ca} > 1$. Montrer que 
+\[
+\sqrt[3]{(a^2+1)(b^2+1)(c^2+1)} \le \left( \dfrac{a + b + c}{2} \right)^2 + 1
+\]
+\end{exercice}
+
+\begin{lemma}
+\label{somme:suite:geometrique}
+Soit $z \in \setComplexNumbers$ et $n \in \setNaturalNumbers$, alors 
+\[
+\displaystyle\sum\limits_{k=0}^{n} z^k =
+\left\{
+\begin{array}{l l}
+\dfrac{1-z^{n+1}}{1-z} &\text{ si } z \ne 1\\
+n + 1 &\text{ si } z = 1
+\end{array}
+\right.
+\]
+\end{lemma}
+
+\begin{proof}
+Soient $n \in \setNaturalNumbers$ et $z \in \setComplexNumbers$
+
+\textbf{Cas 1 :} Supposons que $z \ne 1$, alors on peut appliquer le résultat précédent a $z$ et à $1$ : 
+\[
+1 - z^{n+1} = (1-z)\times\displaystyle\sum\limits_{k=0}^{n} z^k \underbrace{1^{n - k}}_{=1}
+\]
+Donc 
+\[
+\displaystyle\sum\limits_{k=0}^{n} z^k = \dfrac{1-z^{n+1}}{1-z}
+\]
+
+\textbf{Cas 2 :} Supposons que $z = 1$
+\[
+\displaystyle\sum\limits_{k=0}^{n} z^k = \displaystyle\sum\limits_{k=0}^{n} 1 = (n+1) \times 1 = n + 1
+\]
+\end{proof}
+
+\begin{theorem}[Binôme de Newton]
+\label{somme:binome:Newton}
+Soient $x, y \in \setComplexNumbers$ et $n \in \setNaturalNumbers$,
+\[
+(a+b)^n = \displaystyle\sum\limits_{k=0}^{n} \displaystyle\binom{n}{k}a^k b^{n - k}
+\]
+\end{theorem}
+
+\begin{proof}
+On raisonne par récurrence,
+
+\textbf{Initialisation :} $(a+b)^0 = 1$ et $\displaystyle\sum\limits_{k=0}^{0} \binom{0}{k}a^0 b^{- k} = 1 \times a^0 b^0 = 1$ donc $\mathcal{P}(0)$ est vérifiée.
+
+\textbf{Hérédité :} On suppose que $\mathcal{P}(n) : (a+b)^n = \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}a^k b^{n - k}$ est vérifiée pour un certain rang $n$. \\
+Montrons que $(a+b)^{n+1} = \displaystyle\sum\limits_{k=0}^{n+1} \binom{n+1}{k}a^k b^{n+1 - k}$ :\\
+On a par hypothèse de récurrence :
+\[
+(a+b)^{n+1} = (a+b) (a+b)^{n} = (a+b) \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}a^k b^{n - k}
+\]
+on développe le produit. Par linéarité de la somme, on obtient
+\[
+(a+b)^{n+1} =  \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}a^{k+1} b^{n - k} + \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}a^{k} b^{n -1 - k}
+\]
+On ré-indice la première somme $k \leftarrow k+1$, donc
+\[
+(a+b)^{n+1} =  \displaystyle\sum\limits_{k=1}^{n+1}\binom{n}{k-1}a^{k} b^{n - 1 - k} + \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}a^{k} b^{n -1 - k}
+\]
+On sépare le premier et le dernier somme pour pouvoir regrouper tous les autres dans une même somme :
+\[
+(a+b)^{n+1} = \binom{n}{0}a^{0} b^{n +1} + \binom{n}{n}a^{n+1} b^{0} +\displaystyle\sum\limits_{k=0}^{n} \left(\binom{n}{k-1}+\binom{n}{k}\right)a^{k} b^{n +1 - k}
+\]
+Les coefficients binomiaux vérifient la relation de Pascal donc $\displaystyle\forall k \in \integerIntervalCC{1}{n}, \binom{n}{k-1}+\binom{n}{k}=\binom{n+1}{k}$\\
+\[
+(a+b)^{n+1} = \displaystyle\sum\limits_{k=0}^{n+1} \binom{n+1}{k}a^k b^{n+1 - k}
+\]
+\end{proof}
+
+\begin{proof}
+On a $\dfrac{d}{dx}\Bigl\langle\exp \circ \left(i\:  \textrm{Id}\right)\Bigr\rangle(x) = i\: e^{i\:x}$\\
+On peut réécrire l'exponentielle complexe sous sa forme trigonométrique, ce qui nous donne par linéarité :
+\[
+\dfrac{d}{dx}\Bigl\langle\exp \circ \left(i\:  \textrm{Id}\right)\Bigr\rangle(x) 
+= \dfrac{d}{dx}\Bigl\langle \cos +i\:\sin \Bigr\rangle(x) 
+= \dfrac{d}{dx}\Bigl\langle \cos \Bigr\rangle(x) +i\:\dfrac{d}{dx}\Bigl\langle \sin \Bigr\rangle(x) 
+\]
+Donc comme $i^2 = 1$, 
+\[
+i\:e^{i\:x} = i \times (\cos(x)+i\:\sin(x))=-\:\sin(x)+i\:\cos(x)
+\]
+
+En associant partie réelle et partie imaginaire, on obtient alors :
+\[
+\dfrac{d}{dx}\Bigl\langle \cos \Bigr\rangle(x) =-\sin(x) 
+\qquad\quad 
+\dfrac{d}{dx}\Bigl\langle \sin \Bigr\rangle(x) =\cos(x)
+\]
+Pour la tangente, on applique les formules des quotients :
+\[
+\dfrac{d\tan}{dx}
+=\dfrac{d}{dx}\Bigl\langle\dfrac{\sin}{\cos}\Bigr\rangle
+=\dfrac{\dfrac{d}{dx}\Bigl\langle\sin\Bigr\rangle\cos - \sin\dfrac{d}{dx}\Bigl\langle\cos\Bigr\rangle}{\cos^2}
+=\dfrac{\cos\cos + \sin\sin}{\cos^2}
+=\dfrac{\cos^2 + \sin^2}{\cos^2}
+=\dfrac{1}{\cos^2}
+\]
+De plus, on a par distributivité
+\[
+\dfrac{d}{dx}\Bigl\langle\tan\Bigr\rangle = \dfrac{\cos^2 + \sin^2}{\cos^2} = \dfrac{\cos^2}{\cos^2} + \dfrac{\sin^2}{\cos^2} = 1 + \tan^2
+\]
+\end{proof}
+
+\begin{exercice}[Calcul de sommes polynomiales]
+Soit $n \in \setNaturalNumbers$, calculer :
+\[
+\displaystyle\sum\limits_{k=1}^{n} k
+\qquad\qquad\qquad
+\displaystyle\sum\limits_{k=1}^{n} k^2
+\qquad\qquad\qquad
+\displaystyle\sum\limits_{k=1}^{n} k^3
+\]
+\end{exercice}
+\begin{proof}
+\textbf{Méthode 1 : Par récurrence}\\
+Démontrons que 
+\[
+\forall n \in \setNaturalNumbers, \mathcal{P}(n) : \displaystyle\sum\limits_{k=0}^{n} k = \dfrac{n(n+1)}{2} 
+\] 
+Le résultat ne change pas si on ajoute le terme pour $k=0$ car il est nul. 
+
+\textbf{Initialisation :} Pour $n = 0$, on a d'une part, $\displaystyle\sum\limits_{k=0}^{0} k = 0$ et d'autre part, on a
+$\dfrac{0(0+1)}{2} = 0$. \\
+Donc $\displaystyle\sum\limits_{k=0}^{n} k = \dfrac{0(0+1)}{2}$ i.e., $\mathcal{P}(0)$ est vraie.
+
+\textbf{Hérédité :} Supposons que $\mathcal{P}(n)$ est vérifiée pour un certain rang $n \in \setNaturalNumbers$ alors, démontrons $\mathcal{P}(n+1)$ :\\
+Remarquons que 
+\[\displaystyle\sum\limits_{k=0}^{n+1} k= 0 + 1 + 2 + \cdots + n + (n+1)= \Bigl(1+2+ \cdots + n\Bigr) + \Bigl(n+1\Bigr) = \left(\displaystyle\sum\limits_{k=0}^{n} k\right) + (n+1)
+\]
+Or, d'après l'hypothèse de récurrence, on a $\mathcal{P}(n) : \displaystyle\sum\limits_{k=0}^{n} k =\dfrac{n(n+1)}{2}$.\\
+Ainsi, 
+\[
+\displaystyle\sum\limits_{k=0}^{n+1} k = (n+1) + \dfrac{n(n+1)}{2} = \dfrac{(n+1)}{2}\times (2 + n) = \dfrac{(n+1)((n+1)+1)}{2}
+\]
+Ce qui est bien la formule qu'on a supposée, appliquée en $n+1$. Donc si  $\mathcal{P}(n+1)$ est vérifié, alors $\mathcal{P}(n+1)$ est vérifiée aussi.
+
+\textbf{Conclusion :} $\lrboxed{\forall n \in \setNaturalNumbers,\displaystyle\sum\limits_{k=0}^{n} k = \dfrac{n(n+1)}{2}}$.
+
+\textbf{Méthode 2 : Par l'utilisation d'un polynôme de télescopage}\\
+Cette méthode permet de trouver les formules à démontrer contrairement à la récurrence. On va chercher un polynôme $P$ tel que $P(X+1) - P(X) = X$ en raisonnant par analyse-synthèse. On impose une condition qui va simplifier notre problème en ne considérant que les polynômes de degré $2$.
+
+\textbf{Étape 1 : Analyse : La recherche du polynôme}\\
+Supposons qu'il existe un tel polynôme $P$ alors comme $P$ est de degré $2$, il existe $a, b, c \in \setRealNumbers$ tels que $P = a\:X^2 + b\:X + c$.
+On calcule explicitement $P(X+1) - P(X)$ : 
+\[
+P(X+1) - P(X) = a\:(X+1)^2 + b\:(X+1) + c - (a\:X^2 + b\:X + c) = 2a\:X + (a + b)
+\]
+Comme $P$ vérifie $P(X+1)-P(X)=X$, alors 
+\[
+P(X+1) - P(X) = 2a\:X + (1 + b)
+\]
+En identifiant les coefficients, on doit nécessairement avoir $a = \dfrac{1}{2}$ et $b= -a = -\dfrac{1}{2}$. \\
+Ainsi, si $P$ est solution du problème, alors 
+\[
+P \in \set{\dfrac{1}{2} X^2 - \dfrac{1}{2}X + c\quad,\: c \in \setRealNumbers}
+\] 
+
+\textbf{Synthèse :} Soit $c \in \setRealNumbers$. Posons $a =\dfrac{1}{2}$ et $b =- \dfrac{1}{2}$ et définissons 
+\[
+P = a\:X^2  + b\:X + c = \dfrac{1}{2} X^2 - \dfrac{1}{2}X + c
+\]
+$P$ vérifie $P(X+1) - P(X) = 2\:X$ d'après ce que nous avons vu dans analyse. $c$ n'intervient pas dans l'égalité, donc prenons arbitrairement $c = 0$ car cela permet d'avoir $P(0)=c=0$ et de simplifier les calculs par la suite. 
+
+\textbf{Étape 2 :} Soient $n \in \setNaturalNumbers$ et $k \in \integerIntervalCC{0}{n}$, alors 
+\[
+P(k+1) - P(k) = 2\:k
+\]
+Ainsi, si on somme pour toutes les valeurs de $k$ de $0$ jusqu'à $n$ cette égalité on obtient :
+\[
+\displaystyle\sum\limits_{k=0}^{n} \Bigl(P(k+1) - P(k)\Bigr) 
+\:= \:
+\displaystyle\sum\limits_{k=0}^{n} \: k 
+\:\:= \:\:
+2 \displaystyle\sum\limits_{k=0}^{n} k 
+\]
+
+\textbf{Étape 3 :} Or d'autre part, par linéarité de la somme
+\[
+\displaystyle\sum\limits_{k=0}^{n} \Bigl(P(k+1) - P(k)\Bigr) 
+= \displaystyle\sum\limits_{k=0}^{n} P(k+1) - \displaystyle\sum\limits_{k=0}^{n} P(k)
+\]
+En posant $i = k+1$ dans la première somme, on obtient :
+\[
+=\displaystyle\sum\limits_{i=1}^{n+1}{P(i)} - \displaystyle\sum\limits_{k=0}^{n}{P(k)}
+=\Bigl[P(1) + P(2) + ... + P(n) + P(n+1)\Bigr] - \Bigl[ P(0) + P(1) + ... + P(n)\Bigr]
+\]
+On remarque alors qu'il existe un télescopage et comme $P(0) = c = 0$, on obtient:
+\[
+\displaystyle\sum\limits_{k=0}^{n} \Bigl(P(k+1) - P(k)\Bigr) 
+=P(n+1) - P(0) = P(n+1)
+\]
+Donc
+\[
+\displaystyle\sum\limits_{k=0}^{n} k = P(n+1) = \dfrac{1}{2}(n+1)^2 - \dfrac{1}{2}(n+1) = \dfrac{1}{2}(n+1)(n+1 - 1) = \dfrac{n(n+1)}{2}
+\]
+D'où 
+\[
+\displaystyle\sum\limits_{k=0}^{n}{k} = \dfrac{n(n+1)}{2}
+\]
+\end{proof}
+
+
+\pagestyle{PageExercice}
+\begin{exercice}
+Résoudre suivant les valeurs de $a\in\setRealNumbers$ le système
+\[
+\left\{\begin{array}{l}
+x+y+z+t=0\\
+3x+ay+2z+t=a\\
+2x+2y+z+3t=0\\
+x+5y-z+4t=5\\
+\end{array}\right.
+\]
+\end{exercice}
+
+Soit $a \in \setRealNumbers$, soit $\begin{pmatrix}x\\y\\z\\t\end{pmatrix} \in \setRealNumbers^4$, alors \\
+$\left\{\begin{array}{l}
+x+y+z+t=0\\
+3x+ay+2z+t=a\\
+2x+2y+z+3t=0\\
+x+5y-z+4t=5\\
+\end{array}\right.$ ssi
+
+
+
+\begin{exercice}
+Déterminer une condition nécessaire et suffisante sur $\lambda\in\setRealNumbers$ pour que le système linéaire :
+\[\left\{\begin{array}{l}
+\lambda x+2y=0\\
+x-\lambda y+z=0\\
+2y-\lambda z=0\\
+\end{array}\right.
+\]
+n'admette pas que la solution nulle
+\end{exercice}
+
+\begin{exercice}
+Soient $a, b \in\setRealNumbers$, discuter la nature géométrique de l'ensemble des solutions de 
+\[
+\left\{\begin{array}{l}
+ax+by+z=1\\
+x+aby+z=b\\
+x+by+az=1
+\end{array}\right.
+\]
+\end{exercice}
+
+\begin{exercice}
+Soient $a,b,c,d\in\setRealNumbers$. Discuter la nature géométrique de l'ensemble des solutions de 
+\[
+\left\{\begin{array}{l}
+x+y+z=1\\
+ax+by+cz=d\\
+a^2 x+b^2 y+c^2 z=d^2
+\end{array}\right.
+\]
+\end{exercice}
+
+
+\begin{exercice}
+Calculer $\displaystyle\sum\limits_{k=1}^{n} k \ln\left(1+\dfrac{1}{k}\right)$ et $\displaystyle\sum\limits_{k=1}^{n}k \, k!$ en faisant apparaître des sommes télescopiques 
+\end{exercice}
+
+\begin{solution}
+Soit $n \in \setNaturalNumbers$, on note $A_n = \displaystyle\sum\limits_{k=1}^{n} k \ln\left(1+\dfrac{1}{k}\right)$. D'après les propriétés de la fonction logarithme, on a 
+\[
+\forall k \in \integerIntervalCC{1}{n}, 
+\ln\left(1+\dfrac{1}{k}\right)
+= \ln\left(\dfrac{k+ 1}{k}\right) 
+= \ln(k+1) - \ln(k) 
+\]
+Ainsi, 
+\[
+\forall k \in \integerIntervalCC{1}{n}, 
+k  \ln\left(1+\dfrac{1}{k}\right)
+= k  \ln(k+1) - k \ln(k) 
+= (k + 1)  \ln(k+1) - k \ln(k) - \ln(k)
+\]
+La dernière factorisation permet de faire apparaître un télescopage. Notons
+\[
+\forall k \in \integerIntervalCC{1}{n}, u_k :=  k \ln(k)
+\]
+Alors, 
+\[
+A_n 
+= \displaystyle\sum\limits_{k=1}^{n} u_{k+1} - u_{k} - \ln(k) =  \displaystyle\sum\limits_{k=1}^{n} (u_{k+1} - u_{k}) - \displaystyle\sum\limits_{k=1}^{n}\ln{k}
+\]
+Par télescopage, on obtient 
+\[
+A_n = (n+1)\ln(n+1) - 1 \times 0 - \ln\left(\displaystyle\prod\limits_{k=1}^{n} k\right) = \ln\left(\dfrac{(n+1)^{n+1}}{n!}\right)
+\]
+\end{solution}
+
+\begin{exercice}
+Calculer 
+\[
+\displaystyle\prod\limits_{p=2}^{n} \dfrac{p^3-1}{p^3+1}
+\]
+\end{exercice}
+
+\begin{solution}
+Soit $n \ge 2$ et $p \in \integerIntervalCC{2}{n}$, on remarque que l'on peut factoriser la fraction rationnelle de la manière suivante :
+\[
+\dfrac{p^3-1}{p^3+1} 
+= \dfrac{p-1}{p+1} \times \dfrac{p^2 + p + 1}{p^2 - p + 1} 
+= \dfrac{p-1}{p+1} \times \dfrac{(p+1)^2 - (p + 1) + 1}{p^2 - p + 1}
+\]
+Par associativité du produit, on a :
+\[
+\displaystyle\prod\limits_{p=2}^{n} \dfrac{p^3-1}{p^3+1} 
+=
+\displaystyle\prod\limits_{p=2}^{n} \dfrac{p-1}{p+1} \times \dfrac{(p+1)^2 - (p + 1) + 1}{p^2 - p + 1}
+= \left(\displaystyle\prod\limits_{p=2}^{n} \dfrac{p-1}{p+1}\right) 
+\times 
+\left(\displaystyle\prod\limits_{p=2}^{n} \dfrac{(p+1)^2 - (p + 1) + 1}{p^2 - p + 1}\right)
+\]
+Notons $A_n = \displaystyle\prod\limits_{p=2}^{n} \dfrac{p-1}{p+1}$ la première partie du produit et $B_n=\dfrac{(p+1)^2 - (p + 1) + 1}{p^2 - p + 1}$ la seconde.
+On a alors par linéarité, puis par définition de la factorielle :
+\[
+\lboxed{A_n} 
+= \displaystyle\prod\limits_{p=2}^{n}\dfrac{p-1}{p+1} 
+= \dfrac{\displaystyle\prod\limits_{p=2}^{n}(p-1)}{\displaystyle\prod\limits_{p=2}^{n}(p+1)} 
+= \dfrac{(n-1)!}{\dfrac{(n+1)!}{2!}} 
+\rboxed{= \dfrac{2}{n(n+1)}}
+\]
+D'autre part, le second produit est un produit télescopique évident, donc
+\[
+\lboxed{B_n}
+= \displaystyle\prod\limits_{p=2}^{n}\dfrac{(p+1)^2 - (p + 1) + 1}{p^2 - p + 1} 
+= \dfrac{(n+1)^2 - (n + 1) + 1}{(2)^2 - (2) + 1} 
+\rboxed{= \dfrac{n^2 + n + 1}{3}}
+\]
+Ainsi, on obtient 
+\[
+\lboxed{\displaystyle\prod\limits_{p=2}^{n}\dfrac{p^3-1}{p^3+1}} 
+= A_n \times B_n 
+\rboxed{= \dfrac{2}{3}\times \dfrac{n^2+n+1}{n(n+1)}}
+\]
+\end{solution}
+
+\begin{exercice}
+Soit $S_n=\displaystyle\sum\limits_{k=1}^{n} k$, calculer rapidement $\displaystyle\sum\limits_{k=1}^{2n-1} S_k$
+\end{exercice}
+
+
+\begin{exercice}
+Soient $n,m\in\setNaturalNumbers\left/n \le m\right.$. Que représente sur le triangle de Pascal la somme $\displaystyle\sum\limits_{k=n}^{m} \binom{k}{n}$ ?\\
+Conjecturez la valeur de cette somme puis prouver le résultat.
+\end{exercice}
+
+\begin{solution}
+Cette somme correspond à la somme d'une colonne du triangle de Pascal. D'après la formule de la relation de Pascal, on a 
+\[
+\forall k \in \integerIntervalCC{n+1}{m},\binom{k}{n} + \binom{k}{n+1} = \binom{k+1}{n+1} 
+\]
+Donc on a
+\[
+\forall k \in \integerIntervalCC{n+1}{m},\binom{k}{n} = \binom{k+1}{n+1} - \binom{k}{n+1}
+\]
+En sommant les égalités pour $k=n+1$ jusqu'à $m$ (sans le premier terme), on a alors
+\[
+\displaystyle\sum\limits_{k=n+1}^{m} \binom{k}{n} 
+= \displaystyle\sum\limits_{k=n+1}^{m} \left(\binom{k+1}{n+1} - \binom{k}{n+1}\right)
+\]
+On remarque qu'il y a un télescopage qui apparaît. On obtient alors
+\[
+\displaystyle\sum\limits_{k=n+1}^{m+1} \binom{k}{n+1}
+- \displaystyle\sum\limits_{k=n}^{m} \binom{k+1}{n}
+= \binom{m+1}{n+1} - \underbrace{\binom{n+1}{n+1}}_{=1}
+= \binom{m+1}{n+1} - 1
+\]
+Donc 
+\[
+\lboxed{\displaystyle\sum\limits_{k=n+1}^{m} \binom{k}{n}}
+= \binom{n}{n} + \displaystyle\sum\limits_{k=n+1}^{m} \binom{k}{n} 
+= \underbrace{\binom{n}{n}}_{=1} + \left(\binom{m+1}{n+1} - 1\right)
+\rboxed{= \displaystyle\binom{m+1}{n+1}}
+\]
+\end{solution}
+
+\begin{exercice}
+Calculer 
+\[
+\displaystyle\sum\limits_{k=0}^{n} \dfrac{1}{k+1}\binom{n}{k}
+\]
+\end{exercice}
+
+\begin{solution}
+Soit $n \in \setNaturalNumbers$, on a d'après la relation de la diagonale du binôme :
+\[\forall k \in \integerIntervalCC{0}{n}, \binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}
+\]
+On en déduit que
+\[
+\forall k \in \integerIntervalCC{0}{n}, \dfrac{1}{k+1}\binom{n}{k} = \dfrac{1}{n+1}\binom{n+1}{k+1}
+\]
+Ainsi, en remplaçant par cette nouvelle expression le terme général de la somme, on obtient :
+\[
+\lboxed{\displaystyle\sum\limits_{k=0}^{n} \dfrac{1}{k+1}\binom{n}{k}}
+=  \displaystyle\sum\limits_{k=0}^{n} \dfrac{1}{n+1}\binom{n}{k} 
+= \dfrac{1}{n+1} \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}
+\rboxed{= \dfrac{2^n}{n+1}}
+\]
+\end{solution}
+
+\begin{exercice}
+Calculer 
+\[
+\displaystyle\sum\limits_{k=1}^{n} \dfrac{k}{2^{2k}}\binom{n}{k}
+\]
+\end{exercice}
+
+\begin{solution}
+Soit $n \in \setNaturalNumbers$,
+\[
+\displaystyle\sum\limits_{k=1}^{n} \dfrac{k}{2^{2k}}\binom{n}{k} = \displaystyle\sum\limits_{k=1}^{n}k \binom{n}{k} \left(\dfrac{1}{4}\right)^k
+\]
+Or on sait d'après la relation de la diagonale que $\forall k \in \integerIntervalCC{1}{n}, \displaystyle\binom{n}{k} = \dfrac{n}{k}\binom{n-1}{k-1}$, en réinjectant cette égalité dans la somme, on obtient :
+\[
+\displaystyle\sum\limits_{k=1}^{n}k \binom{n}{k} \left(\dfrac{1}{4}\right)^k
+=\displaystyle\sum\limits_{k=1}^{n}\cancel{k} \dfrac{n}{\cancel{k}}\binom{n-1}{k-1} \left(\dfrac{1}{4}\right)^k
+=n\displaystyle\sum\limits_{k=1}^{n} \binom{n-1}{k-1} \left(\dfrac{1}{4}\right)^k
+\]
+En effectuant un changement d'indice ($k \leftarrow k+1$) et en ajustant la puissance sur $\dfrac{1}{4}$, on fait apparaître le binôme de Newton :
+\[
+n\displaystyle\sum\limits_{k=1}^{n} \binom{n-1}{k-1} \left(\dfrac{1}{4}\right)^k 
+= n\displaystyle\sum\limits_{k=0}^{n-1} \binom{n-1}{k} \left(\dfrac{1}{4}\right)^{k+1} =  n\left(\dfrac{1}{4}\right)\displaystyle\sum\limits_{k=0}^{n-1} \binom{n-1}{k} \left(\dfrac{1}{4}\right)^{k}
+\]
+En appliquant la formule du binôme à $1$ et $\dfrac{1}{4}$, on en déduit que :
+\[
+\lrboxed{\displaystyle\sum\limits_{k=1}^{n} \dfrac{k}{2^{2k}}\binom{n}{k} =\dfrac{n}{4}\left(\dfrac{5}{4}\right)^{n-1}}
+\]
+\end{solution}
+
+\begin{exercice}
+Calculer 
+\[
+\displaystyle\sum\limits_{k=0}^{n} 2^k \binom{2n}{2k}
+\]
+\end{exercice}
+
+\begin{solution}
+Soit $n \in \setNaturalNumbers$, posons $A_n = \displaystyle\sum\limits_{k=0}^{n} \sqrt{2}^{2k} \binom{2n}{2k}$ et $B_n = \displaystyle\sum\limits_{k=0}^{n-1} \sqrt{2}^{2k+1}  \binom{2n}{2k+1}$.\\
+Alors $A_n = \displaystyle\sum\limits_{k=0}^{n} 2^k \binom{2n}{2k}$ et si on note pour tout $ p \in \integerIntervalCC{0}{2n}, u_p = \sqrt{2}^{p} \displaystyle\binom{2n}{p}$, $A_n$ se réécrit $\displaystyle\sum\limits_{k=0}^{n} u_{2k}$. De la même manière, $B_n$ se réécrit $\displaystyle\sum\limits_{k=0}^{n-1} u_{2k+1}$.\\
+D'après la formule du binôme de Newton, on a
+\[
+\lboxed{A_n + B_n} 
+= \displaystyle\sum\limits_{k=0}^{n} u_{k} 
+= \displaystyle\sum\limits_{k=0}^{2n}\binom{2n}{k} \sqrt{2}^k 
+\rboxed{= (1+\sqrt{2})^{2n}} 
+\]
+D'autre part,  
+\[
+\lboxed{A_n - B_n}
+= \displaystyle\sum\limits_{k=0}^{2n} (-1)^k u_{k} 
+= \displaystyle\sum\limits_{k=0}^{2n} \binom{2n}{k}  (-\sqrt{2})^k 
+\rboxed{= (1-\sqrt{2})^{2n}}
+\]
+En fin de compte,  
+\[
+\lboxed{\displaystyle\sum\limits_{k=0}^{n} 2^k \binom{2n}{2k}}
+= A_n 
+= \dfrac{(A_n+B_n) + (A_n - B_n)}{2} 
+\rboxed{= \dfrac{(1+\sqrt{2})^{2n}+(1-\sqrt{2})^{2n}}{2}}
+\]
+
+On en déduit que \hfil$\displaystyle\sum\limits_{k=0}^{\floor{n}} 2^k \binom{n}{2k} = \dfrac{(1+\sqrt{2})^{n}+(1-\sqrt{2})^{n}}{2}$
+\end{solution}
+
+
+\begin{exercice}
+Montrer que $\forall x,y\in\setRealNumbers^+,\sqrt{x+y}\le\sqrt{x}+\sqrt{y}$
+\end{exercice}
+
+\begin{solution}
+Soient $x, y \in \setRealNumbers^+$, alors $x+y \ge 0$ donc $\sqrt{x}$, $\sqrt{y}$ et $\sqrt{x+y}$ sont bien définis. De plus, comme une racine carré est toujours positive, on a donc l'équivalence en passant au carré
+\[
+0\le\sqrt{x+y}\le\sqrt{x}+\sqrt{y}
+\quad\Leftrightarrow\quad
+x + y \le x + 2 \sqrt{x}\sqrt{y} + y 
+\quad\Leftrightarrow\quad
+0 \le \sqrt{xy}
+\] 
+Cette dernière condition étant vérifiée pour tout $x$ et $y$ positifs, on a bien l'égalité recherché.
+\end{solution}
+
+\begin{exercice}
+Montrer que $\forall x,y\in\setRealNumbers, \forall\lambda>0, 2xy\le\dfrac{x^2}{\lambda}+\lambda y^2$
+\end{exercice}
+
+\begin{solution}
+Soient $x, y \in \setRealNumbers$ et $\lambda \in \setRealNumbers^{+*}$, on a \[
+\left(\dfrac{x}{\sqrt{\lambda}} - \sqrt{\lambda} y\right)^2 = \dfrac{x^2}{\lambda} - \underbrace{2 \times \dfrac{x}{\sqrt{\lambda}}\times \sqrt{\lambda} y}_{=2xy} +\lambda y^2
+\]
+Or on sait qu'un carré est toujours positif. Donc on a
+\[
+\dfrac{x^2}{\lambda} - 2xy +\lambda y^2 \ge 0
+\]
+C'est-à-dire que
+\[
+\dfrac{x^2}{\lambda} +\lambda y^2 \ge 2xy
+\]
+\end{solution}
+
+\begin{exercice}
+Résoudre l'inéquation $\left|\dfrac{x-2}{x+1}\right|<2$
+\end{exercice}
+
+\begin{solution}
+Soit $x \in \setRealNumbers \setminus \set{-1}$,
+On va distinguer les cas en fonction du signe de $\dfrac{x-2}{x+1}$.
+\begin{itemize}
+\item Supposons que $x-2 \ge 0$.
+\begin{itemize}
+\item Supposons que $x+1 \ge 0$.\\
+Alors $x \ge 2$ et $x \ge -1$ donc $x \ge 2$.\\
+De plus, $\dfrac{x-2}{x+1} \ge 0$ donc il faut résoudre l'équation $\dfrac{x-2}{x+1} \le 2$.\\
+Cela revient à voir si $x-2 > 2(x+1)$ ie $-2-2 < x$, ce qui est toujours vrai comme $x \ge 2$. Donc l'ensemble $\realIntervalCO{2}{+\infty}$ est solution.
+\item Supposons que $x+1 < 0$.\\
+Alors $x \ge 2$ et $x < -1$, ce n'est pas possible.
+\end{itemize}
+\item Supposons que $x-2 < 0$.
+\begin{itemize}
+\item Supposons que $x+1 \ge 0$.\\
+On a alors $x < 2$ et $x \ge -1$, sur cet intervalle, $\dfrac{x-2}{x+1} \le 0$.
+Donc on doit résoudre $\dfrac{x-2}{x+1} > -2$. \\
+C'est équivalent à $(x-2) > -2x - 2$ ($x+1$ est positif donc la multiplication conserve l'ordre), i.e. $0 >x$. Donc l'ensemble $\realIntervalOO{0}{2}$  est solution.
+\item Supposons que $x+1 < 0$.
+Alors $x < -1$. Dans ce cas, il faut résoudre l'équation $\dfrac{x-2}{x+1} < 2$.\\
+Cela équivaut à dire que $x - 2 > 2x + 2$ ie $x < -4$. Donc l'ensemble $\realIntervalOO{-\infty}{-4}$ est solution
+\end{itemize}
+\end{itemize}
+ 
+Finalement, en regroupant les intervalles solutions, on obtient $S = \realIntervalOO{-\infty}{-4} \cup \realIntervalCO{0}{+\infty}$.
+\end{solution}
+
+\begin{exercice}
+Montrer que $\forall x \in \realIntervalCC{0}{1}, x-\dfrac{1}{6}x^3 \le \sin(x) \le x$
+\end{exercice}
+Posons $f(x) = \sin(x) - x$. \\
+Alors $f'(x) = \cos(x) - 1 \le 0$
+\begin{exercice}
+Étudier la fonction $\function[f]{x}{2\:x + \ln(x+1)-\dfrac{1}{x}}$
+\end{exercice}
+\begin{exercice}
+Étudier la fonction $\function[f]{x}{\dfrac{\ln(x)}{x}}$
+\end{exercice}
+\begin{exercice}
+Étudier la fonction $\function[f]{x}{x e^{-x^2}}$
+\end{exercice}
+\begin{exercice}
+Étudier la fonction $\function[f]{x}{x^2 e^x}$
+\end{exercice}
+\begin{exercice}
+Étudier les variations de $\function[f]{x\in\setRealNumbers}{\dfrac{2x^3}{1+x^2}}$, ses asymptotes et la position de la courbe de $f$ par rapport à celles-ci.\\
+En déduire un graphe précis de $f$.\\
+Étudier le signe de $f(x)-x$ et tracer sur le graphe précédent la première bissectrice.
+\end{exercice}
+\begin{exercice}
+Soit $n\in\setNaturalNumbers^*$. On pose $\function[f]{x>0}{x^{n-1} \ln(x)}$. Calculer $f^{(n)}(x)$.
+\end{exercice}
+
+\begin{solution}
+On sait que :
+\[
+\forall k \in \setNaturalNumbers^*, \dfrac{d^k}{dx^k}\left\langle\ln\right\rangle(x) = \dfrac{(-1)^{k-1}(k-1)!}{x^k}
+\]
+Et que 
+\[
+\forall k \in \setNaturalNumbers^*, \dfrac{d^k}{dx^k}\left\langle Id^{n-1} \right\rangle(x) = \dfrac{(n-1)!}{(n-1-k)!} x^{n-1-k}
+\]
+D'après la formule du binôme de Leibniz, on a donc
+\[
+\forall x \in \setRealNumbers^{+*}, 
+f^{(n)}(x)
+= \displaystyle\sum\limits_{k=0}^{n} \binom{n}{k} (Id^{n-1})^{(n)}(x) \ln^{(n-k)}(x)
+\]
+Donc 
+\[
+\forall x \in \setRealNumbers^{+*}, 
+f^{(n)}(x)
+= \left(\displaystyle\sum\limits_{k=0}^{n-1} \binom{n}{k} \dfrac{(n-1)!}{(n-1-k)!} x^{(n-1)-k} \dfrac{(-1)^{n-k-1}(n-k-1)!}{x^{n-k}}\right) + 0 \times \ln(x)
+\]
+On remarque que $x^{n-k}$ et $x^{n-1-k}$ se simplifient en $x^{-1}$ et que les facteurs $(n-1-k)!$ se s'annulent :
+\[
+\displaystyle\sum\limits_{k=0}^{n-1} \binom{n}{k} (n-1)! \: x^{-1} (-1)^{n-k-1}
+= \dfrac{(n-1)!}{x} \displaystyle\sum\limits_{k=0}^{n-1} \binom{n}{k} (-1)^{(n-1)-k}
+\]
+D'après la formule du binôme de Newton, on sait que 
+\[
+\displaystyle\sum\limits_{k=0}^{n} \binom{n}{k} (-1)^{n-k} = (1-1)^n \underbrace{= 0}_{\text{car $n > 0$}}
+\]
+Donc en sortant le dernier terme et en rajoutant $-1$ en puissance :
+\[
+(-1)\left(\displaystyle\sum\limits_{k=0}^{n-1} \binom{n}{k} (-1)^{n-1-k}\right) + \binom{n}{n} = 0
+\]
+On a alors 
+\[
+\displaystyle\sum\limits_{k=0}^{n-1} \binom{n}{k} (-1)^{n-1-k} = \binom{n}{n} = 1
+\]
+D'où finalement, 
+\[
+\lboxed{\forall x \in \setRealNumbers^{+*}, 
+f^{(n)}(x)}
+= \dfrac{(n-1)!}{x} \times 1 
+\rboxed{= \dfrac{(n-1)!}{x}}
+\] 
+\end{solution}
+
+\begin{exercice}
+Soient $a,b\in\setRealNumbers$, posons $\function[f]{x\in\setRealNumbers}{(x-a)^n (x-b)^n}$. Calculer $f^{(n)}(x)$.\\
+En déduire $\displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}^2$
+\end{exercice}
+
+\begin{solution}
+Soient $a,b\in\setRealNumbers$ et $n \in \setIntegers$, alors on note 
+\[
+g_a = x\longmapsto (x-a)^n \quad\text{et}\quad g_b = x \longmapsto (x-b)^n
+\]
+D'après la formule de Leibniz, comme $f = g_a g_b$ :
+\[
+\forall x \in \setRealNumbers,f^{(n)}(x) = \sum\limits_{k=0}^{n} \binom{n}{k} g_a^{(k)} g_b^{(n-k)}
+\]
+Or 
+\[
+\forall k \in \integerIntervalCC{0}{n}, g_a^{(k)} = \dfrac{n!}{(n-k)!} (x-a)^{n-k}
+\]
+Donc 
+\[
+\forall x \in \setRealNumbers,f^{(n)}(x) 
+= \sum\limits_{k=0}^{n} \binom{n}{k}  \dfrac{n!}{(n-k)!} (x-a)^{n-k}  \dfrac{n!}{k!} (x-b)^{k}
+= n! \sum\limits_{k=0}^{n} \binom{n}{k}^2  (x-a)^{n-k} (x-b)^{k}
+\]
+Si $a = b$, on a alors
+\[
+\forall x \in \setRealNumbers,f^{(n)}(x) 
+= n! \sum\limits_{k=0}^{n} \binom{n}{k}^2 (x-a)^{n}
+=n!(x-a)^{n}\sum\limits_{k=0}^{n} \binom{n}{k}^2
+\]
+D'autre part, $f = x \longmapsto (x-a)^n (x-a)^n = (x-a)^{2n}$, donc 
+\[
+\forall x \in \setRealNumbers,f^{(n)}(x) 
+=  \dfrac{(2n)!}{(2n-n)!} (x-a)^{2n-n} =   \dfrac{(2n)!}{n!} (x-a)^{n}
+\]
+Ainsi, par unicité de la dérivée, on a 
+\[
+\forall x \in \setRealNumbers,
+n!(x-a)^{n}\sum\limits_{k=0}^{n} \binom{n}{k}^2 = \dfrac{(2n)!}{n!} (x-a)^{n}
+\]
+Donc en divisant à gauche et à droite par $n!(x-a)^{n}$
+
+\[
+\lboxed{\displaystyle\sum\limits_{k=0}^{n} \binom{n}{k}^2}
+= \dfrac{(2n)!}{n!n!}
+= \dfrac{(2n)!}{n!(2n-n)!} 
+\rboxed{= \displaystyle\binom{2n}{n}}
+\]
+\end{solution}
+
+\newpage
+\pagestyle{PageNormale}
+
+%% Preuve dérivée trigonométriques
+\begin{proof}
+\textbf{Méthode géométrique}
+
+\textbf{Étape 1 :} Limite de $\sin(x)/x$ en 0\\
+Avec un dessin, on se rend compte qu'on a l'inclusion des aires suivantes :
+\[
+\forall x \in \realIntervalCO{0}{\dfrac{\pi}{2}}, \dfrac{\sin(x)\cos(x)}{2} \le \dfrac{x}{2} \le \dfrac{\tan(x)}{1}
+\]
+La première inégalité nous donne 
+\[
+\forall x \in \realIntervalCO{0}{\dfrac{\pi}{2}}, \sin(x)\cos(x) \le x
+\]
+Donc 
+\[
+\dfrac{\sin(x)}{x} \le \dfrac{1}{\cos(x)}
+\]
+La seconde inégalité nous donne 
+\[
+\forall x \in \realIntervalCO{0}{\dfrac{\pi}{2}}, x \le \tan(x) = \dfrac{\sin(x)}{\cos(x)}
+\]
+Donc 
+\[
+\cos(x) \le \dfrac{\sin(x)}{x} 
+\]
+Ainsi, on a
+\[
+\forall x \in \realIntervalCO{0}{\dfrac{\pi}{2}}, \cos(x) \le \dfrac{\sin(x)}{x} \le \dfrac{1}{\cos(x)}
+\]
+Comme $\cos$ sont continues sur $\setRealNumbers$, on peut faire tendre $x$ vers 0, on obtient alors par passage à la limite :
+\[
+\lim_{x \mapsto 0} \cos(x) = 1 \quad\text{ et }\quad \dfrac{1}{\cos(0)} = 1
+\]
+Donc $\displaystyle\lim_{x \longmapsto 0^+} \dfrac{\sin(x)}{x} = 1$ d'après le théorème des gendarmes. Comme $\sin$ est continue sur $\setRealNumbers$, la limite à gauche est égale à la limite à droite. On a donc 
+\[
+\displaystyle\lim_{x \longmapsto 0} \dfrac{\sin(x)}{x} = 1
+\]
+
+\textbf{Étape 2 :} Calcul du taux d'accroissement de $\cos$\\
+Soient $x, h \in \setRealNumbers$, alors d'après les formules trigonométriques :
+\[
+\dfrac{\cos(x+h)-\cos(x)}{h} = \dfrac{-2\sin\left(\dfrac{(x+h)+x}{2}\right)\sin\left(\dfrac{(x+h)-x}{2}\right)}{h}
+\]
+Comme $\dfrac{(x+h)-x}{2} = \dfrac{h}{2}$ et que $\dfrac{(x+h)+x}{2} = x +\dfrac{h}{2}$, on a :
+\[
+\dfrac{\cos(x+h)-\cos(x)}{h} = \dfrac{-2\sin\left(x + \dfrac{h}{2}\right)\sin\left(\dfrac{h}{2}\right)}{h} = -\dfrac{2\sin\left(\dfrac{h}{2}\right)}{h} \times \sin\left(x + \dfrac{h}{2}\right)
+\]
+Or on a montré que $\displaystyle\lim_{x \longmapsto 0} \dfrac{\sin(x)}{x} = 1$ donc en appliquant ça à $\dfrac{h}{2}$, on a :
+\[
+\displaystyle\lim_{h \longmapsto 0} \dfrac{2\sin\left(\dfrac{h}{2}\right)}{h} = 1
+\]
+Comme $\sin$ est une fonction continue, on a d'autre part
+\[
+\displaystyle\lim_{h \longmapsto 0} \sin\left(x + \dfrac{h}{2}\right) = \sin(x)
+\]
+Ainsi, 
+\[
+-\left(\displaystyle\lim_{h \longmapsto 0} \dfrac{2\sin\left(\dfrac{h}{2}\right)}{h} \right)\times \left(\displaystyle\lim_{k \longmapsto 0} \sin\left(x + \dfrac{k}{2}\right)\right) = - \sin(x)
+\]
+Donc 
+\[
+\displaystyle\lim_{h \longmapsto 0} \dfrac{\cos(x+h)-\cos(x)}{h} = - \sin(x)
+\]
+On a ainsi montré que $\dfrac{d}{dx}\left\langle \cos \right\rbrace = -\sin$. On sait de plus que $\sin = \cos\left(\cdot - \dfrac{\pi}{2}\right)$. Par composition des dérivées, on en déduit que 
+\[
+\forall x \in \setRealNumbers,
+\dfrac{d}{dx}\left\langle \sin \right\rangle(x) = \dfrac{d}{dx}\left\langle \cos\left(\dot - \dfrac{\pi}{2}\right) \right\rangle(x) = - \sin\left(x - \dfrac{\pi}{2}\right)
+\]
+Et 
+\[
+\forall x \in \setRealNumbers, - \sin\left(x - \dfrac{\pi}{2}\right) = - \left(\sin(x)\underbrace{\cos\left(\dfrac{\pi}{2}\right)}_{=0}-\cos(x)\underbrace{\sin\left(\dfrac{\pi}{2}\right)}_{=1}\right) = \cos(x)
+\]
+On en déduit alors que $\dfrac{d}{dx}\left\langle \sin \right\rangle = \cos$
+\end{proof}
+
+\begin{exercice}
+Déterminer les limites suivantes :\\
+\[
+\lim_{x \rightarrow +\infty} \dfrac{e^{2x}(\ln(x))^3}{x^4}
+\qquad\quad
+\lim_{x \rightarrow 0^+} x^2(\ln(x^3))^3
+\qquad\quad
+\lim_{x \rightarrow -\infty} x^2 e^x(\ln(-x))^3
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre l'équation 
+\[
+2x\ln(x)+3(x-1) = 0
+\]
+\end{exercice}
+
+$ x = 1$
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+\begin{axis}[
+xlabel=$x$,
+ylabel={$f(x)$},
+xmin = 0,
+xmax = 1.4,
+samples=100,
+width=12cm%,%height=3cm
+]
+\addplot[red,domain=0:1.4]{2 *x * ln(x)+3 * (x-1)};
+\addlegendentry{$f(x) =2x\ln(x)+3(x-1)$}
+\draw [dashed] (0,0) -- (\pgfkeysvalueof{/pgfplots/xmax},0);
+\end{axis}
+\end{tikzpicture}
+\caption{Graphique de $2x\ln(x)+3(x-1)$ sur $\realIntervalCC{0}{1.4}$}
+\end{figure}
+
+\begin{exercice}
+Résoudre dans $\setRealNumbers$ l'équation 
+\[
+3^x+4^x=5^x
+\]
+\end{exercice}
+\begin{exercice}
+Montrer que 
+\[
+\forall x \in \realIntervalOO{0}{1}, x^x (1-x)^{1-x} \ge \dfrac{1}{2}
+\]
+\end{exercice}
+\begin{exercice}
+Montrer que 
+\[\forall x,y\in\setRealNumbers, \left/ 0 < x < y \right.,\dfrac{y-x}{\ln(x)-\ln(y)} < \dfrac{x+y}{2}
+\] 
+Indication: On utilisera $t=\dfrac{y}{x}$
+\end{exercice}
+\begin{exercice}
+Rappeler la formule trigonométrique $\sin(a+b)$. Montrer que
+\[
+\arcsin\left(\dfrac{5}{13}\right)+\arcsin\left(\dfrac{3}{5}\right)= \arcsin\left(\dfrac{56}{65}\right)
+\]
+\end{exercice}
+\begin{exercice}
+Montrer que 
+\[
+\forall x \ge 0,\dfrac{x}{1+x^2} \le \arctan(x) \le \dfrac{\pi}{2}-\dfrac{x}{1+x^2}
+\]
+\end{exercice}
+\begin{exercice}
+Quel est le domaine de définition de 
+$\function[f]{x}{\arctan\left(\dfrac{1+x}{1-x}\right)}$ ?
+Calculer sa dérivée. Conclusion ?
+\end{exercice}
+\begin{exercice}
+Quel est le domaine de définition de $f: x \longmapsto \dfrac{2x}{1+x^2}$? Calculer sa dérivée. Conclusion ?
+\end{exercice}
+\begin{exercice}
+Résoudre dans $\setRealNumbers^2$ le système 
+\[
+\left\{\begin{array}{l}
+\cosh(x) + \sinh(y) = 4 \\
+\sinh(x) + \sinh(y) = 1 \\
+\end{array}\right.
+\]
+\end{exercice}
+\begin{exercice}
+Soit $y\in\setRealNumbers$. Résoudre l'équation 
+\[
+\sinh(x)=y
+\]
+\end{exercice}
+
+\begin{exercice}
+Montrer que 
+\[
+\setUnimodularComplexNumbers\setminus\{-1\}=\set{\dfrac{1+ia}{1-ia},a\in\setRealNumbers}
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre l'équation 
+\[
+z+\dfrac{1}{\overline{z}}=1
+\]
+\end{exercice}
+\begin{exercice}
+Soit $(a,b)\in\setComplexNumbers^2$. Montrer que 
+\[
+|a|+|b|\le|a+b|+|a-b|
+\]
+et étudier le cas d'égalité.
+\end{exercice}
+\begin{exercice}
+Soit $\omega=e^{2i\pi/5}$ et $x= \omega+\omega^{-1}$. Calculer $x^2+x-1$.\\
+Que peut-on en déduire ?
+\end{exercice}
+\begin{exercice}
+Résoudre l'équation 
+\[
+z^4-z^3+z^2+2=0
+\]
+en remarquant que $j$ est solution.
+\end{exercice}
+\begin{exercice}
+Déterminer les racines quatrièmes de $-7-24i$.
+\end{exercice}
+\begin{exercice}
+Résoudre dans $\setComplexNumbers$ l'équation 
+\[
+\overline{z}^n=z
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre l'équation 
+\[
+(z^2+1)^{n} = (z-i)^{2n}
+\]
+\end{exercice}
+\begin{exercice}
+Soient $ABC$ et $ADE$ deux triangles équilatéraux directs et $ABCD$ un 
+parallélogramme. Montrer que $BFE$ est équilatéral direct.
+\end{exercice}
+\begin{exercice}
+Soient $n\in\setNaturalNumbers^*$ et $\omega$ une racine n-ième de l'unité. Calculer 
+\[
+\sum\limits_{k=0}^{n-1} (k+1) \omega^k
+\]
+\end{exercice}
+\begin{exercice}
+Déterminer une CNS sur $(a,b)\in\setComplexNumbers^2$ pour que les deux racines de $z^2+az+b=0$ aient même module.
+\end{exercice}
+
+\begin{exercice}
+Résoudre les équations 
+\[
+\left\{\begin{array}{l}
+\cos(5x)+2\cos(3x)+3\cos(x) = 0\\
+\cos(x)-\cos(2x) = \sin(3x)
+\end{array}\right.
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre l'équation 
+\[
+\cos(x)+\sin(x)=\tan\left(\dfrac{x}{2}\right)
+\]
+en posant $t=\tan\left(\dfrac{x}{2}\right)$
+\end{exercice}
+\begin{exercice}
+Étudier la fonction 
+\[
+\function[f]{x}{\ln\left(\tan\left(\dfrac{x}{2}\right)\right)+\sin(x)}
+\]
+\end{exercice}
+\begin{exercice}
+Montrer que 
+\[
+\forall n \in\setNaturalNumbers, \forall t \in \setRealNumbers, |\sin(nt)|\le n |\sin(t)|
+\]
+\end{exercice}
+\begin{exercice}
+Étudier la fonction 
+\[
+\function[f]{x}{\ln(\cosh(x))}
+\]
+\end{exercice}
+\begin{exercice}
+Calculer 
+\[
+\sum\limits_{k=0}^{n-1} 3^k \sin^3 \left(\dfrac{\theta}{3^{k+1}}\right)
+\]
+\end{exercice}
+\begin{exercice}
+Calculer 
+\[
+\sum\limits_{k=0}^{n} k\binom{n}{k}\cos(k\theta)
+\]
+\end{exercice}
+\begin{exercice}
+Calculer les primitives suivantes en précisant à chaque fois le ou les intervalles où ceci est légitime :
+\[
+\int e^{-\sqrt{x}} dx
+\qquad 
+\int \cos(\ln(x)) dx
+\qquad 
+\int \ln(1+x^2) dx
+\]
+\[
+\int \arctan(x) dx 
+\qquad
+\int x (\sin(x))^2 dx
+\qquad 
+\int \dfrac{x^2}{(x-1)^2(x^2+4)} dx
+\] 
+\[
+\int \cos(2x)\cos^2(x)
+\qquad
+\int \dfrac{1}{\sin(t)+ \tan(t)} dx \text{ sur } \realIntervalCC{0}{\dfrac{\pi}{2}} \text{ en posant } u=\cos(x)
+\]
+\end{exercice}
+\begin{exercice}
+Posons 
+\[
+\forall n \in \setNaturalNumbers, I_n := \int \dfrac{1}{(1+x)^n} dx
+\]
+À l'aide d'une intégration par parties, obtenir une relation de récurrence entre $I_n$ et $I_{n+1}$. \\
+En déduire $I_1, I_2$ et $I_3$ 
+\end{exercice}
+\begin{exercice}
+Posons 
+\[
+\forall n \in \setNaturalNumbers, I_n = \int (1-x^2)^n dx
+\]
+\begin{enumerate}
+\item Établir la relation de récurrence entre $I_n$ et $I_{n+1}$
+\item Calculer $I_n$
+\item En déduire $\displaystyle\sum\limits_{k=0}^{n} \dfrac{(-1)^k}{2k+1}\binom{n}{k}$
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}
+Résoudre 
+\[
+y'+2y=2\sinh(2x)
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre 
+\[
+\sin(x)y'=\cos(x)y+2x\sin^2(x) \text{ sur }\realIntervalOO{0}{\pi}
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre 
+\[
+y''+y'+y = e^{-x/2}\cos\left(\dfrac{\sqrt{3}}{2}x\right)
+\]  
+\end{exercice}
+\begin{exercice}
+Résoudre 
+\[
+y''-2y'+2y = e^x \sin^2(x)
+\] 
+avec $y(0)=0$ et $y'(0)=1$
+\end{exercice}
+\begin{exercice}
+Résoudre le système différentiel 
+\[
+\left\{\begin{array}{l}
+x'(t)=x(t)+y(t)\\
+y'(t)=3 x(t)-y(t)
+\end{array}\right.
+\]
+avec $x(0)=2$ et $y(0)=-2$.
+\end{exercice}
+\begin{exercice}
+Déterminer les $f\in\setContinuousFunctions{0}{\setRealNumbers}{\setRealNumbers}$ telles que 
+\[
+\forall x\in\setRealNumbers, f(x)+\int_{0}^{x} t f(t) dt = 1
+\]
+\end{exercice}
+\begin{exercice}
+Résoudre 
+\[
+xy''-y'-x^3 y(x) = 0 
+\]
+sur $\realIntervalOO{0}{+\infty}$ en posant $z(t)=y(\sqrt{t})$.
+On a donc $y(x)=z(x^2)$  puis $y'(x)=2x z'(x^2 )$\dots\\
+Résoudre également sur $\realIntervalOO{-\infty}{0}$.
+\end{exercice}
+
+
+\begin{exercice}
+Déterminer les suites réelles $u$ vérifiant 
+\[
+\forall (n,k) \in\setNaturalNumbers^2, u_{n+k}=u_n u_k
+\]
+\end{exercice}
+\begin{exercice}
+Si X est une partie de N,on note $\mathcal{P}_1(X)$ et $\mathcal{P}_2(X)$ les propositions suivantes :
+\[
+\mathcal{P}_1(X): \forall x\in X,(\exists y\in X)\left/ x < y \right.
+\]
+\[
+\mathcal{P}_2(X): (\exists x\in X)\left/\forall y\in\setNaturalNumbers, (x<y \Longrightarrow y \in X)\right.
+\]
+A-t-on $\mathcal{P}_1(X) \Longrightarrow\mathcal{P}_2(X)$? A-t-on $\mathcal{P}_2(X) \Longrightarrow\mathcal{P}_1(X)$?\\
+Quel est le lien entre le fait que X est infini et les propriétés précédentes ?
+\end{exercice}
+\begin{exercice}
+On note $\mathcal{P}(x,y)$ une propriété dépendant de deux réels $x$ et $y$.
+On note A et B les propriétés suivantes :
+\[
+A=\forall x\in X (\exists y\in X)\left/\mathcal{P}(x,y)\right.
+\]
+\[
+B=(\exists y\in X)\left/\mathcal{P}(x,y)\right.
+\]
+A implique-t-elle B ? B implique-t-elle A ? \\
+On prend $\mathcal{P}(x,y)$ la propriété $x^2-xy+a=0$ avec a un réel. Pour quelles valeurs de a a-t-on A ? Idem avec B.
+\end{exercice}
+\begin{exercice}
+Déterminer les $x\in\setRealNumbers$ tels que 
+\[
+\forall n\in\setNaturalNumbers,x^{n+2}\le x^{n+1}+x^n
+\]
+\end{exercice}
+\begin{exercice}
+Déterminer une condition nécessaire et suffisante sur $k\in\setIntegers$ pour qu'il existe $\theta\in\setRealNumbers$ tel que 
+\[
+e^{i\theta}+e^{ik\theta}=1
+\]
+\end{exercice}
+\begin{exercice}
+Donner une condition nécessaire et suffisante sur $a\in\setRealNumbers$ pour que la fonction $\function[f]{x}{x + a \sin(x)}$ soit une bijection de $\setRealNumbers$ dans $\setRealNumbers$.
+\end{exercice}
+\begin{exercice}
+Déterminer une condition nécessaire et suffisante sur $z$ réel pour qu'il existe $(x,y)\in \setRealNumbers^2$  tels que 
+\[
+z=\dfrac{xy}{2x^2+y^2+1}
+\]
+\end{exercice}
+\begin{exercice}
+Déterminer une condition nécessaire et suffisante sur $\alpha\in\setComplexNumbers$ pour que 
+\[
+\forall(x,y)\in \setRealNumbers^2,(x+\alpha y=0 \Longleftrightarrow x=y=0)
+\]
+\end{exercice}
+
+\chapter{Racines exactes des polynômes de degré  2, 3 et 4}
+\subsection{Expression générale des racines d'un polynôme de degré 2}
+Soient $(a,b,c)\in\setRealNumbers^3$. Soit $P = aX^2+bX+c$ un polynôme du second degré. Alors, cherchons les racines de $P$. 
+
+Pour cela on doit résoudre l'équation 
+\[
+ax^2+bx+c = 0 \Longleftrightarrow x^2+\dfrac{b}{a}x+\dfrac{c}{a} = 0
+\]
+Or 
+\[
+\left(x+\dfrac{b}{2a}\right)^2=x^2+\dfrac{b}{a}x+\dfrac{b^2}{a^2}
+\]
+Donc 
+\[
+\left(x+\dfrac{b}{2a}\right)^2+\dfrac{c}{a}-\dfrac{b^2}{4a^2}=0
+\]
+Donc 
+\[
+\left(x+\dfrac{b}{2a}\right)^2=\dfrac{b^2-4ac}{4a^2}
+\]
+D'où 
+\[
+\left(x+\dfrac{b}{2a}\right) = \pm \dfrac{\sqrt{b^2-4ac}}{2a}
+\]
+Finalement, 
+\[
+x= -\dfrac{b}{2a}\pm \dfrac{\sqrt{b^2-4ac}}{2a}= \dfrac{-b\pm\sqrt{b^2-4ac}}{2a}
+\]
+
+\subsection{Expression générale des racines d'un polynôme de degré 3}
+Soient $(a,b,c,d)\in\setRealNumbers^4$. Soit $P = aX^3+bX^2+cX+d$ un polynôme du troisième degré. Alors, cherchons les racines de $P$. \\ 
+Pour cela on doit résoudre l'équation 
+\[
+ax^3+bx^2+cx+d=0
+\]
+C'est équivalent à 
+\[
+x^3+\dfrac{b}{a}x^2+\dfrac{c}{a}x+\dfrac{d}{a}=0
+\]
+On va éliminer le terme en $x^2$. Pour cela, on va utiliser le développement de $\left(x+\dfrac{b}{3a}\right)^3$.
+Posons $\beta = x +  \dfrac{b}{3a}$ ,alors l'équation se transforme en 
+\[
+\left(\beta- \dfrac{b}{3a}\right)^3+\dfrac{b}{a}\left(\beta- \dfrac{b}{3a}\right)^2+\dfrac{c}{a}\left(\beta- \dfrac{b}{3a}\right)+\dfrac{d}{a}=0
+\]
+Donc 
+\[
+\beta^3+\underbrace{\left(\dfrac{b}{a}-3\dfrac{b}{3a}\right)}_{=0}\beta^2
++\underbrace{\left(\dfrac{c}{a}+(3-2)\dfrac{b}{a}\dfrac{b}{3a}\right)}_{p}\beta
++\underbrace{\left(\dfrac{d}{a}+\dfrac{b}{27a}\left(\dfrac{2b^2}{a^2}-\dfrac{9c}{a}\right)\right)}_{q} = 0
+\]
+On s'est donc ramené a l'équation $\beta^3+p\beta+q=0$\\
+Prenons maintenant $u,v\in\setRealNumbers\left/ uv=-\dfrac{p}{q}\text{ et }\beta = u + v\right.$ (on va montrer par la suite que $u$ et $v$ sont bien définis)\\
+Alors 
+\[
+u^3 v^3 = -\dfrac{p^3}{27}
+\]
+D'autre part, 
+\[
+\underbrace{(u+v)^3+p(u+v)}_{=-q}=u^3+v^3+3(u+v)uv+p(u+v)=u^3+v^3+\underbrace{3(uv+\dfrac{p}{3})(u+v)}_{=0}
+\]
+Donc $u^3+v^3 = -q$\\
+On remarque astucieusement qu'on connait la somme et le produit de $u^3$ et $v^3$ donc ils vérifient l'équation polynômiale de degré 2 
+\[
+X^2 - \text{somme}X + \text{produit}=0 
+\]
+i.e. 
+\[
+X^2 +q X - \dfrac{p^3}{27} =0
+\]
+On a alors $\Delta = q^2+\dfrac{4p^3}{27}$. On ne connait pas le signe de $\Delta$ et il est parfois négatif. Ici on ne va traiter que le cas ou $\Delta$ est positifs, l'autre cas sera à mettre en relation avec le chapitre sur les complexes.
+On connait les solutions de cette équation, on en déduit que \\
+\[
+u^3,v^3 = \dfrac{-q \pm \sqrt{q^2+\dfrac{4p^3}{27}}}{2}
+\]
+Donc 
+\[
+\beta = u + v = \sqrt[3]{\dfrac{-q - \sqrt{q^2+\dfrac{4p}{3}}}{2}} + \sqrt[3]{\dfrac{-q + \sqrt{q^2+\dfrac{4p^3}{27}}}{2}}
+\]
+Donc finalement 
+\[
+x = \sqrt[3]{\dfrac{-q - \sqrt{q^2+\dfrac{4p^3}{27}}}{2}} + \sqrt[3]{\dfrac{-q + \sqrt{q^2+\dfrac{4p^3}{27}}}{2}} - \dfrac{b}{3a}
+\]
+
+\subsection{Expression générale des racines d'un polynôme de degré 4}
+Soient $(a,b,c,d,e)\in\setRealNumbers^5$\\
+Soit $P = aX^4+bX^3+cX^2+dX+e$ un polynôme du quatrième degré. Alors, cherchons les racines de $P$.\\ 
+Pour cela on doit résoudre l'équation 
+\[ax^4+bx^3+cx^2+dx+e=0\]
+Pour cela, posons $x = \beta - \dfrac{b}{4a}$. En remplaçant $x$ par son expression en fonction de $u$ et en développant on obtient l'équation
+\[
+u^4+\underbrace{\left(\dfrac{c}{a}-\dfrac{3b^2}{8a^2}\right)}_{p}u^2 + \underbrace{\left(\dfrac{d}{a}-\dfrac{bc}{2a^2}+\dfrac{b^3}{8a^3}\right)}_{q}u + \underbrace{\left(\dfrac{e}{a}-\dfrac{bd}{4a^2}+\dfrac{c b^2}{16a^3}-3\left(\dfrac{b}{4a}\right)^4\right)}_{r}= 0
+\]
+Donc 
+\[
+u^4+u^2+qu+r=0
+\]
+Cette forme d'équation fait fortement penser aux équations bicarrées, mais le terme en $u$ est gênant. On va essayer d'exprimer le polynôme sous une forme plus simple cependant.\\
+Cherchons $\alpha, \beta, \gamma \in \setRealNumbers \left/(u^2+\alpha)^2+\beta (u+\gamma)^2=u^4+pu^2+qu+r\right.$\\
+Pour cela, on va chercher des conditions en identifiant les monômes de degrés égaux. Ainsi, on obtient, 
+\[
+\left\{\begin{array}{l}
+1=1\\
+2\alpha+\beta = p\\
+2 \beta \gamma = q\\
+\alpha^2+\beta \gamma^2 = r\\
+\end{array}\right.
+\] 
+La dernière équation nous donne après substitution des variables,
+\[
+\alpha^2+\beta \gamma^2=\alpha^2 + \dfrac{q^2}{4\beta}=\alpha^2 + \dfrac{q^2}{4(p-2\alpha)}=r
+\]
+Ainsi 
+\[
+-2\alpha^3+p\alpha^2+2r\alpha+\left(\dfrac{q^2}{4}-rp\right)=0
+\]
+Il s'agit d'une équation du troisième degré donc il existe toujours $\alpha$ qui vérifie cette relation. Cela nous donne automatiquement $\beta$ et $\gamma$. Il ne reste plus qu'à résoudre l'équation 
+\[
+(u^2+\alpha)=-\gamma(u+\beta)^2
+\]
+On obtient alors 2 équation du second degré, à savoir,
+\[
+u^2 + \sqrt{-\gamma}u + \left(\alpha + \sqrt{-\gamma}\right)
+\]
+Et
+\[
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\]
+Cela nous donne les solutions générales
+
+%\import{./}{importation.tex}
+
+\end{document}

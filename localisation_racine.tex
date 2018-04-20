@@ -1,0 +1,109 @@
+\begin{theorem}[Localisation des racines]
+Soit $P$ un polynôme qui s'écrit $P = \displaystyle\sum\limits_{i = 0}^{n} a_i X^i$ avec $a \in \setComplexNumbers$. Si $x$ est racine de $P$ alors on a l'encadrement de $x$ suivant : 
+\[
+ \dfrac{1}{1+\dfrac{B}{|a_0|}} \le |\alpha| \le 1 + \dfrac{A}{|a_n|} 
+\]
+avec $A = \max\limits_{i\in \integerIntervalCC{0}{n-1}}\set{|a_i|}$ et $B = \min\limits_{i\in \integerIntervalCC{1}{n}}\set{|a_i|}$
+\end{theorem}
+
+\begin{proof}
+\textbf{Étape 1: Prouver qu'un polynôme diverge sur les bords}
+
+Soit $P = \displaystyle\sum\limits_{i = 0}^{n} a_i X^i$.  Supposons que $x$ est racine de $P$ alors
+\[
+P(x)=\displaystyle\sum\limits_{i = 0}^{n} a_i x^i = 0 \quad\Longleftrightarrow\quad 
+a_n x^n+\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i = 0
+\quad\Longleftrightarrow\quad 
+- a_n x^n = \displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i
+\]
+Donc $|a_n x^n| = \left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i \right|$. On en déduit que par contraposition que si $|a_n x^n| \ne \left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i \right|$, alors $x$ n'est pas racine de $P$
+
+Graphiquement on peut constater qu'un polynôme diverge sur les bords, c'est-à-dire lorsque $|x|$ est grand en module. En effet, si $x$ est grand, on a $x^n$ qui est beaucoup plus grand que les autres monômes. On va chercher une valeur de $x$ à partir de laquelle on est sûr d'avoir $|a_n x^n| > \left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i \right|$ et donc de ne pas avoir l'égalité. 
+\vspace{1.5\baselineskip}
+
+\textbf{Étape 2: Recherche d'un seuil suffisant pour que le monôme de plus haut degré écrase les autres}
+
+On note $R$ le module de $x$. En appliquant les propriétés fonctionnelles (inégalité triangulaire puis produit et puissance) de la fonction valeur absolue, on a :
+\[
+\left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i X^i\right|
+\le \displaystyle\sum\limits_{i = 0}^{n-1} |a_i X^i|
+\le \displaystyle\sum\limits_{i = 0}^{n-1} |a_i| |X|^i
+\le \displaystyle\sum\limits_{i = 0}^{n-1} |a_i| R^i
+\]
+Or on sait que $\forall i \in \integerIntervalCC{0}{n-1}, |a_i| \le A$ par définition du maximum. En injectant cette propriété, on obtient que : 
+\[
+\displaystyle\sum\limits_{i = 0}^{n-1} |a_i| R^i \le \displaystyle\sum\limits_{i = 0}^{n-1} A R^i \le A \times \left( \displaystyle\sum\limits_{i = 0}^{n-1} R^i \right)
+\]
+On remarque alors que $\displaystyle\sum\limits_{i = 0}^{n-1} R^i$ est la somme d'une série géométrique de raison $R$ qui vaut $\dfrac{R^{n}-1}{R-1}$. \\
+Il suffit donc que $|a_n X^n| = |a_n| R^n > A \dfrac{R^{n}-1}{R-1}$ pour avoir l'inégalité recherchée. 
+
+\[
+\begin{aligned}
+|a_n| R^n > A \dfrac{R^{n}-1}{R-1} 
+&\quad\Longleftrightarrow\quad 
+R^n(R - 1) >\dfrac{A}{|a_n|}(R^n - 1)\\
+&\quad\Longleftrightarrow\quad 
+R^n\left(R - \left(1 + \dfrac{A}{|a_n|}\right)\right) > -1
+\end{aligned}
+\]
+
+En prenant $R > 1 + \dfrac{A}{|a_n|}$, on a $R^n\left(R - \left(1 + \dfrac{A}{|a_n|}\right)\right) > 0 > -1$, ainsi le seuil $1 + \dfrac{A}{|a_n|}$ convient. 
+\vspace{1.5\baselineskip}
+
+\textbf{Conclusion partielle: } Si $|x|> 1 + \dfrac{A}{|a_n|}$, alors $|a_n x^n| > \left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i \right|$ donc $|a_n x^n| \ne \left|\displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i \right| $ donc $x$ n'est pas racine. 
+\vspace{1.5\baselineskip}
+
+\textbf{Étape 3:Prouver qu'un polynôme n'a pas de racine au voisinage de zéro}
+
+Supposons que $x$ est racine de $P$ alors, si on sort le premier terme de la somme
+\[
+P(x)=\displaystyle\sum\limits_{i = 0}^{n} a_i x^i = 0 \quad\Longleftrightarrow\quad 
+a_0 x^0+\displaystyle\sum\limits_{i = 1}^{n} a_i x^i = 0
+\]
+En passant le premier terme de l'autre côté et en simplifiant $x^0$ par $1$, on a 
+\[
+\quad\Longleftrightarrow\quad 
+- a_0 = \displaystyle\sum\limits_{i = 0}^{n-1} a_i x^i
+\]
+Donc $|a_0| = \left|\displaystyle\sum\limits_{i = 1}^{n} a_i x^i \right|$. \\
+On en déduit que par contraposition que si $|a_0| \ne \left|\displaystyle\sum\limits_{i = 1}^{n} a_i x^i \right|$, alors $x$ n'est pas racine de $P$. Graphiquement, lorsque $x$ tend vers $0$, la quantité $\left|\displaystyle\sum\limits_{i = 1}^{n} a_i x^i \right|$ est de plus en plus petite. On va donc chercher un seuil tel qu'on est $|a_0| > \left|\displaystyle\sum\limits_{i = 1}^{n} a_i x^i \right|$ pour $x$ en dessous. 
+\vspace{1.5\baselineskip}
+
+\textbf{Étape 4: Recherche d'un second seuil}
+
+On note $R$ le module de $x$. En appliquant les propriétés fonctionnelles (inégalité triangulaire puis produit et puissance) de la fonction valeur absolue, on a :
+\[
+\left|\displaystyle\sum\limits_{i = 1}^{n} a_i X^i\right|
+\le \displaystyle\sum\limits_{i = 1}^{n} |a_i X^i|
+\le \displaystyle\sum\limits_{i = 1}^{n} |a_i| |X|^i
+\le \displaystyle\sum\limits_{i = 1}^{n} |a_i| R^i
+\]
+Or on sait que $\forall i \in \integerIntervalCC{1}{n}, |a_i| \le B$ par définition du maximum. En injectant cette propriété, on obtient que : 
+\[
+\displaystyle\sum\limits_{i = 1}^{n} |a_i| R^i 
+\le \displaystyle\sum\limits_{i = 1}^{n} B R^i 
+\le B \times \left( \displaystyle\sum\limits_{i = 1}^{n} R^i \right)
+\]
+On remarque alors que $\displaystyle\sum\limits_{i = 1}^{n} R^i$ est la somme d'une série géométrique de raison $R$ qui vaut $R\dfrac{1 - R^{n}}{1 - R}$. \\
+Il suffit donc que $|a_0| > B R\dfrac{1 - R^n}{1 - R}$ pour avoir l'inégalité recherchée. Posons $M = \dfrac{1}{R}$, alors:
+
+\[
+\begin{aligned}
+|a_0| > B R \dfrac{1 - R^{n}}{1 - R}
+&\quad\Longleftrightarrow\quad
+|a_0| >B \dfrac{1}{M} \dfrac{1-\left(\dfrac{1}{M}\right)^n}{1-\dfrac{1}{M}}\\
+&\quad\Longleftrightarrow\quad
+|a_0|M^n >B \dfrac{M^n\left(1-\left(\dfrac{1}{M}\right)^n\right)}{M\left(1-\dfrac{1}{M}\right)} = B \dfrac{M^n-1}{M-1}
+\end{aligned}
+\]
+
+L'équation obtenue est la même que précédemment. On en déduit qu'en prenant $M > 1 + \dfrac{B}{|a_0|}$, on a bien l'inégalité attendue. Cela revient à prendre $R < \dfrac{1}{1 + \dfrac{B}{|a_0|}}$. 
+\vspace{1.5\baselineskip}
+
+\textbf{Conclusion :}
+Si $x$ est racine de $P$ alors on a 
+\[
+ \dfrac{1}{1+\dfrac{B}{|a_0|}} \le |x| \le 1 + \dfrac{A}{|a_n|} 
+\]
+avec $A = \max\limits_{i\in \integerIntervalCC{0}{n-1}}\set{|a_i|}$ et $B = \min\limits_{i\in \integerIntervalCC{1}{n}}\set{|a_i|}$
+\end{proof}

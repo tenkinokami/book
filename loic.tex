@@ -1,0 +1,50 @@
+\begin{exercice}
+Soit $f : 
+\left\{
+\begin{array}{l l l}
+x &\text{ si } &x \in [ 1, e [\\
+x f(\ln(x)) &\text{ si }& x > e\\
+\end{array} 
+\right.$
+
+La série $\displaystyle\sum\limits_{n = 1}^{+\infty} \dfrac{1}{f(n)}$ est-elle convergente ?
+\end{exercice}
+
+\begin{proof}
+On remarque que $f$ est une fonction définie de manière récursive. \\
+Sur l'intervalle $[ 1, e [ = [\exp^{0}(1), \exp^{1}(1)[$, $f$ est la fonction identité $x \longmapsto x$\\
+Sur l'intervalle $[ e, e^e [ = [\exp^{1}(1), \exp^{2}(1)[$, $f$ est la fonction $x \longmapsto f(\ln(x)) = x \ln(x)$ car $\ln(x) \in [1, e[$\\
+Sur l'intervalle $[ e^e, e^{e^e} [ = [\exp^{2}(1), \exp^{3}(1)[$, $f$ est la fonction $x \longmapsto x \ln(x) \ln(\ln(x))$ en appliquant le logarithme deux fois récursivement.\\
+Ainsi, pour tout $n \in \mathbb{N}$, si $x \in [\exp^{n}(1), \exp^{n+1}(1)[$, alors $f(x)= \displaystyle\prod\limits_{i = 0}^{n} \ln^{i}(x)$.\\
+
+On sait par récurrence que la primitive de $\dfrac{1}{f}$ sur chaque segment est $\ln^{n+1}(x)$, donc on a :
+\[
+\displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(x)} \: d x 
+= \displaystyle\sum\limits_{n = 0}^{+\infty} \displaystyle\int\limits_{\exp^{n}(1)}^{\exp^{n+1}(1)} \dfrac{1}{f(x)} \: d x 
+= \displaystyle\sum\limits_{n = 0}^{+\infty} \displaystyle\int\limits_{\exp^{n}(1)}^{\exp^{n+1}(1)} \dfrac{1}{\displaystyle\prod\limits_{i = 0}^{n} \ln^{i}(x)} \: d x 
+\]
+\[
+=\displaystyle\sum\limits_{n = 0}^{+\infty} \Bigl[\ln^{n+1}(x)\Bigr]_{\exp^{n}(1)}^{\exp^{n+1}(1)} 
+= \displaystyle\sum\limits_{n = 0}^{+\infty} \Bigr(\ln^{n+1}(\exp^{n+1}(1)) - \ln^{n+1}(\exp^{n}(1))\Bigr)
+\]
+\[
+= \displaystyle\sum\limits_{n = 0}^{+\infty} \Bigr(1 - \ln(\exp^{0}(1))\Bigr) 
+= \displaystyle\sum\limits_{n = 0}^{+\infty} 1
+\]
+
+Cette dernière série étant divergente grossièrement, on en déduit que $\displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(x)} \: d x $ est divergente.
+Cependant, $\dfrac{1}{f}$ étant une fonction monotone, donc $\displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(x)} \: d x $ et  $\displaystyle\sum\limits_{n = 1}^{+\infty} \dfrac{1}{f(n)}$ ont la même monotonie. Ainsi, la série $\displaystyle\sum\limits_{n = 1}^{+\infty} \dfrac{1}{f(n)}$ est une série divergente.  
+
+\textbf{Méthode alternative}\\
+Plus astucieusement, on peut remarquer que :
+\[
+\displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(x)} \: d x 
+= \displaystyle\int\limits_{1}^{e} \dfrac{1}{f(x)} \: d x + \displaystyle\int\limits_{e}^{+\infty} \dfrac{1}{f(x)} \: d x
+= \displaystyle\int\limits_{1}^{e} \dfrac{1}{f(x)} \: d x + \displaystyle\int\limits_{e}^{+\infty} \dfrac{1}{x f(\ln(x))} \: d x
+\]
+On peut alors effectuer le changement de variable $t = \ln(x)$ dans la seconde intégrale, ce qui nous donne :
+\[
+\displaystyle\int\limits_{e}^{+\infty} \dfrac{1}{x f(\ln(x))} \: d x = \displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{e^t f(t)} \: e^t d t = \displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(t)} d t
+\]
+Cela signifie alors que la première intégrale $\displaystyle\int\limits_{1}^{e} \dfrac{1}{f(x)} \: d x$ est nulle, ce qui est absurde si on suppose qu'elle était convergente. La fonction intégrée étant positive, on en déduit que $\displaystyle\int\limits_{1}^{+\infty} \dfrac{1}{f(x)} \: d x$ est infinie, et on peut ensuite conclure comme dans la première méthode
+\end{proof}

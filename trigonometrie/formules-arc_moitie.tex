@@ -1,0 +1,63 @@
+\begin{lemma}
+\label{trigonometrie:arc_moitie}
+Soit $x \in \setRealNumbers$, on note $t = \tan\left(\dfrac{x}{2}\right)$, alors 
+\[
+\cos(x) = \dfrac{1-t^2}{1+t^2}
+\qquad\quad
+\sin(x)= \dfrac{2t}{1+t^2}
+\qquad\quad
+\tan(x) = \dfrac{2t}{1-t^2}
+\]
+\end{lemma}
+
+\begin{proof}
+Soit $x \in \setRealNumbers$, alors en appliquant les formules de duplication :
+\[
+\cos(x) 
+= \cos^2\left(\dfrac{x}{2}\right)-\sin^2\left(\dfrac{x}{2}\right) 
+= \dfrac{\cos^2\left(\dfrac{x}{2}\right)-\sin^2\left(\dfrac{x}{2}\right)}{1}
+\]
+Or on sait que $\cos^2\left(\dfrac{x}{2}\right)+\sin^2\left(\dfrac{x}{2}\right) = 1$, donc
+\[
+\cos(x)=\dfrac{\cos^2\left(\dfrac{x}{2}\right)-\sin^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)+\sin^2\left(\dfrac{x}{2}\right)}
+\]
+En divisant par $\cos^2\left(\dfrac{x}{2}\right)$ au numérateur et au dénominateur, on a 
+\[
+\lboxed{\cos(x)}
+=\dfrac{\dfrac{\cos^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}-\dfrac{\sin^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}}{\dfrac{\cos^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}+\dfrac{\sin^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}}
+=\dfrac{1-\tan^2\left(\dfrac{x}{2}\right)}{1+\tan^2\left(\dfrac{x}{2}\right)}
+\rboxed{=\dfrac{1-t^2}{1+t^2}}
+\]
+
+De la même manière,
+\[
+\sin(x) = 2\cos\left(\dfrac{x}{2}\right)\sin\left(\dfrac{x}{2}\right) =\dfrac{2\cos\left(\dfrac{x}{2}\right)\sin\left(\dfrac{x}{2}\right)}{1}
+\]
+Donc 
+\[
+\sin(x) =\dfrac{2\cos\left(\dfrac{x}{2}\right)\sin\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)+\sin^2\left(\dfrac{x}{2}\right)}
+\]
+En divisant par $\cos^2\left(\dfrac{x}{2}\right)$, on a 
+\[
+\lboxed{\sin(x)} =
+\dfrac{\dfrac{2\cos\left(\dfrac{x}{2}\right)\sin\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}}{\dfrac{\cos^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}+\dfrac{\sin^2\left(\dfrac{x}{2}\right)}{\cos^2\left(\dfrac{x}{2}\right)}}
+=\dfrac{\dfrac{2\sin\left(\dfrac{x}{2}\right)}{\cos\left(\dfrac{x}{2}\right)}}{1+\tan^2\left(\dfrac{x}{2}\right)}
+= \dfrac{2\tan\left(\dfrac{x}{2}\right)}{1+\tan^2\left(\dfrac{x}{2}\right)}
+\:\rboxed{= \dfrac{2t}{1+t^2}}
+\]
+
+Enfin, par définition de la tangente
+\[
+\lboxed{\tan(x)}
+=\dfrac{\sin(x)}{\cos(x)} 
+= \dfrac{\dfrac{2t}{1+t^2}}{\dfrac{1-t^2}{1+t^2}} 
+\:\rboxed{= \dfrac{2t}{1-t^2}}
+\]
+Ce résultat peut aussi se retrouver directement par la formule de duplication de la tangente
+\[
+\tan(x)
+=\tan\left(2 \times \dfrac{x}{2}\right)
+=\dfrac{2\tan\left(2 \times \dfrac{x}{2}\right)}{1 - \tan^2\left(2 \times \dfrac{x}{2}\right)} 
+= \dfrac{2t}{1-t^2}
+\]
+\end{proof}

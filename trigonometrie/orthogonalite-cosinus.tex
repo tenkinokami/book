@@ -1,0 +1,64 @@
+\begin{lemma}
+\[
+\forall n, m \in \setNaturalNumbers, \: \displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du = \left\{\begin{array}{l}
+0 \quad\text{ si } n \ne m\\
+\pi \quad\text{ si } n = m = 0\\
+\dfrac{\pi}{2} \quad\text{ sinon}
+\end{array}\right. 
+\]
+\end{lemma}
+
+\begin{proof}
+Soient $n, m \in \setNaturalNumbers$, alors d'après les formules de linéarisation
+\[
+\forall u \in \realIntervalCC{0}{\pi}, \: \cos(nu)\cos(mu) = \dfrac{1}{2}\Bigl(\cos(nu-mu)+\cos(nu+mu)\Bigr) 
+\]
+Donc 
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du 
+= \displaystyle\int\limits_{0}^{\pi} \dfrac{1}{2}\Bigl(\cos(nu-mu)+\cos(nu+mu)\Bigr)  \:du 
+\]
+Donc par linéarité de l'intégration
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du 
+=\dfrac{1}{2}\left(\displaystyle\int\limits_{0}^{\pi} \cos(nu-mu)\:du\right)+\dfrac{1}{2}\left(\displaystyle\int\limits_{0}^{\pi} \cos(nu+mu)\:du \right)
+\]
+
+Alors par théorème
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu-mu) du 
+= \displaystyle\int\limits_{0}^{\pi} \cos((n-m)u) du 
+= \pi\: \kronecker{n - m}{0}
+\]
+De la même manière, 
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu+mu) du 
+= \displaystyle\int\limits_{0}^{\pi} \cos((n+m)u) du 
+= \pi\: \kronecker{n + m}{0}
+\]
+Ainsi, on a 
+\[
+\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du 
+=\dfrac{1}{2}\Bigl(\pi\: \kronecker{n - m}{0} + \pi\: \kronecker{n + m}{0}\Bigr)
+=\dfrac{1}{2}\Bigl(\kronecker{n - m}{0} + \kronecker{n + m}{0}\Bigr)
+\]
+
+On distingue trois cas :
+\begin{itemize}
+\item Si \fbox{$n \ne m$}, alors $\kronecker{n - m}{0} = 0$ et $n + m > 0$ donc $\kronecker{n + m}{0} = 0$, on a donc 
+\[
+\lboxed{\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du }
+=\dfrac{\pi}{2}(0 + 0) \rboxed{= 0} 
+\]
+\item Si \fbox{$n = m = 0$}, alors $\kronecker{n - m}{0} = 1$ et $\kronecker{n + m}{0} = 1$, on a donc 
+\[
+\lboxed{\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du} 
+=\dfrac{\pi}{2}(1 + 1) \rboxed{= \pi} 
+\]
+\item Si \fbox{$n = m > 0$}, alors $\kronecker{n - m}{0} = 0$ et $n + m = 2n > 0$ donc $\kronecker{n + m}{0} = 0$, on a donc 
+\[
+\lboxed{\displaystyle\int\limits_{0}^{\pi} \cos(nu)\cos(mu) \:du} 
+=\dfrac{\pi}{2}(1 + 0) \rboxed{= \dfrac{\pi}{2}}
+\]
+\end{itemize}
+\end{proof}

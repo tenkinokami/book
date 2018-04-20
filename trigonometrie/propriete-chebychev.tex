@@ -1,0 +1,74 @@
+\begin{property}
+Pour tout $n \in \setNaturalNumbers$ et pour tout $x \in \setRealNumbers$, on a
+\[
+\polChebCos{n}(\cos(x))=\cos(nx) 
+\quad\quad
+\polChebSin{n}(\sin(x))=\dfrac{\sin((n+1)x)}{\sin(x)}
+\]
+\end{property}
+
+\begin{proof}
+Soit $x \in \setRealNumbers$. On raisonne par \textbf{récurrence double}. On définit pour tout $n \in \setNaturalNumbers$ la propriété
+\[
+\mathcal{P}(n) : \:\polChebCos{n}(\cos(x))=\cos(nx) 
+\]
+\textbf{Initialisation :} Pour $n=0$, on a $\polChebCos{0}(\cos(x)) = 1$ et $\cos(0x) =\cos(0) = 1$ donc $\mathcal{P}(0)$ est vérifiée.\\
+De la même manière, $\polChebCos{1}(\cos(x)) = \cos(x)$ et $\cos(1x)=\cos(x)$ donc $\mathcal{P}(1)$ est vérifiée. 
+
+\textbf{Hérédité :} On suppose que la propriété est vraie pour un certain rang $n$ et $n+1$ et on démontre que $\mathcal{P}(n)$ est vraie :
+
+Comme $\polChebCos{n+2}$ est un polynôme de Tchebychev de première espèce, on a 
+\[
+\polChebCos{n+2}(X) = 2 X \polChebCos{n+1}(X) - \polChebCos{n}(X)
+\]
+Par hypothèse de récurrence, $\polChebCos{n+1}(\cos(x)) = \cos((n+1)x)$ et $\polChebCos{n}(\cos(x)) = \cos(nx)$, donc en réinjectant dans la formule de récurrence, on a 
+\[
+\polChebCos{n+2}(\cos(x)) = 2 \cos(x)\cos((n+1)x) - \cos(nx)
+\]
+Or d'après les formules de linéarisation, on a 
+\[
+\cos(x)\cos((n+1)x) = \dfrac{1}{2}\Bigl(\cos(nx)+\cos((n+2)x)\Bigr)
+\]
+On a donc 
+\[
+\lboxed{\polChebCos{n+2}(\cos(x))} = \Bigl(\cos(nx)+\cos((n+2)x)\Bigr) - \cos(nx) \rboxed{= \cos((n+2)x)}
+\]
+\textbf{Conclusion :} On a donc \fbox{$\forall n \in \setNaturalNumbers, \:\polChebCos{n}(\cos(x))=\cos(nx)$}. 
+\end{proof}
+
+\begin{proof}
+Soit $x \in \setRealNumbers$. On raisonne par \textbf{récurrence double}. On définit pour tout $n \in \setNaturalNumbers$ la propriété
+\[
+\mathcal{P}(n) : \:\polChebSin{n}(\cos(x))=\dfrac{\sin((n+1)x)}{\sin(x)}
+\]
+\textbf{Initialisation :} Pour $n=0$, on a $\polChebSin{0}(\cos(x)) = 1$ et $\dfrac{\sin((0+1)x)}{\sin(x)} =\dfrac{\sin(x)}{\sin(x)}  = 1$ donc $\mathcal{P}(0)$ est vérifiée.\\
+De la même manière, $\polChebSin{1}(\cos(x)) = 2\cos(x)$ et $\dfrac{\sin((1+1)x)}{\sin(x)}=\dfrac{\sin(2x)}{\sin(x)}$. Or on sait d'après les formules de duplication que 
+\[
+\sin(2x)=2\sin(x)\cos(x)
+\]
+Donc $\mathcal{P}(1)$ est vérifiée. 
+
+\textbf{Hérédité :} On suppose que la propriété est vraie pour un certain rang $n$ et $n+1$ et on démontre que $\mathcal{P}(n)$ est vraie :
+
+Comme $\polChebSin{n+2}$ est un polynôme de Tchebychev de deuxième espèce, on a 
+\[
+\polChebSin{n+2}(X) = 2 X \polChebSin{n+1}(X) - \polChebSin{n}(X)
+\]
+Par hypothèse de récurrence, $\polChebSin{n+1}(\cos(x)) = \dfrac{\sin((n+2)x)}{\sin(x)}$ et $\polChebSin{n}(\cos(x)) = \dfrac{\sin((n+1)x)}{\sin(x)}$, donc en réinjectant dans la formule de récurrence, on a
+\[
+\sin(x)\polChebCos{n+2}(\cos(x)) = 2 \cos(x)\sin((n+2)x) - \sin((n+1)x)
+\]
+Or d'après les formules de linéarisation, on a 
+\[
+\sin((n+2)x)\cos(x) = \dfrac{1}{2}\Bigl(\sin((n+3)x)+\sin((n+1)x)\Bigr)
+\]
+On a donc 
+\[
+\sin(x)\polChebSin{n+2}(\cos(x)) = \Bigl(\sin((n+3)x)+\sin((n+1)x)\Bigr) - \sin((n+1)x) = \sin((n+3)x)
+\]
+Ce qui finalement revient à dire que
+\[
+\lrboxed{\polChebSin{n+2}(\cos(x)) = \dfrac{\sin((n+3)x)}{\sin(x)}}
+\]
+\textbf{Conclusion :} On a donc $\lrboxed{\forall n \in \setNaturalNumbers, \:\polChebSin{n}(\cos(x)) = \dfrac{\sin((n+1)x)}{\sin(x)}}$. 
+\end{proof}

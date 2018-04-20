@@ -1,0 +1,66 @@
+%%% LISTE DES PACKAGES :
+
+%% POLICE
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+\setmainlanguage{french}
+
+%% HYPERLIENS
+\RequirePackage{import}
+\RequirePackage[pdfencoding = auto]{hyperref} % Gestion des hyperliens et des infos sur le pdf
+\RequirePackage[final]{pdfpages} % Inclus des pages de pdf
+\hypersetup%
+{%
+hidelinks,%
+breaklinks=true,%
+unicode%
+}%
+
+\RequirePackage{accsupp}
+\newcommand*{\copyable}[1]{\BeginAccSupp{ActualText=\detokenize{#1},method=escape}#1\EndAccSupp{}}
+
+%% SAISIE :
+\RequirePackage{environ} % Déclaration simplifiée d'environnements
+\RequirePackage{xargs} % Commandes avec un argument optionnel déclarés simplement
+\RequirePackage{xparse} % Commandes aver un argument optionnel déclarés complètement
+\RequirePackage{ifthen}	% Structure conditionnelle avec des conditions 
+\RequirePackage{suffix} % Commandes avec *
+\RequirePackage{calc} % Permet de calculer la taille de textes et d'autres objets
+\RequirePackage{longtable} % Tableaux sur plusieurs pages
+\RequirePackage{hhline} % Déclaration de tableaux complexes
+\RequirePackage{listings} % Inclure du code informatique
+\RequirePackage{verbatim} % Inclure du code informatique latex
+\RequirePackage{minted} % Inclure du code informatique
+
+%% GRAPHIQUES :
+
+\RequirePackage{xcolor} % Gestion des couleurs RVB
+\RequirePackage[pagecolor=white, nopagecolor=white]{pagecolor} % Coloration des pages
+\RequirePackage{pgf}
+\RequirePackage{pgfplots}
+
+\pgfplotsset{compat=1.14}
+
+\RequirePackage{tikz} % Création de figures en pdf
+\RequirePackage[tikz]{bclogo} % Création des cadres des théorèmes
+
+\usetikzlibrary{arrows,automata,calc}
+
+\RequirePackage{float} % Pour forcer les \figure via H (plus fort que !h)
+\RequirePackage{mdframed} % Gestion des coupures d'environnement en fin de page 
+\RequirePackage{geometry} % Placement des marges
+\RequirePackage{titlesec} % Titre des chapitres sections .../ entête
+\RequirePackage{titletoc} % Titre des chapitres sections .../ entête
+\RequirePackage{titleps} % Titre des chapitres sections .../ entête
+\RequirePackage{setspace} % Espaces interlignes
+
+%% MATHEMATIQUES :
+
+\RequirePackage{amsmath} % Commandes mathématiques basiques
+\RequirePackage{mathtools} % Amélioration de \asmmath
+\RequirePackage{amsthm} % Gestion des environnements théorème, lemme .... 
+\RequirePackage{amssymb} % Symboles mathématiques étendus
+\RequirePackage{stmaryrd} % Contient d'autres symboles (utilisé dans \setint)
+\RequirePackage{graphicx} % Permet d'elargir les symboles
+\RequirePackage{mathrsfs} % Lettres de \mathscr
+\RequirePackage{bbm} % Police d'écriture (\N, \1 ...) 

@@ -1,0 +1,11 @@
+\begin{definition}[Polynôme de Tchebychev]
+\label{definition:polynome_de_tchebychev}
+La suite de \textbf{polynôme de Tchebychev de première espèce} $(\polChebCos[n])_{n \in \setNaturalNumbers}$ est une suite récurrente d'ordre $2$ définie par les deux premiers termes $\polChebCos{0}(X) = 1$ et $\polChebCos{1}(X) = X$. Elle vérifie la relation de récurrence
+\[
+\forall n \in \setNaturalNumbers,\:  \polChebCos{n+2}(X) = 2 X \polChebCos{n+1}(X) - \polChebCos{n}(X)
+\]
+La suite de \textbf{polynôme de Tchebychev de deuxième espèce} $(\polChebSin[n])_{n \in \setNaturalNumbers}$ est définie par $\polChebSin{0}(X) = 1$ et $\polChebSin{1}(X) = 2X$. Elle vérifie la relation de récurrence
+\[
+\forall n \in \setNaturalNumbers,\: \polChebSin{n+2}(X) = 2 X \polChebSin{n+1}(X) - \polChebSin{n}(X)
+\]
+\end{definition}

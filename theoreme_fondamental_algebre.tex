@@ -1,0 +1,70 @@
+\begin{theorem}[Théorème fondamental de l'algèbre]
+Tout polynôme non constant, à coefficients complexes, admet au moins une racine complexe. 
+\end{theorem}
+
+\begin{proof}
+Soit $P$ un polynôme non constant à coefficients complexes, alors par définition d'un polynôme, il existe $a_1, ..., a_n\in \setRealNumbers$ tels que $P(X)= \displaystyle\sum\limits_{i = 0}^{n} a_i X^i$. D'après le théorème précédent, on sait que si $x$ est racine du polynôme $P$ alors $|x|$ ne peut dépasser un certain seuil.\\ L'ensemble des racines appartient donc à un disque de rayon fixé par les coefficients. Ce disque est borné et fermé, il est donc compact. Cela signifie que la fonction $x \longmapsto |x|$ atteint sa borne inférieure qui est donc un minimum. Si on note $\alpha$ le point un point où ce minimum est atteint, alors on définit $Q(X)=P(X+\alpha)$. $Q$ est un polynôme de degré $n$, il existe des coefficients $b_0, \dots, b_n$ tels que $Q(X)=\displaystyle\sum\limits_{i=0}^{n} b_iX^i$. On note $d$ l'indice du coefficient $b_d$ tel que $b_d$ est non nul avec $d$ le plus petit possible. 
+On a alors
+\[
+Q(X)=b_0 + \displaystyle\sum\limits_{i=d}^{n} b_iX^i= b_0 + b_dX^d + \displaystyle\sum\limits_{i=d + 1}^{n} b_iX^i
+\]
+On va chercher un axe sur lequel on arrive à faire baisser le module de Q au voisinage de $0$. Soit $t \in \setRealNumbers$, on regarde $Q$ au point $t \times \left(-\dfrac{b_0}{b_d}\right)^{1 / d}$. Cette quantité est bien définie comme $b_0 \ne 0$ et que $b_d \ne 0$. 
+\[
+Q\left(t \times \left(-\dfrac{b_0}{b_d}\right)^{1 / d}\right) = b_0( 1 - t^d) + \displaystyle\sum\limits_{i=d + 1}^{n} b_i\left(-\dfrac{b_0}{b_d}\right)^{i / d} t^i
+\]
+Or si $0 < t < 1$, on a $\forall i > d, t^d \le t^i$, donc en sommant les inégalités, on obtient 
+
+\[
+\begin{aligned}[t]
+b_0( 1 - t^d) + \displaystyle\sum\limits_{i=d + 1}^{n} b_i\left(-\dfrac{b_0}{b_d}\right)^{i / d} t^i 
+&\le 
+b_0( 1 - t^d) + \displaystyle\sum\limits_{i=d + 1}^{n} b_i\left(-\dfrac{b_0}{b_d}\right)^{i / d} t^{d+1}\\
+&\le 
+b_0( 1 - t^d) + t^{d+1} \left(\displaystyle\sum\limits_{i=d + 1}^{n} b_i\left(-\dfrac{b_0}{b_d}\right)^{i / d} \right)
+\end{aligned}
+\]
+
+On note $A = \displaystyle\sum\limits_{i=d + 1}^{n} b_i\left(-\dfrac{b_0}{b_d}\right)^{i / d}$, alors l'inégalité se réécrit : 
+\[
+Q\left(t \times \left(-\dfrac{b_0}{b_d}\right)^{1 / d}\right) \le b_0( 1 - t^d) + A t^{d+1}
+\]
+On cherche maintenant $0 < t < 1$ tel que 
+\[
+\left|Q\left(t \times \left(-\dfrac{b_0}{b_d}\right)^{1 / d}\right)\right| < |Q(0)| = |b_0|
+\]
+Un tel $t$ vérifie alors 
+\[
+|b_0( 1 - t^d) + A t^{d+1}| < |b_0|
+\]
+Or on sait d'après l'inégalité triangulaire et les propriétés du module que
+\[
+\begin{aligned}[t]
+|b_0( 1 - t^d) + A t^{d+1}| 
+&\le 
+|b_0( 1 - t^d)| + |A t^{d+1}|\\
+&\le 
+( 1 - t^d)|b_0| + |A| t^{d+1}
+\end{aligned}
+\]
+
+Ainsi, on obtient une condition suffisante (mais pas nécessaire) :
+\[
+( 1 - t^d)|b_0| + |A| t^{d+1} < |b_0|
+\]
+Or on a 
+\[
+\begin{aligned}
+(1 - t^d)|b_0| + |A| t^{d+1} < |b_0|
+&\quad\Longleftrightarrow\quad 
+- t^d|b_0| + |A| t^{d+1} < 0 \\
+&\quad\Longleftrightarrow\quad 
+|A| t^{d+1} < t^d|b_0|\\
+&\quad\Longleftrightarrow\quad 
+|A| t < |b_0|\\
+&\quad\Longleftrightarrow\quad 
+t < \dfrac{|b_0|}{|A|}
+\end{aligned}
+\]
+
+Ainsi, posons donc $t =\dfrac{1}{2} \dfrac{|b_0|}{|A|}$, on a bien $\left|Q\left(t \times \left(-\dfrac{b_0}{b_d}\right)^{1 / d}\right)\right| < |Q(0)| = |b_0|$ donc $0$ n'est pas un minimum local de $P$ donc $\alpha$ n'est pas un minimum local de $Q$, ce qui est absurde. 
+\end{proof}

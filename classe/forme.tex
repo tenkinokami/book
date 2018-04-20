@@ -1,0 +1,85 @@
+%%% FORME DU DOCUMENT :
+\geometry{hmargin = 2cm, vmargin = 2cm}%papersize = {16cm, 24cm}
+
+%\setlength{\headheight}{15.8pt} % Modification de la hauteur de l'entête
+\setlength{\parindent}{0pt} % Suppression de l'indentation automatique
+\setstretch{1.2} % Hauteur du saut de ligne normal
+\setcounter{tocdepth}{1} % Permet d'afficher jusqu'aux sections
+\setcounter{secnumdepth}{3} % Permet de numeroter les sous sections
+\setlength{\parskip}{0.5\baselineskip}
+
+\AtBeginDocument{\renewcommand{\contentsname}{\color{black}Sommaire}}%\color{black}
+
+\definecolor{colpart}{RGB}{9, 132, 150}
+\definecolor{colchapter}{RGB}{93, 42, 45}
+\definecolor{colsection}{RGB}{172, 30, 68}
+\definecolor{colsoussection}{RGB}{0, 51, 102}
+\definecolor{colsoussoussection}{RGB}{180, 140, 0}
+\definecolor{colentete}{RGB}{91, 60, 17}
+%	NOUVELLE FORME DES PARTIES :
+\titleformat{\part}[display]{\normalfont\scshape\color{colpart}}{\LARGE\filcenter\enspace\partname\enspace}{20pt}{\thispagestyle{empty}\Huge\filcenter}
+
+%	NOUVELLE FORME DES CHAPITRES :
+
+\titleformat{\chapter}[frame]{\normalfont\color{colchapter!80}\scshape}{\Large\filcenter\enspace\chaptername\hspace{0.3cm}\thechapter\enspace}{12pt}{\thispagestyle{empty}\Huge\filcenter\color{colchapter!90}} % Nouvelle forme des chapitres
+\titlespacing{\chapter}{0cm}{-1.5\baselineskip}{1\baselineskip}
+
+%% NOUVELLE FORME DES SECTIONS :
+
+\titleformat{\section}[hang]{\LARGE\bfseries}{\colorbox{colsection}{\color{red!0}~\thesection~}}{0.5em}{\color{colsection}}
+\renewcommand{\thesection}{\Roman{section}} % Nouvelle forme des sections
+\titlespacing*{\section}{0cm}{0.4\baselineskip}{0.2\baselineskip}
+
+%% NOUVELLE FORME DES SOUS SECTIONS :
+\titleformat{\subsection}{\Large\bfseries}{\colorbox{colsoussection}{\color{red!0}~\thesubsection~}}{0.5em}{\color{colsoussection}} 
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titlespacing*{\subsection}{0.2cm}{0.3\baselineskip}{0.2\baselineskip}
+
+%% NOUVELLE FORME DES SOUS SOUS SECTIONS :
+\titleformat{\subsubsection}{\large\bfseries}
+{\colorbox{colsoussoussection}{\color{red!0}~\thesubsubsection~}}{0.5em}{\color{colsoussoussection}}
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+\titlespacing*{\subsubsection}{0.2cm}{0.2\baselineskip}{0.1\baselineskip}
+
+%% NOUVELLE FORME DES ENTÊTES ET DES PAGES:
+
+\newcommand{\pagenum}{\large\colorbox{colentete!80}{\color{red!0}\:\usepage\:}}
+\newcommand{\pagechapter}{\scshape\large\color{colentete}Ch\:\thechapter. \chaptertitle}
+\newcommand{\pagesection}{\large\scshape\color{colentete}\thesection. \sectiontitle}
+
+\newpagestyle{PageNormale}
+{
+\newpagecolor{white}
+\renewcommand{\makeheadrule}{\color{colentete}
+\rule[-.3\baselineskip]{\linewidth}{1pt}}
+\sethead[\pagenum][][\pagechapter]{\pagesection}{}{\pagenum}
+\setfoot[][][]{}{}{}
+}
+
+\newcommand{\marginleft}{%
+\begin{tikzpicture}[overlay,remember picture]
+\fill [color=violet!30]  
+(current page.north east)
+rectangle
+($ (current page.south east) + (-1cm,0cm) $);
+\end{tikzpicture}
+}
+
+\newcommand{\marginright}{
+\begin{tikzpicture}[overlay,remember picture]
+\fill [color=violet!30]
+(current page.north west)
+rectangle
+($ (current page.south west) + (1cm,0cm) $);
+\end{tikzpicture}
+}
+
+
+\newpagestyle{PageExercice}
+{
+\newpagecolor{red!15!violet!10}
+\renewcommand{\makeheadrule}{\color{colentete}
+\rule[-.3\baselineskip]{\linewidth}{1pt}}
+\sethead[\pagenum][][\pagechapter]{\pagesection}{}{\pagenum}
+\setfoot[\marginright][][]{\marginleft}{}{}
+}

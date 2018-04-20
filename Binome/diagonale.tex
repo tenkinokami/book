@@ -1,0 +1,18 @@
+\begin{property}[Relation de la diagonale]
+\label{binome:diagonale}
+Soient $n \in \setNaturalNumbers$ et $k \in \integerIntervalCC{0}{n}$, alors 
+\[
+\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}
+\]
+\end{property}
+
+\begin{proof}
+Soient $n \in \setNaturalNumbers$ et $k \in \integerIntervalCC{0}{n}$, alors par définition
+\[
+\binom{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!(n-k)!} = \dfrac{n+1}{k+1}\dfrac{n!}{k!(n-k)!}
+\]
+étant donné que $(n+1)! = (n+1)\times n!$ et $(k+1)! = (k+1)\times k!$. Donc par définition du coefficient binomial $\displaystyle\binom{n}{k}$, on a bien 
+\[
+\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\dfrac{n!}{k!(n-k)!} = \dfrac{n+1}{k+1}\binom{n}{k}
+\]
+\end{proof}

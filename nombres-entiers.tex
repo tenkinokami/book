@@ -1,0 +1,181 @@
+\chapter{Nombres entiers}
+
+\section{Système d'écriture et bases décimales}
+
+\subsection{Définition}
+En français, on compte le langage avec des mots.
+Par exemple, on va parler d'une pomme, de deux oranges, de trois vaches \dots
+
+Cependant, on remarque que \textbf{la qualité des objets} (le fait que ce soit une vache ou une pomme) \textbf{n'influe pas sur la quantité} (on peut dire une pomme comme on peut dire une vache). Le concept d'entier naît lorsqu'on enlève à l'objet sa qualité, c'est-à-dire lorsqu'il ne représente plus des pommes ou des oranges.
+
+Il y a là une première \textbf{abstraction} où chaque objet est considéré comme une unité pure et sans qualité car celle ci n'influe pas sa quantité. Cela mène alors à considérer que comme le langage commun des collections d'unités.
+
+Ainsi, on va définir les nombres \textbf{entiers naturels} comme des unités de comptage d'objets similaires auxquels ont retire leur qualité commune. Euclide explique dans le Livre \textrm{VII} des \textit{Éléments} que l'unité de comptage « est ce relativement à quoi tout objet est appelé un ».
+
+\subsection{Les chiffres}
+On a alors créé de nouveaux symboles pour désigner les nombres, ces symboles sont appelés des \textbf{chiffres} (ceux qui sont utilisés mondialement sont appelés \textbf{chiffres arabes}):
+\vspace{0.5cm}
+
+\begin{minipage}{0.49\linewidth}
+\begin{itemize}
+\item $0$ correspondra à « aucun » ou à « zéro »,
+\item $1$ correspondra à « un »,
+\item $2$ correspondra à « deux »,
+\item $3$ correspondra à « trois »,
+\item $4$ correspondra à « quatre »,
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.49\linewidth}
+\begin{itemize}
+\item $5$ correspondra à « cinq »,
+\item $6$ correspondra à « six »,
+\item $7$ correspondra à « sept »,
+\item $8$ correspondra à « huit »,
+\item $9$ correspondra à « neuf ».
+\end{itemize}
+\end{minipage}
+
+\subsection{La base décimale}
+On voit qu'on pourrait continuer sans fin à donner de nouveaux symboles pour désigner des chiffres. C'est pourquoi on va décider de créer des paquets pour que l'on puisse plus facilement écrire les nombres.
+
+On va ainsi prendre une convention : Si on ajoute un objet à un groupe de neufs objet, on construit un "paquet d'objet". Ce choix est arbitraire, c'est celui qui est toujours adopté parce que cela correspond au nombre de doigts que nous avons.
+
+On dira alors qu'il y a 1 paquet et aucun objet, ce que l'on notera avec le nombre 10 prononcé 10. Ce système de comptage par regroupement en paquets de 10 objets s'appelle la \textbf{base décimale}. Ainsi,
+
+\begin{itemize}
+\item $10$ correspondra à $1$ paquet d'objets et aucun,
+\item $11$ correspondra à $1$ paquet d'objets et $1$ objet,
+\item $12$ correspondra à $1$ paquet d'objets et $2$ objets,
+\item $13$ correspondra à $1$ paquet d'objets et $3$ objets,
+\item $14$ correspondra à $1$ paquet d'objets et $4$ objets,
+\item $15$ correspondra à $1$ paquet d'objets et $5$ objets,
+\item $16$ correspondra à $1$ paquet d'objets et $6$ objets,
+\item $21$ correspondra à $2$ paquet d'objets et $1$ objet,
+\item $65$ correspondra à $6$ paquet d'objets et $5$ objets,
+\item $259$ correspondra à $9$ objets et $5$ paquets d'objets et $2$ paquets de paquets d'objets
+(car on peut aussi compter les paquets d'objets)
+\end{itemize}
+
+On comprend qu'il existe \textbf{infinité de nombre entiers naturels} car on peut toujours ajouter un élément à un groupe d'objets.
+
+On appelle \textbf{unité}, le chiffre le plus a droite du nombre qui représente les objets seuls. On appelle \textbf{dizaine}, le chiffre juste avant les unités qui représente les paquets d'objets. Puis viennent les \textbf{centaines}, les \textbf{milliers}, les \textbf{dizaine de milliers}, \textbf{centaines de milliers}, les \textbf{millions}, \textbf{dizaine de millions}, \textbf{centaines de millions}, les \textbf{milliard}\dots
+
+\section{Opérations classiques sur les entiers}
+
+\subsection{Addition}
+Nous avons vu comment compter les entiers dans le chapitre précédent. Cependant, nous avons remarqué que la définition des nombres nous a amené à considérer la fusion d'un élément à un groupe qui existait pour créer un nouveau groupe. On remarque que cela ne dépend pas des objets car ajouter 2 pommes à 7 pommes donne 9 pommes, mais ajouter 2 billes à 7 billes donne aussi 9 billes. On va donc pouvoir définir ce qu'on appelle une \textbf{opération}, c'est-à-dire un processus qui va permettre de combiner deux nombres (ici 2 et 7) pour donner un résultat (ici 9).
+
+Ici, on peut définir l'\textbf{addition}. C'est une opération qui permet de compter le nombre d'élément issu de la fusion de deux groupes d'éléments. On va noter l'addition par $+$ entre les deux nombres prononcé \guillemotleft{}plus\guillemotright{}. Par exemple, $3+5$ désigne le nombre d'élément que contient un groupe de 5 éléments auquel on en a ajouté 3. Voici un tableau qui résume les résultats de l'addition pour de petits nombres.
+
+\begin{table}[!ht] \centering
+$\begin{array}{|l||c|c|c|c|c|c|c|c|c|c|}
+\hline
+$+$&0&1&2&3&4&5&6&7&8&9\\\hhline{|=||=|=|=|=|=|=|=|=|=|=|}
+0&0&1&2&3&4&5&6&7&8&9\\\hline
+1&1&2&3&4&5&6&7&8&9&10\\\hline
+2&2&3&4&5&6&7&8&9&10&11\\\hline
+3&3&4&5&6&7&8&9&10&11&12\\\hline
+4&4&5&6&7&8&9&10&11&12&13\\\hline
+5&5&6&7&8&9&10&11&12&13&14\\\hline
+6&6&7&8&9&10&11&12&13&14&15\\\hline
+7&7&8&9&10&11&12&13&14&15&16\\\hline
+8&8&9&10&11&12&13&14&15&16&17\\\hline
+9&9&10&11&12&13&14&15&16&17&18\\\hline
+\end{array}$
+\caption{Table d'addition des nombres de $0$ à $9$}
+\end{table}
+
+On note qu'ajouter aucun élément à un groupe ne modifie pas le nombre d'élément de ce groupe (nous verrons bien plus tard que cette propriété porte un nom).
+On constate que lorsqu'on ajoute des éléments, on arrive parfois à constituer un groupe entier. De plus, le tableau présente une certaine symétrie. Par exemple, on voit qu'ajouter 2 élément à un groupe de trois revient à ajouter 3 éléments à un groupe de deux éléments. \\
+On dit que l'addition est \textbf{commutative} car l'ordre des nombres n'importe pas.
+
+On peut aussi effectuer plusieurs additions à la suite. Par exemple, on peut ajouter d'abord 3 pommes à un groupe de 4 pommes, cela nous donne 7 pommes, et rajouter 2 pommes à ce nouveau groupe, ce qui nous donne 9 pommes. Mathématiquement, on va traduire par des parenthèses la priorité des opérations. 
+L'exemple précédent se traduirait par 
+\[
+\underbrace{\underbrace{(3+4)}_{=7}+ 2}_{=9}
+\]
+
+On remarque que l'opération $3+(4+2)$ donne le même résultat. En effet, si on ajoute 2 pomme à un groupe de 4 pommes , on obtient 6 pommes. Puis, en ajoutant 3 pommes.
+
+Ainsi, les parenthèses de priorités peuvent être enlevé car l'ordre du calcul ne change pas le résultat. C'est pourquoi on dit que l'addition est \textbf{associative}.
+
+Enfin, pour additionner des nombres plus grand, compter les paquets d'objets séparément. D'abord, on additionne les \textbf{unités} ensembles (le chiffre d'objet qui correspond au objet qui ne sont pas dans un paquet). Puis on additionne les paquets d'objet, sans oublier ce qu'on a éventuellement formé lorsqu'on a additionné les objets sans paquet. Et on fait la même chose avec les paquets de paquets\dots
+
+\subsection{Comparaison}
+\subsubsection{Égalité}
+Lorsque nous additionnons des quantités, nous avons remarqué qu'on avait une idée d'égalité. 
+
+Par exemple, lorsqu'on ajoute 2 pommes à un groupe de 4, cela \underline{donne} 6 pommes. Et inversement, un groupe de 6 pommes peut être séparé en un groupe de 4 pommes et un groupe de 2 pommes.
+On va alors noter ceci par l'opération $=$ qui se lit « égal ». 
+
+Dans l'exemple précédent par exemple, on écrira $4+2 = 6$ pour signifier qu'on a autant d'élément dans un groupe de 4 élément auquel on en a rajouté 2 que d'élément dans un groupe de 6 éléments.
+
+\subsubsection{Inégalité}
+Il s'agit du concept inverse de l'égalité. Il y a une inégalité quand il n'y a pas autant d'élément dans deux groupes d'objets. Nécessairement, cela signifie qu'il y en a plus dans l'un que dans l'autre. On utilisera les signes 
+\begin{itemize}
+\item $<$ qui se lit « strictement inférieur »,
+\item $\le$ qui se lit « inférieur ou égal »,
+\item $>$ qui se lit « strictement supérieur »,
+\item et $\ge$ qui se lit « supérieur ou égal ».
+\end{itemize}
+Par exemple, comme un groupe de 3 éléments est "plus gros" qu'un groupe de 2 éléments, on écrira que $2 \ge 3$. De la même manière un groupe de 4 élément est "plus petit" qu'un groupe de 7 élément, on écrira alors $4 < 7$.
+
+Les nombres entiers que l'on cite sont \textbf{ordonnés} par taille. Le successeur de chaque nombre est plus gros.
+
+\subsection{Soustraction}
+Nous avons vu comment rajouter à un groupe des éléments, il suffisait d'utiliser l'addition. Toutefois, en pratique, il arrive qu'on enlève à un groupe des éléments. Par exemple, si on doit calculer le nombre de pomme qu'il nous reste si on avait 4 pommes et qu'on en avait mangé 2. 
+
+On va noter l'opération qui consiste à enlever des éléments à un groupe par $-$ qui se lit « moins ». Ainsi, la situation précédente s'écrit $4 - 2$.
+
+Pour connaître le nombre de pommes qu'il nous reste après en avoir enlever, on compte les pommes. Ici on s'aperçoit qu'il nous en reste 2. Toutefois, ce résultat peut être obtenu en ne travaillant uniquement sur les nombres. En effet, trouver le résultat de $4-2$ c'est se demander combien de pommes il faut pour que l'on en obtienne 4 en en ajoutant 2. 
+
+Autrement dit, il faut compléter l'égalité $2 + \ldots = 4$.\\
+On voit alors que \textbf{soustraire et additionner sont des opérations contraires}.
+
+\subsection{Multiplication et division}
+\subsubsection{Produit}
+Lorsqu'on doit additionner beaucoup de fois un même nombre, c'est fastidieux à compter et fastidieux à écrire.
+
+Par exemple, lorsqu'on calcule $2 + 2 + 2 + 2$, on va donc synthétiser ce calcul à l'aide d'une opération qu'on note $\times$ et qui se lit « fois ». Cette opération consiste en fait à placer les éléments dans un tableau rectangulaire.
+
+\begin{table}[!ht] \centering
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|c|c|}
+\hline
+$\times$&0&1&2&3&4&5&6&7&8&9\\\hhline{|=||=|=|=|=|=|=|=|=|=|=|}
+0&0&0&0&0&0&0&0&0&0&0\\\hline
+1&0&1&2&2&4&5&6&7&8&9\\\hline
+2&0&2&4&6&8&10&12&14&16&18\\\hline
+3&0&3&6&9&12&15&18&21&24&27\\\hline
+4&0&4&8&12&16&20&24&28&32&36\\\hline
+5&0&5&10&15&20&25&30&35&40&45\\\hline
+6&0&6&12&18&24&30&36&42&48&54\\\hline
+7&0&7&14&21&28&35&42&49&56&63\\\hline
+8&0&8&16&24&32&40&48&56&64&72\\\hline
+9&0&9&18&27&36&45&54&63&72&81\\\hline
+\end{tabular}
+\caption{Table d'addition des nombres de 0 à 9}
+\end{table}
+
+Dans l'exemple précédent, c'est comme si on plaçait dans un tableau de 4 lignes (nombre de répétition de l'opération) 2 éléments. On écrit donc ce calcul comme $4 \times 2$. \\
+On remarque cependant qu'en mettant 4 lignes de 2 éléments, ou en mettant 2 lignes de 4 élément, on a le même nombre d'éléments. Ainsi, $2\times 4= 4 \times 2$.
+
+De plus, on remarque que faire $1\times$ un certain nombre, ça revient finalement a additionner 1 ce certain nombre de fois. La multiplication est donc bien \textbf{compatible} avec l'addition.\\
+Une autre propriété remarquable de l'addition, c'est qu'on peut réarranger les nombres. 
+
+Par exemple, faire $4\times 3 = 4+4+4 = (3+1)+(3+1)+(3+1)= (3+3+3) + 1+1+1 = (3\times 3) + (1\times 3)$.
+Cela implique que la multiplication est \textbf{distributive} sur l'addition car ici $(3+1)\times 3=(3\times 3)+(1\times 3)$.\\
+Par convention, \textbf{la multiplication est prioritaire sur l'addition}, c'est à dire qu'on a pas besoin de mettre de parenthèses dans le calcul $4\times 3 + 2$ par exemple parce qu'on va d'abord faire $4 \times 3$ puis y ajouter $2$.\\
+La multiplication est aussi \textbf{associative}, c'est à dire que l'ordre dans lequel on fait des multiplications n'influe pas sur le résultat. Par exemple, faire $(3 \times 4) \times 2$ c'est la même chose que faire $3 \times (4 \times 2)$ car 
+\[
+(3+3+3+3) \times 2 = 3 \times 2 + 3 \times 2 + 3 \times 2 + 3 \times 2 = 3 \times (2+2+2+2)=3 \times (4 \times 2)
+\]
+
+\subsubsection{La division entière}
+La \textbf{division entière} est l'opération qui apparait lorsqu'on doit répartir équitablement une quantité entre plusieurs personnes. Par exemple, lorsqu'on a 8 pommes que l'on veut donner à 4 personnes. 
+
+On note la division entière par le symbole $\div$ qui se lit « divisé par ». Cette division entière nous donne le nombre d'objets qu'obtient chacun après la répartition qu'on appelle le \textbf{quotient}, et le nombre d'objets qu'on ne peut pas répartir car il n'y en a pas assez, qu'on appelle le \textbf{reste}.
+
+Pour diviser un nombre par un autre, il faut diviser d'abord équitablement le nombre de paquet d'objets (dizaines), puis ouvrir les paquets restant d'objets pour diviser équitablement les objets (unités)\dots \\
+On commence par les plus gros paquets que contient le nombre. 
+
+Ainsi, pour calculer $883 \div 7$, on repartit les 8 centaines entre 7 personnes, cela signifie que chaque personne à 1 centaine et il reste 1 centaine. On l'éclate en dizaine ,ce qui nous donne 18 dizaines en ajoutant la centaine et les 8 dizaines du nombre, on en donne donc 2 a chacun et il en reste 4. On finit par diviser 43 unités en 7 , ce qui nous donne 6 et il en reste 1. Ainsi, chacun aura 1 centaines 2 dizaines et 6 unités et il restera 1 objets. On écrit donc que $883 \div 7 = 126$ et il reste $1$. Ce qui signifie que $883 = 126\times 7+1$.

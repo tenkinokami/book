@@ -1,0 +1,38 @@
+\begin{lemma}[Duplication du cosinus]
+\label{trigonometrie:duplication:cosinus_sinus_tangente}
+Soit $a \in \setRealNumbers$, alors 
+\[
+\cos(2a) = \cos^2(a) - \sin^2(a)=2 \cos^2(a) - 1= 1 - 2 \sin^2(a)
+\]
+\[
+\sin(2a) = 2\sin(a)\cos(a)
+\]
+\[
+\lboxed{\tan(2a)}=\tan(a+a) = \dfrac{\tan(a)+\tan(a)}{1-\tan(a)\tan(a)} \rboxed{= \dfrac{2\tan(a)}{1-\tan^2(a)}}
+\]
+\end{lemma}
+
+\begin{proof}
+Soit $a \in \setRealNumbers$, alors on peut appliquer les formules d'addition du théorème \ref{trigonometrie:addition}. Pour le cosinus, cela donne :
+\[
+\lboxed{\cos(2a)} = \cos(a + a)=\cos(a)\cos(a) - \sin(a)\sin(a) \rboxed{= \cos^2(a) - \sin^2(a)}
+\]
+On obtient les deux autres formules en appliquant l'identité $ \cos^2(a) + \sin^2(a) = 1$ et en replaçant les termes
+\[
+\lboxed{\cos(2a)} =  \cos^2(a) - \sin^2(a) =  \cos^2(a) - (1 - \cos^2(a)) \rboxed{= 2 \cos^2(a) - 1}
+\]
+Et d'autre part
+\[
+\lboxed{\cos(2a)} =  \cos^2(a) - \sin^2(a) =  (1 - \sin^2(a)) - \sin^2(a) \rboxed{= 1  - 2 \sin^2(a)}
+\]
+
+Soit $a \in \setRealNumbers$, de la même manière que pour le cosinus, on a d'après le théorème \ref{trigonometrie:addition} :
+\[
+\lboxed{\sin(2a)}=\sin(a+a) = \cos(a)\sin(a) + \sin(a)\cos(a) \rboxed{= 2\cos(a)\sin(a)}
+\]
+
+Soit $a \in \setRealNumbers$, de la même manière que précédemment, on a d'après le théorème \ref{trigonometrie:addition} :
+\[
+\lboxed{\tan(2a)}=\tan(a+a) = \dfrac{\tan(a)+\tan(a)}{1-\tan(a)\tan(a)} \rboxed{= \dfrac{2\tan(a)}{1-\tan^2(a)}}
+\]
+\end{proof}

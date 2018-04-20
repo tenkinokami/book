@@ -1,0 +1,44 @@
+\begin{theorem}[Inégalité triangulaire]
+\label{inegalite_triangulaire}
+Soient $x, y \in \setComplexNumbers$, 
+\[
+|x+y| \le |x| + |y|
+\]
+et il y a égalité si et seulement si $x$ et $y$ ont même argument.
+\end{theorem}
+
+\begin{proof}
+\textbf{Étape 1 : Sur les nombres réels} Comme $|x+y| \ge 0$, alors
+\[
+|x+y| \le |x|+|y| \Leftrightarrow |x+y|^2 \le \left(|x|+|y|\right)^2
+\]
+Cela revient à dire que
+\[
+x^2+y^2+2xy \le x^2+y^2+2|xy|
+\]
+Et donc que $xy\le |xy|$, ce qui est vrai par définition de la valeur absolue.\\
+De plus, $xy = |xy|$ si et seulement si $x$ et $y$ ont le même signe large car leur produit sera positif.
+
+\textbf{Étape 2 : Sur les nombres complexes} \\
+On a toujours 
+\[
+|x+y| \le |x|+|y| \Leftrightarrow |x+y|^2 \le \left(|x|+|y|\right)^2
+\]
+Cependant, pour les complexes $|z|^2=z\times \bar{z}$ donc on a d'une part :
+\[
+|x+y|^2 = (x+y)\overline{(x+y)} =  (x+y)(|x|+|y|) = |x|^2 + |y|^2 + 2 \realPart{x \bar{y}}
+\]
+D'autre part,  
+\[
+(|x|+ |y|)^2 = |x|^2 + |y|^2 + 2 |x||y|
+\]
+L'inégalité revient donc à 
+\[
+\realPart{x \bar{y}} \le |x||y| = |x\bar{y}|
+\]
+Or on sait que $|x\bar{y}| = \realPart{x\bar{y}}^2 + \imaginaryPart{x\bar{y}}^2$. On en déduit que l'égalité est atteinte lorsque
+\[
+\imaginaryPart{x\bar{y}} = 0
+\]
+auquel cas $x\bar{y} \in \setRealNumbers$, donc $\arg(x\bar{y}) = 0 \pmod{2\pi}$ donc $\arg(x) = \arg(y) \pmod{2\pi}$.
+\end{proof}

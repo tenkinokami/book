@@ -1,0 +1,100 @@
+\begin{theorem}[Formules d'addition des cosinus et sinus]
+\label{trigonometrie:addition:sinus_et_cosinus}
+Soient $a, b \in \setRealNumbers$, alors
+\[
+\cos(a+b) = \cos(a)\cos(b) - \sin(a)\sin(b) 
+\qquad\qquad
+\sin(a+b) = \sin(a)\cos(b) + \cos(a)\sin(b)
+\]
+\[
+\cos(a-b) = \cos(a)\cos(b) + \sin(a)\sin(b)
+\qquad\qquad
+\sin(a-b) = \sin(a)\cos(b) - \cos(a)\sin(b)
+\]
+\end{theorem}
+
+\begin{proof}
+Soient $a, b \in \setRealNumbers$, alors d'après les propriétés de la fonction exponentielle, on sait que 
+\[
+e^{i\:(a+b)} =e^{i\:a}\times e^{i\:b}
+\]
+En utilisant la forme polaire des nombres complexes, on a
+\[
+e^{i\:a}\times e^{i\:b} 
+= \left(\cos(a)+i\:\sin(a)\right)\left(\cos(b)+i\:\sin(b)\right)
+\]
+En développant le double produit, on obtient
+\[
+e^{i\:a}\times e^{i\:b}
+=  \cos(a)\cos(b) +i\:\cos(a)\sin(b)+i\:\sin(a)\cos(b)+i^2\:\sin(a)\sin(b)
+\]
+En utilisant le fait que $i^2 = 1$, on peut alors séparer les termes réels et les termes imaginaires
+\[
+e^{i\:a}\times e^{i\:b} = \left(\cos(a)\cos(b)-\sin{a}\sin{b}\right)+i\:\left(\sin(a)\cos(b) +\cos(a)\sin(b)\right)
+\]
+Donc
+\[\realPart{e^{i\:a}\times e^{i\:b}} = \cos(a+b) = \cos(a)\cos(b) - \sin(a)\sin(b)
+\]
+Et
+\[
+\imaginaryPart{e^{i\:a}\times e^{i\:b}} = \sin(a+b) = \sin(a)\cos(b) + \cos(a)\sin(b)
+\]
+Comme $e^{i\:(a+b)} = e^{i\:a}\times e^{i\:b}$, on peut identifier les parties réelles et les parties complexes, ce qui donne bien
+\[
+\lrboxed{\cos(a+b) = \cos(a)\cos(b) - \sin(a)\sin(b)}
+\]
+\[
+\lrboxed{\sin(a+b) = \sin(a)\cos(b) + \cos(a)\sin(b)}
+\]
+En transformant $b$ en $-b$ dans l'équation , on a alors 
+\[
+\cos(a-b) = \cos(a)\cos(-b) - \sin(a)\sin(-b)
+\]
+\[
+\sin(a-b) = \sin(a)\cos(-b) + \cos(a)\sin(-b)
+\]
+La fonction sinus est impaire donc $\sin(b)= -\sin(b)$ et la fonction cosinus est paire, donc $\cos(b)=\cos(-b)$. En réinjectant ces égalités dans les égalités précédentes et en replaçant le signe moins, on obtient
+\[
+\lboxed{\cos(a-b)} = \cos(a)\cos(b) - \sin(a)(-\sin(b)) \rboxed{= \cos(a)\cos(b) + \sin(a)\sin(b)}
+\]
+\[
+\lboxed{\sin(a-b)} = \sin(a)\cos(b) + \cos(a)(-\sin(b)) \rboxed{=  \sin(a)\cos(b) - \cos(a)\sin(b)}
+\]
+\end{proof}
+
+\begin{theorem}[Formule d'addition de tangente]
+\label{trigonometrie:addition:tangente}
+Soient $a, b \in \setRealNumbers$, alors
+\[
+\tan(a+b) = \dfrac{\tan(a)+\tan(b)}{1 - \tan(a)\tan(b)}
+\qquad\qquad
+\tan(a-b) = \dfrac{\tan(a)-\tan(b)}{1 + \tan(a)\tan(b)}
+\]
+\end{theorem}
+
+\begin{proof}
+Soient $a, b \in \setRealNumbers$, alors par définition, on a
+\[
+\tan(a+b) = \dfrac{\sin(a+b)}{\cos(a+b)}
+\]
+En appliquant les formules du théorème \ref{trigonometrie:addition}, on a 
+\[
+\tan(a+b) = \dfrac{\sin(a)\cos(b) + \cos(a)\sin(b)}{\cos(a)\cos(b) - \sin(a)\sin(b)}
+\]
+En divisant en haut et en bas par $\cos(a)\cos(b)$, on obtient
+\[
+\tan(a+b) 
+=\dfrac{\dfrac{\sin(a)\bcancel{\cos(b)}}{\cos(a)\bcancel{\cos(b)}} + \dfrac{\sin(b)\bcancel{\cos(a)}}{\cos(b)\bcancel{\cos(a)}}}{\dfrac{\bcancel{\cos(a)}\bcancel{\cos(b)}}{\bcancel{\cos(a)}\bcancel{\cos(b)}} - \dfrac{\sin(a)\sin(b)}{\cos(a)\cos(b)}} 
+= \dfrac{\dfrac{\sin(a)}{\cos(a)} + \dfrac{\sin(b)}{\cos(b)}}{1 - \dfrac{\sin(a)\sin(b)}{\cos(a)\cos(b)}}
+\]
+D'où $\boxed{\tan(a+b) = \dfrac{\tan(a)+\tan(b)}{1 - \tan(a)\tan(b)}}$ en reprenant la définition de la tangente. 
+
+D'autre part, en prenant $-b$ à la place de $b$, on obtient
+\[
+\tan(a-b) = \dfrac{\tan(a)+\tan(-b)}{1 - \tan(a)\tan(-b)}
+\]
+Comme la fonction tangente est impaire, on a $\tan(-b)=-\tan(b)$, donc
+\[
+\lboxed{\tan(a-b)} = \dfrac{\tan(a)-\tan(b)}{1 - \tan(a)(-\tan(b))} \rboxed{= \dfrac{\tan(a)-\tan(b)}{1 + \tan(a)\tan(b)}}
+\]
+\end{proof}

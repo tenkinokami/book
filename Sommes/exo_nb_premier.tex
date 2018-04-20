@@ -1,0 +1,31 @@
+\begin{exercice}
+Montrer que $\displaystyle\sum\limits_{\gcd(p, q) = 1} \dfrac{1}{(pq)^2} = \dfrac{5}{2}$ 
+\end{exercice}
+
+\begin{proof}
+Notons $S = \displaystyle\sum\limits_{\gcd(p, q) = 1} \dfrac{1}{(pq)^2}$ et calculons $S \times \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4}$. Par linéarité, 
+\[
+S \times \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4}
+=  \displaystyle\sum\limits_{\gcd(p, q) = 1} \sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4(pq)^2}
+\]
+En regroupant les différents termes, on obtient alors :
+\[
+S \times \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4} 
+= \displaystyle\sum\limits_{\gcd(p, q) = 1} \sum\limits_{n=0}^{+\infty} \dfrac{1}{(np)^2(nq)^2}
+\]
+En effectuant un changement d'indice, on a alors 
+\[
+S \times \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4} 
+= \displaystyle\sum\limits_{a= 1}^{+\infty} \displaystyle\sum\limits_{b=1}^{+\infty} \dfrac{1}{a^2 b^2}
+\]
+On peut alors séparer les deux sommes :
+\[
+S \times \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4} = \left(\displaystyle\sum\limits_{a= 1}^{+\infty} \dfrac{1}{a^2 }\right)\left(\displaystyle\sum\limits_{b=1}^{+\infty} \dfrac{1}{b^2}\right) = \zeta(2)^2 = \left(\dfrac{\pi^2}{6}\right)^2
+\]
+Or on sait que $\zeta(4) = \displaystyle\sum\limits_{n=0}^{+\infty} \dfrac{1}{n^4} = \dfrac{\pi^4}{90}
+$. On a donc $S  \times \zeta(4) = \left(\dfrac{\pi^2}{6}\right)^2
+$. On en déduit que 
+\[
+S = \left(\dfrac{\pi^2}{6}\right)^2 \times \dfrac{1}{\zeta(4)}= \dfrac{\pi^4}{36} \times \dfrac{90}{\pi^4} = \dfrac{90}{36} = \dfrac{5}{2}
+\]
+\end{proof}

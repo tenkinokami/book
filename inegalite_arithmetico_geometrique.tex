@@ -1,0 +1,40 @@
+\begin{theorem}[Inégalité arithmético-géométrique]
+Soient $n \in \setNaturalNumbers^*$ et $x \in (\setRealNumbers^{+})^{n}$, alors
+\[
+\sqrt[n]{\displaystyle\prod\limits_{i=1}^{n}{x_i}} \le \dfrac{1}{n} \displaystyle\sum\limits_{i = 1}^{n} x_i
+\]
+avec $\sqrt[n]{\displaystyle\prod\limits_{i=1}^{n}{x_i}}$ la moyenne géométrique de $x$ et $\dfrac{1}{n} \displaystyle\sum\limits_{i = 1}^{n} x_i$ la moyenne arithmétique de $x$.
+\end{theorem}
+
+\begin{proof}
+Soient $n \in \setNaturalNumbers^*$ et $x \in (\setRealNumbers^{+})^{n}$, alors cette inégalité revient à dire que :
+\[
+\sqrt[n]{x_1 \times \dots \times x_n} \le \left(\dfrac{x_1 + \dots + x_n}{n}\right)
+\]
+En passant au logarithme, cela revient à montrer que :
+\[
+\dfrac{1}{n}\displaystyle\sum\limits_{i = 1}^{n} \ln(x_i) \le \ln\left(\dfrac{1}{n}\displaystyle\sum\limits_{i = 1}^{n} x_i\right)
+\]
+Or $\ln$ est une fonction concave. De plus, en notant $\forall i \in \integerIntervalCC{1}{n}, \omega_i = \dfrac{a_i}{\alpha}$, on remarque de les $(\omega_i)$ sont des poids (positifs et de somme valant $1$). En appliquant l'inégalité de Jensen on obtient bien l'expression précédente
+\end{proof}
+
+\begin{lemma}
+Soient $n \in \setNaturalNumbers^*$, $x \in (\setRealNumbers^{+})^{n}$ et $a \in (\setRealNumbers^{+*})^{n}$, alors si on note $\alpha = \displaystyle\sum\limits_{i = 1}^{n} a_i$, on a 
+\[
+\sqrt[\alpha]{\displaystyle\prod\limits_{i=1}^{n}{x_{i}^{a_i}}} \le \dfrac{1}{\alpha} \displaystyle\sum\limits_{i = 1}^{n} a_i x_i
+\]
+avec $\sqrt[\alpha]{\displaystyle\prod\limits_{i=1}^{n}{x_{i}^{a_i}}}$ la moyenne géométrique pondérée de $a$ et $\dfrac{1}{\alpha} \displaystyle\sum\limits_{i = 1}^{n} a_i x_i$ la moyenne arithmétique pondérée de $a$.
+\end{lemma}
+
+\begin{proof}
+Soient $n \in \setNaturalNumbers^*$, $x \in (\setRealNumbers^{+})^{n}$ et $a \in (\setRealNumbers^{+*})^{n}$, alors $\alpha = \displaystyle\sum\limits_{i = 1}^{n} a_i$.\\
+Montrons que :  
+\[
+\sqrt[\alpha]{\displaystyle\prod\limits_{i=1}^{n}{x_{i}^{a_i}}} \le \dfrac{1}{\alpha} \displaystyle\sum\limits_{i = 1}^{n} a_i x_i
+\]
+En passant au logarithme, cela revient à montrer que :
+\[
+\dfrac{a_i}{\alpha}\displaystyle\sum\limits_{i = 1}^{n} x_i x_i \le \ln\left(  \displaystyle\sum\limits_{i = 1}^{n} \dfrac{a_i}{\alpha} x_i\right)
+\]
+En notant $\forall i \in \integerIntervalCC{1}{n}, \omega_i = \dfrac{a_i}{\alpha}$, on remarque de les $(\omega_i)$ forment une famille de poids (positifs et de somme $1$). Cette inégalité est donc une conséquence de l'inégalité de Jensen appliqué à la fonction logarithme qui est concave
+\end{proof}

@@ -1,0 +1,248 @@
+%%% NOTATIONS MATHEMATIQUES : 
+
+%%% Liste des fonctions 
+% \cos \sin \tan
+% \csc \cot \sec
+% \exp \ln \log \lg (log binaire)
+% \ker \dim \projlim 
+% \limsup \liminf
+% \min \max \sup \lim \inf
+% \sinh \cosh \coth \tanh
+% \arcsin \arctan
+% \arg
+% \deg
+% \gcd
+% \det
+% \Pr
+% \hom
+% \mod \bmod \pmod
+
+%% ENSEMBLES DE NOMBRES 
+\newcommand{\setNaturalNumbers}{\mathbb{N}}
+\newcommand{\setPrimeNumbers}{\wp}
+\newcommand{\setIntegers}{\mathbb{Z}}
+\newcommand{\setDecimalNumbers}{\mathbb{D}}
+\newcommand{\setRationalNumbers}{\mathbb{Q}}
+\newcommand{\setRealNumbers}{\mathbb{R}}
+\newcommand{\setComplexNumbers}{\mathbb{C}}
+\newcommand{\setQuaternion}{\mathbb{H}}
+\newcommand{\setOctonion}{\mathbb{O}}
+\newcommand{\setAlgebraicNumbers}{\mathbb{A}}
+\newcommand{\setConstructibleNumbers}{\mathbb{CO}}
+\NewDocumentCommand{\setUnimodularComplexNumbers}{o}{\mathbb{U}\IfValueT{#1}{_{#1}}}
+
+\newcommand{\realIntervalCC}[2]{\left[ #1 ,  #2  \right]}
+\newcommand{\realIntervalCO}[2]{\left[  #1  ,  #2 \right[} 
+\newcommand{\realIntervalOC}[2]{\left]  #1  ,  #2 \right]} 
+\newcommand{\realIntervalOO}[2]{\left] #1 , #2 \right[}
+\WithSuffix\newcommand\realIntervalCC*[2]{[ #1 , #2 ]}
+\WithSuffix\newcommand\realIntervalCO*[2]{[ #1, #2[}
+\WithSuffix\newcommand\realIntervalOC*[2]{] #1 ,#2 ]}
+\WithSuffix\newcommand\realIntervalOO*[2]{] #1, #2[}
+
+\newcommand{\integerIntervalCC}[2]{\left\llbracket \, #1 \, , \, #2 \, \right\rrbracket}
+\newcommand{\integerIntervalCO}[2]{\left\llbracket \, #1 \, , \, #2 \, \right\llbracket} 
+\newcommand{\integerIntervalOC}[2]{\left\rrbracket \, #1 \, , \, #2 \, \right\rrbracket} 
+\newcommand{\integerIntervalOO}[2]{\left\rrbracket \, #1 \, , \, #2 \, \right\llbracket}
+\WithSuffix\newcommand\integerIntervalCC*[2]{\llbracket \, #1 \, , \, #2 \, \rrbracket}
+\WithSuffix\newcommand\integerIntervalCO*[2]{\llbracket \, #1 \, , \, #2 \, \llbracket}
+\WithSuffix\newcommand\integerIntervalOC*[2]{\rrbracket \, #1 \, , \, #2 \, \rrbracket}
+\WithSuffix\newcommand\integerIntervalOO*[2]{\rrbracket \, #1 \, , \, #2 \, \llbracket}
+
+%% ENSEMBLES DE FONCTIONS : 
+\newcommand{\setFunctions}[2]{\mathcal{F}\,(#1,\, #2)}
+\newcommand{\setContinuousFunctions}[3]{\mathscr{C}^{ #1}\,(#2,\, #3)}
+\newcommand{\setDifferentiableFunctions}[3]{{\Delta}^{ #1}\,(#2,\, #3)}
+\NewDocumentCommand{\setPeriodicFunctions}{o m m}{{T}_{\IfValueT{#1}{ #1}}\,(#2,\, #3)}
+\newcommand{\setBoundedFunctions}[2]{{B}\,(#1,\, #2)}
+\newcommand{\setConvexFunctions}[2]{\textrm{Conv}\,(#1,\, #2)}
+\NewDocumentCommand{\setPolynomials}{m o m}{{#1}\IfValueT{#2}{_{#2}}[#3]}
+
+%% ENSEMBLES D’ALGÈBRE LINEAIRE : 
+\newcommand{\setLinearSpaces}{\mathbb{LS}}
+\newcommand{\setLinearMap}[2]{\mathscr{L}\,(#1,\, #2)}
+\newcommand{\setEndomorphisms}[1]{\mathscr{L}\,(#1)}
+\newcommand{\setAutomorphisms}[1]{\mathscr{GL}\,(#1)}
+\newcommand{\setIsomorphisms}[2]{\textrm{Isom}\,(#1,\, #2)}
+\newcommand{\setHomeomorphisms}[2]{\textrm{Hom}\,(#1,\, #2)}
+\newcommand{\setDiffeomorphisms}[2]{\textrm{Diff}\,(#1,\, #2)}
+
+%% FONCTION USUELLES : 
+\DeclareMathOperator{\Cosine}{cos}
+\DeclareMathOperator{\Sine}{sin}
+\DeclareMathOperator{\Tangent}{tan}
+\NewDocumentCommand{\cosine}{o m}{\Cosine\IfValueTF{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\sine}{o m}{\Sine\IfValueTF{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\tangent}{o m}{\Tangent\IfValueTF{#1}{^{#1}}\left(#2\right)}
+\WithSuffix\NewDocumentCommand\sine*{o m}{\Sine\IfValueTF{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\cosine*{o m}{\Cosine\IfValueTF{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\tangent*{o m}{\Tangent\IfValueTF{#1}{^{#1}}\,(#2)}
+
+\DeclareMathOperator{\CosineHyperbolic}{cosh}
+\DeclareMathOperator{\SineHyperbolic}{sinh}
+\DeclareMathOperator{\TangentHyperbolic}{tanh}
+\NewDocumentCommand{\cosineHyperbolic}{o m}{\CosineHyperbolic\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\sineHyperbolic}{o m}{\SineHyperbolic\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\tangentHyperbolic}{o m}{\TangentHyperbolic\IfValueT{#1}{^{#1}}\left(#2\right)}
+\WithSuffix\NewDocumentCommand\sineHyperbolic*{o m}{\SineHyperbolic\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\cosineHyperbolic*{o m}{\CosineHyperbolic\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\tangentHyperbolic*{o m}{\TangentHyperbolic\IfValueT{#1}{^{#1}}\,(#2)}
+
+\DeclareMathOperator{\CosineHyperbolicInverse}{argcosh}
+\DeclareMathOperator{\SineHyperbolicInverse}{argsinh}
+\DeclareMathOperator{\TangentHyperbolicInverse}{argtanh}
+\NewDocumentCommand{\cosineHyperbolicInverse}{o m}{\CosineHyperbolicInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\sineHyperbolicInverse}{o m}{\SineHyperbolicInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\tangentHyperbolicInverse}{o m}{\TangentHyperbolicInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\WithSuffix\NewDocumentCommand\sineHyperbolicInverse*{o m}{\SineHyperbolicInverse\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\cosineHyperbolicInverse*{o m}{\CosineHyperbolicInverse\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\tangentHyperbolicInverse*{o m}{\TangentHyperbolicInverse\IfValueT{#1}{^{#1}}\,(#2)}
+
+\DeclareMathOperator{\CosineInverse}{arccos}
+\DeclareMathOperator{\SineInverse}{arcsin}
+\DeclareMathOperator{\TangentInverse}{arctan}
+\NewDocumentCommand{\cosineInverse}{o m}{\CosineInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\sineInverse}{o m}{\SineInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\tangentInverse}{o m}{\TangentInverse\IfValueT{#1}{^{#1}}\left(#2\right)}
+\WithSuffix\NewDocumentCommand\sineInverse*{o m}{\SineInverse\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\cosineInverse*{o m}{\CosinecInverse\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\tangentInverse*{o m}{\TangentInverse\IfValueT{#1}{^{#1}}\,(#2)}
+
+\DeclareMathOperator{\Cotangent}{cot}
+\DeclareMathOperator{\Secant}{sec}
+\DeclareMathOperator{\Cosecant}{csc}
+\NewDocumentCommand{\cotangent}{o m}{\Cotangent\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\secant}{o m}{\Secant\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\cosecant}{o m}{\Cosecant\IfValueT{#1}{^{#1}}\left(#2\right)}
+\WithSuffix\NewDocumentCommand\cotangent*{o m}{\Cotangent\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\secant*{o m}{\Secant\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\cosecant*{o m}{\Cosecant\IfValueT{#1}{^{#1}}\,(#2)}
+
+\DeclareMathOperator{\Exponential}{exp}
+\DeclareMathOperator{\LogarithmNatural}{ln}
+\DeclareMathOperator{\Logarithm}{log}
+\NewDocumentCommand{\exponential}{o m}{\Exponential\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\logarithmNatural}{o m}{\LogarithmNatural\IfValueT{#1}{^{#1}}\left(#2\right)}
+\NewDocumentCommand{\logarithm}{o o m}{\Logarithm\IfValueTF{#1}{_{#1}}{_{10}}\IfValueTF{#2}{^{#2}}\left(#3\right)}
+\WithSuffix\NewDocumentCommand\exponential*{o m}{\Exponential\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\logarithmNatural*{o m}{\LogarithmNatural\IfValueT{#1}{^{#1}}\,(#2)}
+\WithSuffix\NewDocumentCommand\logarithm*{o o m}{\Logarithm_{\IfValueTF{#1}{#1}{10}}\IfValueT{#2}{^{#2}}\,(#3)}
+
+\DeclareMathOperator{\Modulus}{mod}
+\newcommand{\modulus}[1]{\Modulus\left(#1\right)}%{\left\lvert #1 \right\rvert}
+\WithSuffix\newcommand\modulus*[1]{\Modulus\,(#1)}%{\lvert #1 \rvert}
+
+\newcommand{\powerProduct}[1]{\overset{\times}{#1}}
+\newcommand{\powerComposition}[1]{\overset{\circ}{#1}}
+
+\DeclareMathOperator{\AbsoluteValue}{abs}
+\DeclareMathOperator{\RealPart}{Re}
+\DeclareMathOperator{\ImaginaryPart}{Im}
+\DeclareMathOperator{\Argument}{arg}
+\newcommand{\absoluteValue}[1]{\AbsoluteValue\left(#1\right)}
+\newcommand{\realPart}[1]{\RealPart\left(#1\right)}
+\newcommand{\imaginaryPart}[1]{\ImaginaryPart\left(#1\right)}
+\newcommand{\argument}[1]{\Argument\left(#1\right)}
+\WithSuffix\newcommand\absoluteValue*[1]{\AbsoluteValue\,(#1)}
+\WithSuffix\newcommand\realPart*[1]{\RealPart\,(#1)}
+\WithSuffix\newcommand\imaginaryPart*[1]{\ImaginaryPartPart\,(#1)}
+\WithSuffix\newcommand\argument*[1]{\Argument(#1)}
+
+\DeclareMathOperator*{\Infimum}{inf}
+\DeclareMathOperator*{\Supremum}{sup}
+\NewDocumentCommand{\infimum}{o o m}{\Infimum\limits_{\IfValueT{#1}{#1 \in #2}}\left\{\,#3\,\right\}}
+\NewDocumentCommand{\supremum}{o o m}{\Supremum\limits_{\IfValueT{#1}{#1 \in #2}}\left\{\,#3\,\right\}}
+\WithSuffix\NewDocumentCommand\infimum*{o o m}{\Infimum\limits_{\IfValueT{#1}{#1\in #2}}\{\,#3\,\}}
+\WithSuffix\NewDocumentCommand\supremum*{o o m}{\Supremum\limits_{\IfValueT{#1}{#1 \in #2}}\{\,#3\,\}}
+
+\NewDocumentCommand{\norm}{o m}{\left\|\, #2 \,\right\|_{\IfValueT{#1}{#1}}}
+\WithSuffix\NewDocumentCommand\norm*{o m}{\|\, #2 \,\|_{\IfValueT{#1}{#1}}}
+
+%% PROBABILITE : 
+\DeclareMathOperator{\Probability}{\mathbb{P}}
+\DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
+\DeclareMathOperator{\Variance}{\mathbb{V}}
+\DeclareMathOperator{\Covariance}{\textrm{Cov}}
+\DeclareMathOperator{\StandardDeviation}{\sigma}
+%\newcommand{\meanAbsoluteDeviation}{}
+\newcommand{\probability}[1]{\Probability\left(#1\right)}
+\newcommand{\expectedValue}[1]{\ExpectedValue\left[#1\right]}
+\newcommand{\variance}[1]{\Variance\left[#1\right]}
+\newcommand{\covariance}[2]{\Covariance\left(#1, \, #2\right)}
+\newcommand{\standardDeviation}[1]{\StandardDeviation\left[#1\right]}
+\WithSuffix\newcommand\probability*[1]{\Probability\,(#1)}
+\WithSuffix\newcommand\expectedValue*[1]{\ExpectedValue\, [#1]}
+\WithSuffix\newcommand\variance*[1]{\Variance\, [#1]}
+\WithSuffix\newcommand\standardDeviation*[1]{\StandardDeviation\, [#1]}
+\WithSuffix\newcommand\covariance*[2]{\Covariance \, (#1, \, #2)}
+
+%% ARITHMETIQUE : 
+\newcommand{\ceil}[1]{\left\lceil \, #1  \, \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor \, #1 \, \right\rfloor}
+\WithSuffix\newcommand\ceil*[2]{\lceil \, #1 \, \rceil}
+\WithSuffix\newcommand\floor*[2]{\lfloor \, #1 \, \rfloor}
+
+\DeclareMathOperator{\Cardinality}{card}
+\newcommand{\cardinality}[1]{\Cardinality\left(#1\right)}
+\WithSuffix\newcommand\cardinality*[1]{\Cardinality\,(#1)}
+
+% \let\gcd\temp
+% \DeclareMathOperator{\Lcm}{ppcm}
+% \DeclareMathOperator{\Gcd}{pgcd}
+% \newcommand{\lcm}[2]{\Lcm\left(#1, \, #2\right)}
+% \newcommand{\gcd}[2]{\Gcd\left(#1, \, #2\right)}
+% \WithSuffix\newcommand\lcm*[2]{\Lcm\,(#1, \, #2)}
+% \WithSuffix\newcommand\gcd*[2]{\Gcd\,(#1, \, #2)}
+
+\NewDocumentCommand{\set}{m o}{\left\{\,#1\IfValueT{#2}{\:\:\dashleftarrow\:\:#2}\,\right\}}
+\WithSuffix\NewDocumentCommand\set*{m o}{\{\,#1\IfValueT{#2}{\:\:\dashleftarrow\:\:#2}\,\}}
+
+\DeclareMathOperator*{\MinimaLocal}{min}
+\DeclareMathOperator*{\MaximaLocal}{max}
+\NewDocumentCommand{\minimaLocal}{o o m}{\MinimaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\left\{\,#3\,\right\}}
+\NewDocumentCommand{\maximaLocal}{o o m}{\MaximaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\left\{\,#3\,\right\}}
+\WithSuffix\NewDocumentCommand\minimaLocal*{o o m}{\MinimaLocal\limits_{\IfValueT{#1}{#1\in #2}}^{L}\{\,#3\,\}}
+\WithSuffix\NewDocumentCommand\maximaLocal*{o o m}{\MaximaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\{\,#3\,\}}
+
+\DeclareMathOperator*{\ArgumentsOfTheMinimaLocal}{argmin}
+\DeclareMathOperator*{\ArgumentsOfTheMaximaLocal}{argmax}
+\NewDocumentCommand{\argumentsOfTheMinimaLocal}{o o m}{\ArgumentsOfTheMinimaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\left\{\,#3\,\right\}}
+\NewDocumentCommand{\argumentsOfTheMaximaLocal}{o o m}{\ArgumentsOfTheMaximaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\left\{\,#3\,\right\}}
+\WithSuffix\NewDocumentCommand\argumentsOfTheMinimaLocal*{o o m}{\ArgumentsOfTheMinimaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\{\,#3\,\}}
+\WithSuffix\NewDocumentCommand\argumentsOfTheMaximaLocal*{o o m}{\ArgumentsOfTheMaximaLocal\limits_{\IfValueT{#1}{#1 \in #2}}^{L}\{\,#3\,\}}
+
+\DeclareMathOperator*{\MinimumGlobal}{min}
+\DeclareMathOperator*{\MaximumGlobal}{max}%\text{\begin{japanesefont}高\end{japanesefont}}
+\NewDocumentCommand{\minimumGlobal}{o o m}{\MinimumGlobal\limits_{\IfValueT{#1}{#1 \in \footnotesize\vcenter{\hbox{$#2$}}}}\left\{\,#3\,\right\}}
+\NewDocumentCommand{\maximumGlobal}{o o m}{\MaximumGlobal\limits_{\IfValueT{#1}{#1 \in \footnotesize\vcenter{\hbox{$#2$}}}}\left\{\,#3\,\right\}}
+\WithSuffix\NewDocumentCommand\minimumGlobal*{o o m}{\MinimumGlobal\limits_{\IfValueT{#1}{#1 \in \footnotesize\vcenter{\hbox{$#2$}}}}\{\,#3\,\}}
+\WithSuffix\NewDocumentCommand\maximumGlobal*{o o m}{\MaximumGlobal\limits_{\IfValueT{#1}{#1 \in \footnotesize\vcenter{\hbox{$#2$}}}}\{\,#3\,\}}
+
+\DeclareMathOperator*{\ArgumentsOfTheMinimumGlobal}{argmin}
+\DeclareMathOperator*{\ArgumentsOfTheMaximumGlobal}{argmax}
+\NewDocumentCommand{\argumentsOfTheMinimumGlobal}{o o m}{\ArgumentsOfTheMinimumGlobal\limits_{\IfValueT{#1}{#1 \in\vcenter{\hbox{$#2$}}}}\left\{\,#3\,\right\}}
+\NewDocumentCommand{\argumentsOfTheMaximumGlobal}{o o m}{\ArgumentsOfTheMaximumGlobal\limits_{\IfValueT{#1}{#1 \in \vcenter{\hbox{$#2$}}}}\left\{\,#3\,\right\}}
+\WithSuffix\NewDocumentCommand\argumentsOfTheMinimumGlobal*{o o m}{\ArgumentsOfTheMinimumGlobal\limits_{\IfValueT{#1}{#1 \in\vcenter{\hbox{$#2$}}}}\{\,#3\,\}}
+\WithSuffix\NewDocumentCommand\argumentsOfTheMaximumGlobal*{o o m}{\ArgumentsOfTheMaximimGlobal\limits_{\IfValueT{#1}{#1 \in\vcenter{\hbox{$#2$}}}}\{\,#3\,\}}
+
+
+
+%% LOGIQUE :
+\newcommand{\existsInAs}[3]{\exists\: #1 \in #2 \:\LARGE\left/\: #3\right.}
+\newcommand{\existsUniqueInAs}[3]{\exists\:!\: #1 \in #2 \:\LARGE\left/\: #3\right.}
+\newcommand{\forallInProperty}[3]{\forall\: #1 \in #2, \: #3}
+
+\NewDocumentCommand{\function}{o o o m m}%
+{%
+\IfValueT{#1}{#1 :}% Nom de la fonction 
+	\IfValueTF{#2}{%
+    \left|
+	\begin{array}{l c l}%
+	#2 & \longrightarrow & #3\\ % Ensemble de départ et d'arrivée
+	#4 & \longmapsto & #5\\ % Valeurs de la fonction
+	\end{array}\right.%
+	}%
+    {%
+	#4 \longmapsto #5% Valeurs de la fonction
+	}%
+}
