@@ -1,6 +1,5 @@
 \newcounter{nbtheorem}[chapter]
 \setcounter{nbtheorem}{0}
-\definecolor{or}{RGB}{255,215,0}
 
 \let\theorem\temp
 \NewDocumentEnvironment{theorem}{o}
@@ -116,3 +115,7 @@
 \setcounter{nbexample}{0}
 
 \newtheorem{example}[nbexample]{Exemple}
+
+\newenvironment{solution}
+{\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+{\end{proof}}

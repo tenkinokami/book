@@ -5,19 +5,31 @@
 \RequirePackage{polyglossia}
 \setmainlanguage{french}
 
+\newfontfamily\greek{Times New Roman}
+
 %% HYPERLIENS
 \RequirePackage{import}
 \RequirePackage[pdfencoding = auto]{hyperref} % Gestion des hyperliens et des infos sur le pdf
 \RequirePackage[final]{pdfpages} % Inclus des pages de pdf
+
 \hypersetup%
 {%
 hidelinks,%
 breaklinks=true,%
 unicode%
 }%
+\usepackage{cancel}
 
 \RequirePackage{accsupp}
-\newcommand*{\copyable}[1]{\BeginAccSupp{ActualText=\detokenize{#1},method=escape}#1\EndAccSupp{}}
+
+\newcommand*{\copyable}[1]{%
+  \BeginAccSupp{%
+    ActualText=\detokenize{#1},%
+    method=escape,
+  }%
+  #1%
+  \EndAccSupp{}%
+}
 
 %% SAISIE :
 \RequirePackage{environ} % Déclaration simplifiée d'environnements
@@ -64,3 +76,4 @@ unicode%
 \RequirePackage{graphicx} % Permet d'elargir les symboles
 \RequirePackage{mathrsfs} % Lettres de \mathscr
 \RequirePackage{bbm} % Police d'écriture (\N, \1 ...) 
+\RequirePackage{cancel} % Pour barrer des expressions

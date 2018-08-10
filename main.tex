@@ -1,23 +1,15 @@
-\documentclass{classe}
+\documentclass[mathmodern,openany,11pt]{livre}
+\input{classe/maths/commandes.tex}
 \allowdisplaybreaks
 \raggedbottom
 
 \hypersetup%
 {%
-pdftitle = {Mathématiques},%
-pdfauthor = {Adrien MEILAC},%
-pdfsubject = {Mathématiques},%
+pdftitle={Théorie générale des mathématiques},%
+pdfauthor={Adrien MEILAC},%
+pdfsubject={Mathématiques},%
 pdflang={fr}%
 }
-\usepackage{cancel}
-
-\newfontfamily\greek{Times New Roman}
-
-\newcommand{\test}[2]{\begin{minipage}{0.10\textwidth}
-#1
-\end{minipage}\begin{minipage}{0.80\textwidth}\centering
-#2
-\end{minipage}\hfill}
 
 \newcommand{\lboxed}[1]{{\color{blue}\begin{array}{|l}\hline\\[-2.4ex]{\color{black}#1}\\[1.2ex]\hline\end{array}}}
 \newcommand{\rboxed}[1]{{\color{blue}\begin{array}{r|}\hline\\[-2.4ex]{\color{black}#1}\\[1.2ex]\hline\end{array}}}
@@ -27,10 +19,6 @@ pdflang={fr}%
 
 \newcommand{\lrboxed}[1]{{\color{blue}\boxed{\color{black}#1}}}
 \newcommand{\pscal}[2]{\left\langle#1, #2\right\rangle}
-
-\newenvironment{solution}
-  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
-  {\end{proof}}
 
 \begin{document}
 %\input{page-de-garde.tex}
@@ -42,7 +30,7 @@ pdflang={fr}%
 %
 %\setlength{\parskip}{0.5\baselineskip}
 
-\pagestyle{PageNormale}
+\pagestyle{default}
 
 \chapter{Trigonométrie}
 
@@ -112,7 +100,7 @@ Ainsi, on a
 \]
 \end{proof}
 
-
+\addtocounter{nbexercice}{100}
 
 \section{Trigonométrie du cercle}
 
@@ -335,7 +323,7 @@ D'où
 \end{proof}
 
 
-\pagestyle{PageExercice}
+\pagestyle{exercice}
 \begin{exercice}
 Résoudre suivant les valeurs de $a\in\setRealNumbers$ le système
 \[
@@ -792,7 +780,7 @@ Donc en divisant à gauche et à droite par $n!(x-a)^{n}$
 \end{solution}
 
 \newpage
-\pagestyle{PageNormale}
+\pagestyle{default}
 
 %% Preuve dérivée trigonométriques
 \begin{proof}
@@ -1344,7 +1332,24 @@ Et
 u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
 \]
 Cela nous donne les solutions générales
-
+\begin{proof}
+\begin{equation}
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\end{equation}
+\begin{equation}
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\end{equation}
+\end{proof}
 %\import{./}{importation.tex}
 
+\chapter{test}
+
+\begin{equation}
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\end{equation}
+\begin{proof}
+\begin{equation}
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\end{equation}
+\end{proof}
 \end{document}
