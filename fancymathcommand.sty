@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fancymathcommand}[2018/07/28, 1.0]
+\RequirePackage{iftex}
+\RequireLuaTeX
+
+%% DEFINITION DE COMMANDES :
+\RequirePackage{environ} % Déclaration simplifiée d'environnements
+\RequirePackage{xargs} % Commandes avec un argument optionnel déclarés simplement
+\RequirePackage{xparse} % Commandes aver un argument optionnel déclarés complètement
+\RequirePackage{xkeyval} % Argument optionnels avec valeurs définies
+\RequirePackage{ifthen}	% Structure conditionnelle avec des conditions 
+\RequirePackage{suffix} % Commandes avec *
+\RequirePackage{calc} % Permet de calculer la taille de textes et d'autres objets
+%\RequirePackage{chngcntr} % \countwithout
+
+%% MATHEMATIQUES :
+\RequirePackage{amsmath} % Commandes mathématiques basiques
+\RequirePackage{mathtools} % Amélioration de \asmmath
+\RequirePackage{amsthm} % Gestion des environnements théorème, lemme .... 
+\RequirePackage{amssymb} % Symboles mathématiques étendus
+\RequirePackage{stmaryrd} % Contient d'autres symboles (utilisé dans \setint)
+\RequirePackage{graphicx} % Permet d'elargir les symboles
+\RequirePackage{mathrsfs} % Lettres de \mathscr
+\RequirePackage{bbm} % Police d'écriture (\N, \1 ...)
+\RequirePackage{cancel} % Barrer des expressions
+
+\RequirePackage{xcolor}
+\RequirePackage{tikz} % Création de figures en pdf
+\RequirePackage[tikz]{bclogo} % Création des cadres des théorèmes
+
+%%%%%%% 
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\IrangeCC}{\llbracket}{\rrbracket}
+\DeclarePairedDelimiter{\IrangeCO}{\llbracket}{\llbracket}
+\DeclarePairedDelimiter{\IrangeOO}{\rrbracket}{\llbracket}
+\DeclarePairedDelimiter{\IrangeOC}{\rrbracket}{\rrbracket}
+
+\let\Pr\temp 
+\DeclareMathOperator{\Pr}{Pr}
+\DeclareMathOperator{\Var}{Var}%Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Esp}{Esp}

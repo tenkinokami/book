@@ -1,0 +1,128 @@
+\chapter{Racines exactes des polynômes de degré  2, 3 et 4}
+\subsection{Expression générale des racines d'un polynôme de degré 2}
+Soient $(a,b,c)\in\setRealNumbers^3$. Soit $P = aX^2+bX+c$ un polynôme du second degré. Alors, cherchons les racines de $P$. 
+
+Pour cela on doit résoudre l'équation 
+\[
+ax^2+bx+c = 0 \Longleftrightarrow x^2+\dfrac{b}{a}x+\dfrac{c}{a} = 0
+\]
+Or 
+\[
+\left(x+\dfrac{b}{2a}\right)^2=x^2+\dfrac{b}{a}x+\dfrac{b^2}{a^2}
+\]
+Donc 
+\[
+\left(x+\dfrac{b}{2a}\right)^2+\dfrac{c}{a}-\dfrac{b^2}{4a^2}=0
+\]
+Donc 
+\[
+\left(x+\dfrac{b}{2a}\right)^2=\dfrac{b^2-4ac}{4a^2}
+\]
+D'où 
+\[
+\left(x+\dfrac{b}{2a}\right) = \pm \dfrac{\sqrt{b^2-4ac}}{2a}
+\]
+Finalement, 
+\[
+x= -\dfrac{b}{2a}\pm \dfrac{\sqrt{b^2-4ac}}{2a}= \dfrac{-b\pm\sqrt{b^2-4ac}}{2a}
+\]
+
+\subsection{Expression générale des racines d'un polynôme de degré 3}
+Soient $(a,b,c,d)\in\setRealNumbers^4$. Soit $P = aX^3+bX^2+cX+d$ un polynôme du troisième degré. Alors, cherchons les racines de $P$. \\ 
+Pour cela on doit résoudre l'équation 
+\[
+ax^3+bx^2+cx+d=0
+\]
+C'est équivalent à 
+\[
+x^3+\dfrac{b}{a}x^2+\dfrac{c}{a}x+\dfrac{d}{a}=0
+\]
+On va éliminer le terme en $x^2$. Pour cela, on va utiliser le développement de $\left(x+\dfrac{b}{3a}\right)^3$.
+Posons $\beta = x +  \dfrac{b}{3a}$ ,alors l'équation se transforme en 
+\[
+\left(\beta- \dfrac{b}{3a}\right)^3+\dfrac{b}{a}\left(\beta- \dfrac{b}{3a}\right)^2+\dfrac{c}{a}\left(\beta- \dfrac{b}{3a}\right)+\dfrac{d}{a}=0
+\]
+Donc 
+\[
+\beta^3+\underbrace{\left(\dfrac{b}{a}-3\dfrac{b}{3a}\right)}_{=0}\beta^2
++\underbrace{\left(\dfrac{c}{a}+(3-2)\dfrac{b}{a}\dfrac{b}{3a}\right)}_{p}\beta
++\underbrace{\left(\dfrac{d}{a}+\dfrac{b}{27a}\left(\dfrac{2b^2}{a^2}-\dfrac{9c}{a}\right)\right)}_{q} = 0
+\]
+On s'est donc ramené a l'équation $\beta^3+p\beta+q=0$\\
+Prenons maintenant $u,v\in\setRealNumbers\left/ uv=-\dfrac{p}{q}\text{ et }\beta = u + v\right.$ (on va montrer par la suite que $u$ et $v$ sont bien définis)\\
+Alors 
+\[
+u^3 v^3 = -\dfrac{p^3}{27}
+\]
+D'autre part, 
+\[
+\underbrace{(u+v)^3+p(u+v)}_{=-q}=u^3+v^3+3(u+v)uv+p(u+v)=u^3+v^3+\underbrace{3(uv+\dfrac{p}{3})(u+v)}_{=0}
+\]
+Donc $u^3+v^3 = -q$\\
+On remarque astucieusement qu'on connait la somme et le produit de $u^3$ et $v^3$ donc ils vérifient l'équation polynômiale de degré 2 
+\[
+X^2 - \text{somme}X + \text{produit}=0 
+\]
+i.e. 
+\[
+X^2 +q X - \dfrac{p^3}{27} =0
+\]
+On a alors $\Delta = q^2+\dfrac{4p^3}{27}$. On ne connait pas le signe de $\Delta$ et il est parfois négatif. Ici on ne va traiter que le cas ou $\Delta$ est positifs, l'autre cas sera à mettre en relation avec le chapitre sur les complexes.
+On connait les solutions de cette équation, on en déduit que \\
+\[
+u^3,v^3 = \dfrac{-q \pm \sqrt{q^2+\dfrac{4p^3}{27}}}{2}
+\]
+Donc 
+\[
+\beta = u + v = \sqrt[3]{\dfrac{-q - \sqrt{q^2+\dfrac{4p}{3}}}{2}} + \sqrt[3]{\dfrac{-q + \sqrt{q^2+\dfrac{4p^3}{27}}}{2}}
+\]
+Donc finalement 
+\[
+x = \sqrt[3]{\dfrac{-q - \sqrt{q^2+\dfrac{4p^3}{27}}}{2}} + \sqrt[3]{\dfrac{-q + \sqrt{q^2+\dfrac{4p^3}{27}}}{2}} - \dfrac{b}{3a}
+\]
+
+\subsection{Expression générale des racines d'un polynôme de degré 4}
+Soient $(a,b,c,d,e)\in\setRealNumbers^5$\\
+Soit $P = aX^4+bX^3+cX^2+dX+e$ un polynôme du quatrième degré. Alors, cherchons les racines de $P$.\\ 
+Pour cela on doit résoudre l'équation 
+\[ax^4+bx^3+cx^2+dx+e=0\]
+Pour cela, posons $x = \beta - \dfrac{b}{4a}$. En remplaçant $x$ par son expression en fonction de $u$ et en développant on obtient l'équation
+\[
+u^4+\underbrace{\left(\dfrac{c}{a}-\dfrac{3b^2}{8a^2}\right)}_{p}u^2 + \underbrace{\left(\dfrac{d}{a}-\dfrac{bc}{2a^2}+\dfrac{b^3}{8a^3}\right)}_{q}u + \underbrace{\left(\dfrac{e}{a}-\dfrac{bd}{4a^2}+\dfrac{c b^2}{16a^3}-3\left(\dfrac{b}{4a}\right)^4\right)}_{r}= 0
+\]
+Donc 
+\[
+u^4+u^2+qu+r=0
+\]
+Cette forme d'équation fait fortement penser aux équations bicarrées, mais le terme en $u$ est gênant. On va essayer d'exprimer le polynôme sous une forme plus simple cependant.\\
+Cherchons $\alpha, \beta, \gamma \in \setRealNumbers \left/(u^2+\alpha)^2+\beta (u+\gamma)^2=u^4+pu^2+qu+r\right.$\\
+Pour cela, on va chercher des conditions en identifiant les monômes de degrés égaux. Ainsi, on obtient, 
+\[
+\left\{\begin{array}{l}
+1=1\\
+2\alpha+\beta = p\\
+2 \beta \gamma = q\\
+\alpha^2+\beta \gamma^2 = r\\
+\end{array}\right.
+\] 
+La dernière équation nous donne après substitution des variables,
+\[
+\alpha^2+\beta \gamma^2=\alpha^2 + \dfrac{q^2}{4\beta}=\alpha^2 + \dfrac{q^2}{4(p-2\alpha)}=r
+\]
+Ainsi 
+\[
+-2\alpha^3+p\alpha^2+2r\alpha+\left(\dfrac{q^2}{4}-rp\right)=0
+\]
+Il s'agit d'une équation du troisième degré donc il existe toujours $\alpha$ qui vérifie cette relation. Cela nous donne automatiquement $\beta$ et $\gamma$. Il ne reste plus qu'à résoudre l'équation 
+\[
+(u^2+\alpha)=-\gamma(u+\beta)^2
+\]
+On obtient alors 2 équation du second degré, à savoir,
+\[
+u^2 + \sqrt{-\gamma}u + \left(\alpha + \sqrt{-\gamma}\right)
+\]
+Et
+\[
+u^2 - \sqrt{-\gamma}u + \left(\alpha - \sqrt{-\gamma}\right)
+\]
+Cela nous donne les solutions générales

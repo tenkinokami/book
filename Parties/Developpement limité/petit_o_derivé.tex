@@ -1,0 +1,64 @@
+\begin{lemma}
+Soit $f$ une fonction dérivable au voisinage de $0$ telle que $f'(x)= o_{0}(x^n)$ alors $f(x)=o_o(x^{n+1})$
+\end{lemma}
+
+\begin{proof}
+Soit $\epsilon > 0$, alors 
+\[
+\exists \alpha > 0 \left/ \forall x \in \realIntervalOO{-\alpha}{\alpha}, |f'(x)|\le \varepsilon |x^n|\right.
+\]
+Soit $x \in \realIntervalCC{0}{\alpha}$, on sait que 
+\[
+f(x)-f(0) = \displaystyle\int\limits_{0}^{x} f'(t) dt
+\]
+Donc par inégalité triangulaire :
+\[
+|f(x)-f(0)| \le \displaystyle\int\limits_{0}^{x} |f'(t)| dt
+\]
+Comme $x \in \realIntervalOO{0}{\alpha}$, on a $x < \alpha$ et $\realIntervalCC{0}{x} \subset \realIntervalOO{0}{\alpha}$, on peut donc appliquer l'hypothèse de domination en tout point de l'intégrale :
+\[
+\displaystyle\int\limits_{0}^{x} |f'(t)| dt \le \displaystyle\int\limits_{0}^{x} \varepsilon |t^n| dt = \epsilon \displaystyle\int\limits_{0}^{x} |t^n| dt
+\]
+Comme $\function{t}{t^n}$ est positive sur $\realIntervalCC{0}{t}$, on peut enlever les valeurs absolues. on a alors 
+\[
+\varepsilon \displaystyle\int\limits_{0}^{x} t^n dt 
+=
+\varepsilon \left[\dfrac{t^{n+1}}{n+1}\right]_{0}^{x} 
+= 
+\varepsilon \Bigl(\dfrac{x^{n+1}}{n+1} - \underbrace{\dfrac{0^{n+1}}{n+1}}_{=0}\Bigr)
+=
+\dfrac{\varepsilon}{n+1} x^{n+1}
+\]
+Comme $n > 1$, on a ainsi $n+1 > 2$ d'où $\dfrac{1}{n+1} \le 1$ donc finalement 
+\[
+\forall x \in \realIntervalCO{0}{\alpha}, 
+|f(x)-f(0)| \le \dfrac{\varepsilon}{n+1} x^{n+1} 
+\le 
+\varepsilon x^{n+1}
+\]
+
+Si $x \in \realIntervalOC{-\alpha}{0}$, alors on peut appliquer l'inégalité triangulaire en inversant les bornes
+\[
+|f(x)-f(0)| 
+\le 
+\int\limits_{x}^{0} |f'(t)| dt
+\le 
+\varepsilon \int\limits_{x}^{0} |t^n| dt
+\]
+Comme $t \mapsto t^n$ est une fonction négative sur $\realIntervalCC{-\alpha}{0}$, on a peut alors changer les bornes de l'intégrale et on retombe alors sur la forme précédente.
+\[
+|f(x)-f(0)| 
+\le 
+\varepsilon \int\limits_{x}^{0} -t^n dt
+\le 
+\varepsilon \int\limits_{0}^{x} t^n dt
+\le \epsilon x^{n+1}
+\]
+Ainsi, on a 
+\[
+\forall x \in \realIntervalCO{-\alpha}{\alpha}, 
+|f(x)-f(0)| \le \dfrac{\varepsilon}{n+1} x^{n+1} 
+\le 
+\varepsilon x^{n+1}
+\]
+\end{proof}

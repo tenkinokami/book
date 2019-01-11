@@ -129,19 +129,19 @@
 
 
 %% LOGIQUE :
-%\newcommand{\as}[1]{\left/ #1\right.}
-%
-%\NewDocumentCommand{\function}{o o o m m}%
-%{%
-%\IfValueT{#1}{#1 :}% Nom de la fonction 
-%	\IfValueTF{#2}{%
-%    \left|
-%	\begin{array}{l c l}%
-%	#2 & \longrightarrow & #3\\ % Ensemble de départ et d'arrivée
-%	#4 & \longmapsto & #5\\ % Valeurs de la fonction
-%	\end{array}\right.%
-%	}%
-%    {%
-%	#4 \longmapsto #5% Valeurs de la fonction
-%	}%
-%}
+\newcommand{\as}[1]{\left/ #1\right.}
+
+\NewDocumentCommand{\function}{o o o m m}%
+{%
+\IfValueT{#1}{#1 :}% Nom de la fonction 
+	\IfValueTF{#2}{%
+    \left|
+	\begin{array}{l c l}%
+	#2 & \longrightarrow & #3\\ % Ensemble de départ et d'arrivée
+	#4 & \longmapsto & #5\\ % Valeurs de la fonction
+	\end{array}\right.%
+	}%
+    {%
+	#4 \longmapsto #5% Valeurs de la fonction
+	}%
+}
